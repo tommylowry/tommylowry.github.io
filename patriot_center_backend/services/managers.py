@@ -1,6 +1,8 @@
 import patriot_center_backend.constants as consts
 from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
 from patriot_center_backend.utils.player_ids_loader import load_player_ids
+import json
+from decimal import Decimal
 
 PLAYER_IDS = load_player_ids()
 
@@ -37,9 +39,17 @@ def get_roster_id_from_user(year, user_id):
 def get_yearly_starters(year, roster_id, league_id):
     league_id = consts.LEAGUE_IDS[year]
 
+    # check if the year is currently in season
+    sleeper_response_league = fetch_sleeper_data(f"league/{league_id}")
+    if sleeper_response_league[1] != 200:
+        return sleeper_response_league
+    league_info = sleeper_response_league[0]
+
     # Fetch the starters for the manager and year for each week
     # 13 weeks for 2020 and earlier, 14 weeks for 2021 and later for the regular season
     num_weeks = 14 if  year > 2020 else 13
+    if league_info.get('status', '') == 'in_season':
+        num_weeks = league_info['settings'].get('last_scored_leg', 0)
     
     data = {}
     for week in range(1, num_weeks + 1):
@@ -52,6 +62,10 @@ def get_yearly_starters(year, roster_id, league_id):
             if matchup['roster_id'] == roster_id:
                 for i in range(1, len(matchup['starters'])):
                     player_id = matchup['starters'][i]
+
+                    # Skip empty slots
+                    if player_id == "0":
+                        continue
 
                     # Get player details
                     player_name     = PLAYER_IDS.get(player_id, {}).get('full_name', 'Unknown Player')
@@ -70,6 +84,10 @@ def get_yearly_starters(year, roster_id, league_id):
                             'position': player_position
                         }
     
+    # Before returning, format all total_points to remove trailing zeros
+    for player_name, player_data in data.items():
+        player_data['total_points'] = float(Decimal(player_data['total_points']).quantize(Decimal('0.01')).normalize())
+
     return data, 200
                     
 
@@ -126,4 +144,4 @@ def get_starters(year=None, manager=None):
     
     return get_yearly_starters(year, roster_id, league_id), 200
 
-print(get_starters(2025, "Tommy"))
+print(json.dumps(get_starters(2025, "Tommy"), indent = 4))
