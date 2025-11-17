@@ -114,7 +114,7 @@ def _get_current_season_and_week():
     if not league_id:
         raise Exception(f"No league ID found for the current year: {current_year}")
     
-    # OFFLINE DEBUGGING, uncomment when online
+    # OFFLINE DEBUGGING, comment out when online
     # return "2025", 10
 
     sleeper_response_league = fetch_sleeper_data(f"league/{league_id}")

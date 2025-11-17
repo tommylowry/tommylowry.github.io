@@ -65,7 +65,3 @@ def fetch_aggregated_managers(player, season=None, week=None):
                             }
     
     return managers_dict_to_return
-
-
-a = fetch_aggregated_players(manager="Jay")
-print("")

@@ -346,10 +346,6 @@
                 "Greg Zuerlein": {
                     "points": 8.5,
                     "position": "K"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 }
             },
             "Christian": {
@@ -385,10 +381,6 @@
                 "Stephen Gostkowski": {
                     "points": 7.5,
                     "position": "K"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 }
             },
             "Parker": {
@@ -43187,6 +43179,6 @@
             }
         }
     },
-    "Last_Updated_Season": 2025,
+    "Last_Updated_Season": "2025",
     "Last_Updated_Week": 10
 }
