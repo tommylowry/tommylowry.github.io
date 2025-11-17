@@ -1,4 +1,6 @@
 {
+    "Last_Updated_Season": "2025",
+    "Last_Updated_Week": 10,
     "2019": {
         "1": {
             "Anthony": {
@@ -422,7 +424,7 @@
                     "position": "DEF"
                 }
             },
-            "Cody": {
+            "Tommy": {
                 "Total_Points": 107.86,
                 "Cam Newton": {
                     "points": 5.36,
@@ -892,7 +894,7 @@
                     "position": "DEF"
                 }
             },
-            "Cody": {
+            "Tommy": {
                 "Total_Points": 138.42,
                 "Patrick Mahomes": {
                     "points": 31.62,
@@ -1362,7 +1364,7 @@
                     "position": "DEF"
                 }
             },
-            "Cody": {
+            "Tommy": {
                 "Total_Points": 92.96,
                 "Patrick Mahomes": {
                     "points": 26.86,
@@ -3268,10 +3270,6 @@
                     "points": 5.3,
                     "position": "TE"
                 },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
-                },
                 "Stephen Hauschka": {
                     "points": 8.0,
                     "position": "K"
@@ -3390,10 +3388,6 @@
                 "Josh Jacobs": {
                     "points": 9.1,
                     "position": "RB"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 },
                 "Tennessee Titans": {
                     "points": 16.5,
@@ -3821,10 +3815,6 @@
                 "John Brown": {
                     "points": 9.6,
                     "position": "WR"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 },
                 "Jacksonville Jaguars": {
                     "points": 4.5,
@@ -4772,7 +4762,7 @@
                 }
             },
             "Jay": {
-                "Total_Points": 97.66,
+                "Total_Points": 77.16,
                 "Deshaun Watson": {
                     "points": 3.96,
                     "position": "QB"
@@ -4804,10 +4794,6 @@
                 "Eddy Pineiro": {
                     "points": -3.5,
                     "position": "K"
-                },
-                "Unknown Player": {
-                    "points": 20.5,
-                    "position": "Unknown Position"
                 }
             },
             "Mitch": {
@@ -5270,10 +5256,6 @@
                 "Chris Carson": {
                     "points": 6.7,
                     "position": "RB"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 },
                 "Chicago Bears": {
                     "points": 13.0,
@@ -18199,10 +18181,6 @@
                     "points": 14.7,
                     "position": "WR"
                 },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
-                },
                 "Arizona Cardinals": {
                     "points": 14.0,
                     "position": "DEF"
@@ -20709,10 +20687,6 @@
                     "points": 7.3,
                     "position": "WR"
                 },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
-                },
                 "San Francisco 49ers": {
                     "points": 20.5,
                     "position": "DEF"
@@ -22077,10 +22051,6 @@
                 "Robert Woods": {
                     "points": 4.1,
                     "position": "WR"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 },
                 "Tampa Bay Buccaneers": {
                     "points": 4.0,
@@ -27058,10 +27028,6 @@
                 "Tyler Bass": {
                     "points": 9.5,
                     "position": "K"
-                },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
                 }
             },
             "Dheeraj": {
@@ -32314,6 +32280,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 114.29,
+                "Patrick Mahomes": {
+                    "points": 14.64,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 32.2,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 11.8,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 9.0,
+                    "position": "WR"
+                },
+                "George Pickens": {
+                    "points": 10.5,
+                    "position": "WR"
+                },
+                "Dalton Schultz": {
+                    "points": 3.1,
+                    "position": "TE"
+                },
+                "James Conner": {
+                    "points": 17.8,
+                    "position": "RB"
+                },
+                "Harrison Butker": {
+                    "points": 5.5,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 9.75,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 96.37,
                 "Lamar Jackson": {
@@ -32742,6 +32747,45 @@
                 },
                 "Philadelphia Eagles": {
                     "points": 2.5,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 125.94,
+                "Patrick Mahomes": {
+                    "points": 12.94,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 15.6,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 28.0,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 8.2,
+                    "position": "WR"
+                },
+                "George Pickens": {
+                    "points": 3.9,
+                    "position": "WR"
+                },
+                "Hunter Henry": {
+                    "points": 14.9,
+                    "position": "TE"
+                },
+                "James Conner": {
+                    "points": 17.4,
+                    "position": "RB"
+                },
+                "Harrison Butker": {
+                    "points": 6.5,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 18.5,
                     "position": "DEF"
                 }
             },
@@ -33176,6 +33220,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 148.13,
+                "Patrick Mahomes": {
+                    "points": 16.38,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 31.6,
+                    "position": "RB"
+                },
+                "James Conner": {
+                    "points": 3.0,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 11.8,
+                    "position": "WR"
+                },
+                "Jauan Jennings": {
+                    "points": 41.0,
+                    "position": "WR"
+                },
+                "Hunter Henry": {
+                    "points": 1.9,
+                    "position": "TE"
+                },
+                "James Cook": {
+                    "points": 16.7,
+                    "position": "RB"
+                },
+                "Harrison Butker": {
+                    "points": 8.5,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 17.25,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 119.63,
                 "Lamar Jackson": {
@@ -33604,6 +33687,45 @@
                 },
                 "Cincinnati Bengals": {
                     "points": 3.5,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 75.8,
+                "Patrick Mahomes": {
+                    "points": 13.0,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 12.6,
+                    "position": "RB"
+                },
+                "James Conner": {
+                    "points": 17.8,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 5.1,
+                    "position": "WR"
+                },
+                "George Pickens": {
+                    "points": 13.3,
+                    "position": "WR"
+                },
+                "Tyler Conklin": {
+                    "points": 3.7,
+                    "position": "TE"
+                },
+                "James Cook": {
+                    "points": 5.3,
+                    "position": "RB"
+                },
+                "Harrison Butker": {
+                    "points": 3.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 2.0,
                     "position": "DEF"
                 }
             },
@@ -34038,6 +34160,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 84.84,
+                "Justin Fields": {
+                    "points": 14.44,
+                    "position": "QB"
+                },
+                "James Cook": {
+                    "points": 16.9,
+                    "position": "RB"
+                },
+                "James Conner": {
+                    "points": 13.0,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 22.6,
+                    "position": "WR"
+                },
+                "Xavier Legette": {
+                    "points": 1.3,
+                    "position": "WR"
+                },
+                "Tyler Conklin": {
+                    "points": 8.5,
+                    "position": "TE"
+                },
+                "George Pickens": {
+                    "points": 4.1,
+                    "position": "WR"
+                },
+                "Blake Grupe": {
+                    "points": -0.5,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 4.5,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 122.62,
                 "Lamar Jackson": {
@@ -34466,6 +34627,45 @@
                 },
                 "Philadelphia Eagles": {
                     "points": 12.75,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 114.0,
+                "Justin Fields": {
+                    "points": 22.2,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 6.4,
+                    "position": "RB"
+                },
+                "Bucky Irving": {
+                    "points": 17.5,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 20.7,
+                    "position": "WR"
+                },
+                "Stefon Diggs": {
+                    "points": 16.7,
+                    "position": "WR"
+                },
+                "Dalton Schultz": {
+                    "points": 4.7,
+                    "position": "TE"
+                },
+                "Xavier Legette": {
+                    "points": 9.8,
+                    "position": "WR"
+                },
+                "Blake Grupe": {
+                    "points": 6.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 10.0,
                     "position": "DEF"
                 }
             },
@@ -34900,6 +35100,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 92.11,
+                "Patrick Mahomes": {
+                    "points": 12.06,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 25.7,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 9.2,
+                    "position": "RB"
+                },
+                "Bub Means": {
+                    "points": 5.2,
+                    "position": "WR"
+                },
+                "Stefon Diggs": {
+                    "points": 4.8,
+                    "position": "WR"
+                },
+                "Dalton Schultz": {
+                    "points": 3.3,
+                    "position": "TE"
+                },
+                "Garrett Wilson": {
+                    "points": 10.6,
+                    "position": "WR"
+                },
+                "Jake Bates": {
+                    "points": 5.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 16.25,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 112.69,
                 "Lamar Jackson": {
@@ -35328,6 +35567,45 @@
                 },
                 "Detroit Lions": {
                     "points": 18.0,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 117.43,
+                "Patrick Mahomes": {
+                    "points": 18.18,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 11.6,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 26.8,
+                    "position": "RB"
+                },
+                "Garrett Wilson": {
+                    "points": 13.8,
+                    "position": "WR"
+                },
+                "Stefon Diggs": {
+                    "points": 10.2,
+                    "position": "WR"
+                },
+                "Dalton Schultz": {
+                    "points": 7.2,
+                    "position": "TE"
+                },
+                "George Pickens": {
+                    "points": 9.4,
+                    "position": "WR"
+                },
+                "Jake Bates": {
+                    "points": 8.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 12.25,
                     "position": "DEF"
                 }
             },
@@ -35762,6 +36040,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 111.64,
+                "Patrick Mahomes": {
+                    "points": 24.54,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 31.9,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 9.4,
+                    "position": "RB"
+                },
+                "Romeo Doubs": {
+                    "points": 4.8,
+                    "position": "WR"
+                },
+                "Garrett Wilson": {
+                    "points": 25.5,
+                    "position": "WR"
+                },
+                "Dalton Schultz": {
+                    "points": 3.6,
+                    "position": "TE"
+                },
+                "Cedrick Wilson": {
+                    "points": 4.4,
+                    "position": "WR"
+                },
+                "Jake Bates": {
+                    "points": 3.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 4.5,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 136.95,
                 "Lamar Jackson": {
@@ -36190,6 +36507,45 @@
                 },
                 "Washington Commanders": {
                     "points": 8.5,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 110.48,
+                "Tua Tagovailoa": {
+                    "points": 8.68,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 8.3,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 15.0,
+                    "position": "RB"
+                },
+                "George Pickens": {
+                    "points": 18.0,
+                    "position": "WR"
+                },
+                "Garrett Wilson": {
+                    "points": 6.6,
+                    "position": "WR"
+                },
+                "Dalton Schultz": {
+                    "points": 8.1,
+                    "position": "TE"
+                },
+                "Jauan Jennings": {
+                    "points": 12.8,
+                    "position": "WR"
+                },
+                "Jake Bates": {
+                    "points": 10.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 23.0,
                     "position": "DEF"
                 }
             },
@@ -36624,6 +36980,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 127.89,
+                "Patrick Mahomes": {
+                    "points": 15.84,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 32.8,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 17.2,
+                    "position": "RB"
+                },
+                "George Pickens": {
+                    "points": 12.9,
+                    "position": "WR"
+                },
+                "Garrett Wilson": {
+                    "points": 3.8,
+                    "position": "WR"
+                },
+                "Dawson Knox": {
+                    "points": 6.0,
+                    "position": "TE"
+                },
+                "Jauan Jennings": {
+                    "points": 20.1,
+                    "position": "WR"
+                },
+                "Jake Bates": {
+                    "points": 8.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 11.25,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 93.78,
                 "Lamar Jackson": {
@@ -37052,6 +37447,45 @@
                 },
                 "Washington Commanders": {
                     "points": 6.5,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 115.61,
+                "Bo Nix": {
+                    "points": 19.42,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 44.2,
+                    "position": "RB"
+                },
+                "Bucky Irving": {
+                    "points": 22.7,
+                    "position": "RB"
+                },
+                "George Pickens": {
+                    "points": 6.8,
+                    "position": "WR"
+                },
+                "Adam Thielen": {
+                    "points": 7.2,
+                    "position": "WR"
+                },
+                "Hunter Henry": {
+                    "points": 6.9,
+                    "position": "TE"
+                },
+                "Quentin Johnston": {
+                    "points": 0.0,
+                    "position": "WR"
+                },
+                "Jake Bates": {
+                    "points": 6.0,
+                    "position": "K"
+                },
+                "Chicago Bears": {
+                    "points": 2.39,
                     "position": "DEF"
                 }
             },
@@ -37486,6 +37920,45 @@
                     "position": "DEF"
                 }
             },
+            "Davey": {
+                "Total_Points": 131.59,
+                "Patrick Mahomes": {
+                    "points": 15.14,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 17.2,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 18.5,
+                    "position": "RB"
+                },
+                "George Pickens": {
+                    "points": 14.9,
+                    "position": "WR"
+                },
+                "Garrett Wilson": {
+                    "points": 6.6,
+                    "position": "WR"
+                },
+                "Hunter Henry": {
+                    "points": 11.0,
+                    "position": "TE"
+                },
+                "Bucky Irving": {
+                    "points": 26.0,
+                    "position": "RB"
+                },
+                "Jake Bates": {
+                    "points": 7.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": 15.25,
+                    "position": "DEF"
+                }
+            },
             "Benz": {
                 "Total_Points": 118.08,
                 "Lamar Jackson": {
@@ -37752,10 +38225,6 @@
                     "points": 4.5,
                     "position": "RB"
                 },
-                "Unknown Player": {
-                    "points": 0,
-                    "position": "Unknown Position"
-                },
                 "Tennessee Titans": {
                     "points": 13.25,
                     "position": "DEF"
@@ -37914,6 +38383,45 @@
                 },
                 "Detroit Lions": {
                     "points": 6.75,
+                    "position": "DEF"
+                }
+            },
+            "Davey": {
+                "Total_Points": 83.59,
+                "Patrick Mahomes": {
+                    "points": 14.1,
+                    "position": "QB"
+                },
+                "Saquon Barkley": {
+                    "points": 14.4,
+                    "position": "RB"
+                },
+                "James Cook": {
+                    "points": 3.9,
+                    "position": "RB"
+                },
+                "Adam Thielen": {
+                    "points": 14.7,
+                    "position": "WR"
+                },
+                "Jauan Jennings": {
+                    "points": 24.5,
+                    "position": "WR"
+                },
+                "Evan Engram": {
+                    "points": 5.3,
+                    "position": "TE"
+                },
+                "Bucky Irving": {
+                    "points": 2.3,
+                    "position": "RB"
+                },
+                "Jake Bates": {
+                    "points": 7.0,
+                    "position": "K"
+                },
+                "Buffalo Bills": {
+                    "points": -2.61,
                     "position": "DEF"
                 }
             },
@@ -43178,7 +43686,5 @@
                 }
             }
         }
-    },
-    "Last_Updated_Season": "2025",
-    "Last_Updated_Week": 10
+    }
 }

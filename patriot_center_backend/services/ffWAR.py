@@ -77,7 +77,6 @@ def calculate_ffWAR_position(scores, season, week, position):
             total_position_score += scores[manager]['players'][player]
     
     average_player_score_this_week = total_position_score / num_players
-    print("")
 
 
     for manager in scores:
@@ -135,4 +134,5 @@ def calculate_ffWAR_position(scores, season, week, position):
     return ffWAR_position
 
 
-ffWAR(season="2019", week="1")
+di = ffWAR(season="2019", week="1")
+print("")

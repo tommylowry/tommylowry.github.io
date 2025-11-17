@@ -26,14 +26,16 @@ def load_or_update_starters_cache():
     current_season, current_week = _get_current_season_and_week()
 
     # Get the last updated season and week from the cache
-    last_updated_season = int(cache.get("Last_Updated_Season", None))
+    last_updated_season = int(cache.get("Last_Updated_Season", 0))
     last_updated_week   = cache.get("Last_Updated_Week", 0)
 
     # Process all years in LEAGUE_IDS
     for year in LEAGUE_IDS.keys():
-        if last_updated_season is not None:
+        if last_updated_season != 0:
             if year < last_updated_season:
                 continue
+            if last_updated_season < year:
+                cache['Last_Updated_Week'] = 0
         
         if last_updated_season == int(current_season) and last_updated_week == current_week:
             break
@@ -42,7 +44,7 @@ def load_or_update_starters_cache():
         max_weeks = _get_max_weeks(year, current_season, current_week)
 
         # Determine the range of weeks to update
-        if year == current_season:
+        if year == current_season or year == last_updated_season:
             last_updated_week = cache.get("Last_Updated_Week", 0)
             weeks_to_update = range(last_updated_week + 1, max_weeks + 1)
         else:
@@ -59,9 +61,14 @@ def load_or_update_starters_cache():
                 cache[str(year)] = {}
             cache[str(year)][str(week)] = fetch_starters_for_week(year, week)
 
-    # Update the last updated season and week
-    cache["Last_Updated_Season"] = current_season
-    cache["Last_Updated_Week"] = current_week
+            cache['Last_Updated_Season'] = str(year)
+            cache['Last_Updated_Week'] = week
+
+            print("  Cache updated for season {}, week {}".format(year, week))
+
+    # # Update the last updated season and week
+    # cache["Last_Updated_Season"] = current_season
+    # cache["Last_Updated_Week"] = current_week
 
     # Save the updated cache to the file
     _save_cache(cache)
@@ -85,9 +92,9 @@ def _load_cache():
             return json.load(file)
     else:
         # Initialize the cache with all years
-        cache = {"Last_Updated_Season": None, "Last_Updated_Week": 0}
+        cache = {"Last_Updated_Season": "0", "Last_Updated_Week": 0}
         for year in LEAGUE_IDS.keys():
-            cache[year] = {}
+            cache[str(year)] = {}
         return cache
 
 
@@ -176,6 +183,11 @@ def fetch_starters_for_week(season, week):
             real_name = "Tommy"
         
         roster_id = get_roster_id(season, manager['user_id'])
+        if roster_id is None:
+            # Handle special cases for known roster IDs
+            if int(season) == 2024 and real_name == "Davey":
+                roster_id = 4
+        
         if not roster_id:
             continue
 
@@ -232,8 +244,12 @@ def get_starters_data(league_id, roster_id, week):
             manager_data = {"Total_Points": 0}
             for player_id in matchup['starters']:
                 player_name = PLAYER_IDS.get(player_id, {}).get('full_name', 'Unknown Player')
+                if player_name == 'Unknown Player':
+                    continue
                 player_score = matchup['players_points'].get(player_id, 0)
                 player_position = PLAYER_IDS.get(player_id, {}).get('position', 'Unknown Position')
+                if player_position == 'Unknown Position':
+                    continue
 
                 # Add player data
                 manager_data[player_name] = {
@@ -249,3 +265,5 @@ def get_starters_data(league_id, roster_id, week):
             return manager_data
 
     return None
+
+load_or_update_starters_cache()
