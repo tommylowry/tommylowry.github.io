@@ -11,15 +11,15 @@ FFWAR_CACHE_FILE     = "patriot_center_backend/data/ffWAR_cache.json"
 
 def load_or_update_ffWAR_cache():
     """
-    Load or update the replacement score cache.
+    Load or update the ffWAR cache.
 
-    This function loads the existing replacement score cache from a JSON file.
+    This function loads the existing ffWAR cache from a JSON file.
     If the cache is outdated or missing data, it fetches the missing data from
     the Sleeper API and updates the cache. The cache is saved back to the file
     after updates.
 
     Returns:
-        dict: The updated replacement score cache.
+        dict: The updated ffWAR cache.
     """
     # Load existing cache or initialize a new one
     cache = load_cache(FFWAR_CACHE_FILE)
