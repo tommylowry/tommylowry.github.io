@@ -1,0 +1,5 @@
+{
+  "data_dir": "data",
+  "api_rate_limit_req_per_sec": 5,
+  "max_player_ids_age_days": 7
+}

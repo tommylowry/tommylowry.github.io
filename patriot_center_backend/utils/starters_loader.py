@@ -9,179 +9,136 @@ Notes:
 - Weeks are capped at 14 to exclude fantasy playoffs.
 - Import-time execution at bottom warms the cache for downstream consumers.
 """
+from __future__ import annotations
+
 from decimal import Decimal
-from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+import logging
+from typing import Dict, Optional
+
+from patriot_center_backend.utils.sleeper_api_handler import fetch_json, SleeperAPIError
 from patriot_center_backend.constants import LEAGUE_IDS, USERNAME_TO_REAL_NAME
 from patriot_center_backend.utils.player_ids_loader import load_player_ids
-from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
+from patriot_center_backend.utils.helpers import get_current_season_and_week, get_max_weeks_for
+from patriot_center_backend.utils.cache_manager import CacheManager
+from patriot_center_backend.constants import LEAGUE_IDS as _YEARS_SRC
+from patriot_center_backend.utils.config import STARTERS_CACHE_FILE
 
 
 # Constants
 # Path to starters cache; PLAYER_IDS is used to map names/positions for lineup entries.
-STARTERS_CACHE_FILE = "patriot_center_backend/data/starters_cache.json"
-PLAYER_IDS = load_player_ids()
+# PLAYER_IDS mapping is now injected; fallback loaded on demand.
 
+logger = logging.getLogger(__name__)
 
-def load_or_update_starters_cache():
+def load_or_update_starters_cache(player_ids: Optional[Dict] = None) -> Dict:
     """
     Load starters data from the cache file. If the cache is outdated or doesn't exist,
     fetch only the missing data from the Sleeper API and update the cache.
-
-    Behavior:
-    - Loads the existing cache or initializes it if missing.
-    - Detects the current season/week (capped at 14) and computes only missing weeks.
-    - Uses Last_Updated_Season/Week to resume incrementally across runs.
-    - Writes updates back to disk and strips metadata before returning.
-
-    Side effects:
-    - Reads/writes the starters cache JSON.
-    - Calls the Sleeper API (users, rosters, matchups) as needed.
-
-    Returns:
-        dict: The updated starters cache (without Last_Updated_* metadata).
     """
-    # Load existing cache or initialize a new one
-    cache = load_cache(STARTERS_CACHE_FILE)
+    player_ids = player_ids or load_player_ids()
 
-    # Dynamically determine the current season and week
+    manager = CacheManager(STARTERS_CACHE_FILE, seed_years=list(_YEARS_SRC.keys()), schema="starters").load()
+    cache = manager.data
+
     current_season, current_week = get_current_season_and_week()
     if current_week > 14:
-        # Cap to regular season only for comparability across years
         current_week = 14
 
-    
-    # Process all years in LEAGUE_IDS
-    for year in LEAGUE_IDS.keys():
+    # Iterate seasons in ascending order so progress markers move forward predictably
+    for year in sorted(LEAGUE_IDS.keys()):
+        y = int(year)
 
-        # Get the last updated season and week from the cache
-        last_updated_season = int(cache.get("Last_Updated_Season", 0))
-        last_updated_week   = cache.get("Last_Updated_Week", 0)
+        # Compute cap for this season; clamp current season to current_week
+        max_weeks = get_max_weeks_for("starters", y, current_season, current_week)
 
-        # Skip past-fully-computed seasons; reset week counter when moving to a new year
-        if last_updated_season != 0:
-            if year < last_updated_season:
-                continue
-            if last_updated_season < year:
-                cache['Last_Updated_Week'] = 0
-        
-        # Short-circuit if fully up to date for live season/week
-        if last_updated_season == int(current_season) and last_updated_week == current_week:
+        # Read and normalize progress markers
+        lu_season, lu_week = manager.get_last_updated()
+        try:
+            lu_season_i = int(lu_season)
+        except Exception:
+            lu_season_i = 0
+        try:
+            lu_week_i = int(lu_week)
+        except Exception:
+            lu_week_i = 0
+
+        # Skip fully-completed past seasons
+        if lu_season_i and y < lu_season_i:
+            continue
+
+        # If we advance to a new season beyond the last updated season, reset week progress
+        if lu_season_i < y:
+            manager.reset_week_progress()
+            lu_week_i = 0
+
+        # Determine week range to process for this season
+        start_week = lu_week_i + 1 if lu_season_i == y else 1
+        if start_week > max_weeks:
+            continue
+
+        weeks_to_update = range(start_week, max_weeks + 1)
+        logger.info("Updating starters cache season=%s weeks=%s", y, list(weeks_to_update))
+
+        for wk in weeks_to_update:
+            manager.ensure_year(y)
+            week_payload = fetch_starters_for_week(y, wk, player_ids)
+            manager.set_week_data(y, wk, week_payload)
+            logger.debug("Starters cache updated season=%s week=%s", y, wk)
+
+        # If we just finished the live season up to current_week, we can stop
+        if y == current_season and max_weeks == current_week:
             break
 
-        year = int(year)  # Ensure year is an integer
-        max_weeks = _get_max_weeks(year, current_season, current_week)
-
-        # Determine the range of weeks to update
-        if year == current_season or year == last_updated_season:
-            # Continue from last updated week within the same/live season
-            last_updated_week = cache.get("Last_Updated_Week", 0)
-            weeks_to_update = range(last_updated_week + 1, max_weeks + 1)
-        else:
-            # Backfill full season when outside the last-updated season
-            weeks_to_update = range(1, max_weeks + 1)
-
-        if list(weeks_to_update) == []:
-            continue
-        
-        print(f"Updating starters cache for season {year}, weeks: {list(weeks_to_update)}")
-
-        # Fetch and update only the missing weeks for the year
-        for week in weeks_to_update:
-            if str(year) not in cache:
-                cache[str(year)] = {}
-            # Pull week detail from Sleeper and store per-manager lineup/points
-            cache[str(year)][str(week)] = fetch_starters_for_week(year, week)
-
-            # Advance progress markers to support resumable updates
-            cache['Last_Updated_Season'] = str(year)
-            cache['Last_Updated_Week'] = week
-
-            print("  Starters cache updated internally for season {}, week {}".format(year, week))
-
-    # Save the updated cache to the file
-    save_cache(STARTERS_CACHE_FILE, cache)
-
-    # Remove metadata before returning
-    cache.pop("Last_Updated_Season", None)
-    cache.pop("Last_Updated_Week", None)
-
-    return cache
+    manager.save()
+    return manager.strip_metadata_for_return()
 
 
-def _get_max_weeks(season, current_season, current_week):
-    """
-    Determine the maximum number of weeks for a given season.
-
-    Args:
-        season (int): The season to determine the max weeks for.
-        current_season (int): The current season.
-        current_week (int): The current week.
-
-    Returns:
-        int: The maximum number of weeks for the season.
-
-    Notes:
-    - Seasons 2019 and 2020 are capped at 13 (league rule set then).
-    - All other seasons capped at 14 (regular season only).
-    - For the current season, cap to the current in-progress week.
-    """
-    if season == current_season:
-        return current_week  # Use the current week for the current season
-    elif season in [2019, 2020]:
-        return 13  # Cap at 13 weeks for 2019 and 2020
-    else:
-        return 14  # Cap at 14 weeks for other seasons
-
-
-def fetch_starters_for_week(season, week):
+def fetch_starters_for_week(season: int, week: int, player_ids: Dict) -> Dict:
     """
     Fetch starters data for a specific season and week.
-
-    Behavior:
-    - Resolves league users and maps display names to real names.
-    - Handles special-case name/roster overrides for known seasons.
-    - Retrieves starters and their half-PPR points for the week.
-
-    Args:
-        season (int): The season to fetch data for.
-        week (int): The week to fetch data for.
-
-    Returns:
-        dict: The starters data for the given season and week, keyed by manager real name.
-              Empty dict if users fetch fails.
     """
     league_id = LEAGUE_IDS[int(season)]
-    sleeper_response_users = fetch_sleeper_data(f"league/{league_id}/users")
-    if sleeper_response_users[1] != 200:
-        return {}  # Return empty data if the API call fails
+    try:
+        managers = fetch_json(f"league/{league_id}/users")
+    except SleeperAPIError:
+        return {}
 
-    managers = sleeper_response_users[0]
-    week_data = {}
+    # Fetch rosters once per season to map owner_id -> roster_id (avoid per-manager API calls)
+    try:
+        rosters = fetch_json(f"league/{league_id}/rosters")
+    except SleeperAPIError:
+        rosters = []
+
+    owner_to_roster = {r.get("owner_id"): r.get("roster_id") for r in rosters if "owner_id" in r and "roster_id" in r}
+
+    week_data: Dict[str, Dict] = {}
+    
+    try:
+        matchups = fetch_json(f"league/{league_id}/matchups/{week}")
+    except SleeperAPIError:
+        return None
+    
     for manager in managers:
-        real_name = USERNAME_TO_REAL_NAME.get(manager['display_name'], "Unknown Manager")
-        
-        # Tommy started the 2019 season for 3 weeks before Cody took over
+        real_name = USERNAME_TO_REAL_NAME.get(manager.get("display_name"), "Unknown Manager")
+        # 2019: Tommy started first 3 weeks before Cody took over
         if int(season) == 2019 and week < 4 and real_name == "Cody":
             real_name = "Tommy"
-        
-        roster_id = get_roster_id(season, manager['user_id'])
-        if roster_id is None:
-            # Handle special cases for known roster IDs
-            if int(season) == 2024 and real_name == "Davey":
-                roster_id = 4
-        
+
+        roster_id = owner_to_roster.get(manager.get("user_id"))
+        if roster_id is None and int(season) == 2024 and real_name == "Davey":
+            roster_id = 4  # special case
+
         if not roster_id:
             continue
-
-        # Fetch starters for the manager
-        starters_data = get_starters_data(league_id, roster_id, week)
+        
+        starters_data = get_starters_data(league_id, int(roster_id), week, player_ids, matchups)
         if starters_data:
             week_data[real_name] = starters_data
 
     return week_data
 
 
-def get_roster_id(year, user_id):
+def get_roster_id(year: int, user_id: str) -> Optional[int]:
     """
     Fetch the roster ID for a specific user in a given year.
 
@@ -196,18 +153,17 @@ def get_roster_id(year, user_id):
         str: The roster ID, or None if not found or API error occurs.
     """
     league_id = LEAGUE_IDS[int(year)]
-    sleeper_response_rosters = fetch_sleeper_data(f"league/{league_id}/rosters")
-    if sleeper_response_rosters[1] != 200:
+    try:
+        rosters = fetch_json(f"league/{league_id}/rosters")
+    except SleeperAPIError:
         return None
-
-    rosters = sleeper_response_rosters[0]
     for roster in rosters:
         if roster['owner_id'] == user_id:
             return roster['roster_id']
     return None
 
 
-def get_starters_data(league_id, roster_id, week):
+def get_starters_data(league_id: str, roster_id: int, week: int, player_ids: Dict, matchups: Dict) -> Optional[Dict]:
     """
     Fetch starters data for a specific roster and week.
 
@@ -225,20 +181,15 @@ def get_starters_data(league_id, roster_id, week):
     Returns:
         dict: The starters data for the given roster and week, or None on API error/absence.
     """
-    sleeper_response_matchups = fetch_sleeper_data(f"league/{league_id}/matchups/{week}")
-    if sleeper_response_matchups[1] != 200:
-        return None
-
-    matchups = sleeper_response_matchups[0]
     for matchup in matchups:
         if matchup['roster_id'] == roster_id:
             manager_data = {"Total_Points": 0}
             for player_id in matchup['starters']:
-                player_name = PLAYER_IDS.get(player_id, {}).get('full_name', 'Unknown Player')
+                player_name = player_ids.get(player_id, {}).get('full_name', 'Unknown Player')
                 if player_name == 'Unknown Player':
                     continue
                 player_score = matchup['players_points'].get(player_id, 0)
-                player_position = PLAYER_IDS.get(player_id, {}).get('position', 'Unknown Position')
+                player_position = player_ids.get(player_id, {}).get('position', 'Unknown Position')
                 if player_position == 'Unknown Position':
                     continue
 
@@ -258,5 +209,21 @@ def get_starters_data(league_id, roster_id, week):
 
     return None
 
-# Warm the cache on import so downstream consumers can read a ready dataset.
-load_or_update_starters_cache()
+# Debug entrypoint
+if __name__ == "__main__":
+    import logging
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(name)s %(levelname)s %(message)s")
+    logger.info("Debug run: starters loader")
+    data = load_or_update_starters_cache()
+    seasons = [s for s in data.keys() if s.isdigit()]
+    logger.info("Seasons loaded: %s", seasons)
+    if seasons:
+        latest = str(max(map(int, seasons)))
+        weeks = sorted(data[latest].keys(), key=lambda x: int(x))
+        logger.info("Latest season=%s weeks=%s", latest, weeks)
+        if weeks:
+            sample_week = weeks[-1]
+            sample_mgrs = list(data[latest][sample_week].items())[:3]
+            print(f"Sample managers season={latest} week={sample_week}:")
+            for mgr, lineup in sample_mgrs:
+                print(mgr, "Total_Points:", lineup.get("Total_Points"))

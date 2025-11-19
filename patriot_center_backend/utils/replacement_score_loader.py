@@ -13,17 +13,20 @@ Notes:
 - Importing this module triggers a cache warm-up by calling load_or_update_replacement_score_cache().
 """
 
-from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from __future__ import annotations
+
+import logging
+from typing import Dict, Optional
+
+from patriot_center_backend.utils.sleeper_api_handler import fetch_json, SleeperAPIError
 from patriot_center_backend.constants import LEAGUE_IDS
 from patriot_center_backend.utils.player_ids_loader import load_player_ids
-from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
+from patriot_center_backend.utils.helpers import get_current_season_and_week, get_max_weeks_for
+from patriot_center_backend.utils.config import REPLACEMENT_SCORE_FILE
 
-# Constants
-REPLACEMENT_SCORE_FILE = "patriot_center_backend/data/replacement_score_cache.json"
-PLAYER_IDS = load_player_ids()
+logger = logging.getLogger(__name__)
 
-
-def load_or_update_replacement_score_cache():
+def load_or_update_replacement_score_cache(player_ids: Optional[Dict] = None) -> Dict:
     """
     Load or update the replacement score cache in an incremental, resumable fashion.
 
@@ -43,8 +46,16 @@ def load_or_update_replacement_score_cache():
     Returns:
         dict: The updated replacement score cache with per-season/week entries.
     """
-    # Load existing cache or initialize a new one
-    cache = load_cache(REPLACEMENT_SCORE_FILE)
+    # Ensure player metadata is available if not injected by caller
+    player_ids = player_ids or load_player_ids()
+    # Load cache via manager with schema metadata and atomic writes
+    from patriot_center_backend.utils.cache_manager import CacheManager
+    years_seed = sorted(list(LEAGUE_IDS.keys()))
+    first_year = min(years_seed)
+    years_seed.extend([first_year - 3, first_year - 2, first_year - 1])
+    years_seed = sorted(years_seed)
+    manager = CacheManager(REPLACEMENT_SCORE_FILE, seed_years=years_seed, schema="replacement").load()
+    cache = manager.data
 
     # Dynamically determine the current season and week
     current_season, current_week = get_current_season_and_week()
@@ -52,34 +63,29 @@ def load_or_update_replacement_score_cache():
         current_week = 18  # Cap the current week at 18 (NFL's maximum regular season weeks)
 
     # Process all years in LEAGUE_IDS with extra years for replacement score
-    years = list(LEAGUE_IDS.keys())
-    first_year = min(years)
-    # Add the three years prior to the first year in LEAGUE_IDS for historical averages
-    years.extend([first_year - 3, first_year - 2, first_year - 1])
-    years = sorted(years)
+    years = years_seed
 
     for year in years:
         # Get the last updated season and week from the cache
-        last_updated_season = int(cache.get("Last_Updated_Season", 0))
-        last_updated_week = cache.get("Last_Updated_Week", 0)
+        last_updated_season, last_updated_week = manager.get_last_updated()
 
         # Skip years that are already fully processed
         if last_updated_season != 0:
             if year < last_updated_season:
                 continue
             if last_updated_season < year:
-                cache["Last_Updated_Week"] = 0  # Reset the week if moving to a new year
+                manager.reset_week_progress()  # Reset the week if moving to a new year
 
         # If the cache is already up-to-date for the current season and week, stop processing
         if last_updated_season == int(current_season) and last_updated_week == current_week:
             break
 
         year = int(year)  # Ensure year is an integer
-        max_weeks = _get_max_weeks(year, current_season, current_week)
+        max_weeks = get_max_weeks_for("replacement", year, current_season, current_week)
 
         # Determine the range of weeks to update
         if year == current_season or year == last_updated_season:
-            last_updated_week = cache.get("Last_Updated_Week", 0)
+            _, last_updated_week = manager.get_last_updated()
             weeks_to_update = range(last_updated_week + 1, max_weeks + 1)
         else:
             weeks_to_update = range(1, max_weeks + 1)
@@ -87,63 +93,31 @@ def load_or_update_replacement_score_cache():
         if list(weeks_to_update) == []:
             continue
 
-        print(f"Updating replacement score cache for season {year}, weeks: {list(weeks_to_update)}")
+        logger.info("Updating replacement score cache season=%s weeks=%s", year, list(weeks_to_update))
 
         # Fetch and update only the missing weeks for the year
         for week in weeks_to_update:
-            if str(year) not in cache:
-                cache[str(year)] = {}
-
+            manager.ensure_year(year)
             # Fetch replacement scores for the week
-            cache[str(year)][str(week)] = _fetch_replacement_score_for_week(year, week)
-
-            # Compute the 3-year average if data from three years ago exists
+            week_payload = _fetch_replacement_score_for_week(year, week, player_ids)
+            # First, write the raw week scores so _get_three_yr_avg can read them from cache
+            manager.set_week_data(year, week, week_payload)
+            # Refresh local view of cache to reflect the write
+            cache = manager.data
+            # Compute the 3-year average if data from three years ago exists, then persist updated entry
             if str(year - 3) in cache:
-                cache[str(year)][str(week)] = _get_three_yr_avg(year, week, cache)
-
-            # Update the metadata for the last updated season and week
-            cache["Last_Updated_Season"] = str(year)
-            cache["Last_Updated_Week"] = week
-
-            print("  Replacement score cache updated internally for season {}, week {}".format(year, week))
+                updated = _get_three_yr_avg(year, week, cache)
+                manager.set_week_data(year, week, updated)
+            logger.info("Replacement score cache updated season=%s week=%s", year, week)
 
     # Save the updated cache to the file
-    save_cache(REPLACEMENT_SCORE_FILE, cache)
+    manager.save()
 
-    # Remove metadata before returning
-    # These fields are used internally for tracking updates but are not part of the final cache returned
-    cache.pop("Last_Updated_Season", None)
-    cache.pop("Last_Updated_Week", None)
-
-    return cache
+    # Return the cache without metadata
+    return manager.strip_metadata_for_return()
 
 
-def _get_max_weeks(season, current_season, current_week):
-    """
-    Determine the maximum number of weeks for a given season.
-
-    Args:
-        season (int): The season to determine the max weeks for.
-        current_season (int): The current season.
-        current_week (int): The current week.
-
-    Returns:
-        int: The maximum number of weeks for the season.
-
-    Notes:
-    - For the current live season, limit to current_week.
-    - For 2020 and earlier, the NFL regular season had 17 weeks.
-    - For 2021 and later, the regular season has 18 weeks.
-    """
-    if season == current_season:
-        return current_week  # Use the current week for the current season
-    elif season <= 2020:
-        return 17  # Cap at 17 weeks for seasons 2020 and earlier
-    else:
-        return 18  # Cap at 18 weeks for other seasons
-
-
-def _fetch_replacement_score_for_week(season, week):
+def _fetch_replacement_score_for_week(season: int, week: int, player_ids: Dict) -> Dict:
     """
     Fetch replacement scores for a specific season and week.
 
@@ -164,13 +138,10 @@ def _fetch_replacement_score_for_week(season, week):
         dict: The replacement scores for the given season and week, plus 'byes'.
 
     Raises:
-        Exception: If the Sleeper API request fails.
+        SleeperAPIError: If the Sleeper API request fails.
     """
-    # Fetch data from the Sleeper API for the given season and week
-    sleeper_response_week_data = fetch_sleeper_data(f"stats/nfl/regular/{season}/{week}")
-    if sleeper_response_week_data[1] != 200:
-        # Raise an exception if the API call fails
-        raise Exception(f"Failed to fetch week data from Sleeper API for season {season}, week {week}")
+    # Will raise SleeperAPIError on failure
+    week_data = fetch_json(f"stats/nfl/regular/{season}/{week}")
     
     # Initialize the number of byes to 32 (all teams initially assumed to be playing)
     byes = 32
@@ -182,32 +153,37 @@ def _fetch_replacement_score_for_week(season, week):
     }
 
     # Extract the data for the week
-    week_data = sleeper_response_week_data[0]
     for player_id in week_data:
         # Skip team-level data (e.g., "TEAM_...")
         if "TEAM_" in player_id:
             byes -= 1  # Reduce the number of byes for each team found
             continue
-        elif player_id not in PLAYER_IDS:
+        elif player_id not in player_ids:
             # Skip players not found in the PLAYER_IDS mapping
             continue
 
         # Get player information from PLAYER_IDS
-        player_info = PLAYER_IDS[player_id]
+        player_info = player_ids[player_id]
         if player_info["position"] in week_scores and "pts_half_ppr" in week_data[player_id]:
             # Add the player's half-PPR points to the appropriate position list
             week_scores[player_info["position"]].append(week_data[player_id]["pts_half_ppr"])
 
-    # Sort scores for each position in descending order
+    # Safe nth selector for descending-sorted lists
+    def nth_desc(lst, idx, fallback=0.0):
+        try:
+            return lst[idx]
+        except (IndexError, TypeError):
+            return lst[-1] if lst else fallback
+
     for position in week_scores:
         week_scores[position].sort(reverse=True)
 
-    # Determine the replacement scores for each position
-    # QB13 (13th best QB), RB31 (31st best RB), WR31 (31st best WR), TE13 (13th best TE)
-    week_scores["QB"] = week_scores["QB"][12]  # 13th QB
-    week_scores["RB"] = week_scores["RB"][30]  # 31st RB
-    week_scores["WR"] = week_scores["WR"][30]  # 31st WR
-    week_scores["TE"] = week_scores["TE"][12]  # 13th TE
+    # Use safe selector to avoid IndexError on short lists
+    # 13th QB, 31st RB/WR, 13th TE by business rule
+    week_scores["QB"] = nth_desc(week_scores["QB"], 12, 0.0)
+    week_scores["RB"] = nth_desc(week_scores["RB"], 30, 0.0)
+    week_scores["WR"] = nth_desc(week_scores["WR"], 30, 0.0)
+    week_scores["TE"] = nth_desc(week_scores["TE"], 12, 0.0)
 
     # Add the final number of byes to the scores
     week_scores["byes"] = byes
@@ -319,5 +295,22 @@ def _get_three_yr_avg(season, week, cache):
     # Return the updated current week's scores with three-year averages added
     return current_week_scores
 
-# Warm the cache on import so downstream consumers can immediately read from disk/in-memory.
-load_or_update_replacement_score_cache()
+if __name__ == "__main__":
+    import logging
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(name)s %(levelname)s %(message)s")
+    logger.info("Debug run: replacement score loader")
+    # player_ids auto-loads when not provided
+    data = load_or_update_replacement_score_cache()
+    seasons = [s for s in data.keys() if s.isdigit()]
+    logger.info("Seasons loaded: %s", seasons)
+    if seasons:
+        latest = str(max(map(int, seasons)))
+        weeks = sorted(data[latest].keys(), key=lambda x: int(x))
+        logger.info("Latest season=%s weeks=%s", latest, weeks)
+        if weeks:
+            w = weeks[-1]
+            entry = data[latest][w]
+            print(f"Season={latest} Week={w} sample keys:", list(entry.keys()))
+            for k in ["QB", "RB", "WR", "TE", "byes"]:
+                if k in entry:
+                    print(k, "=>", entry[k])

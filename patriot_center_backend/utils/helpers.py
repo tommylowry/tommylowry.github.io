@@ -14,10 +14,14 @@ Notes:
 - External network calls are performed in get_current_season_and_week via the Sleeper API.
 """
 
+from __future__ import annotations
+
 import os
 import json
 from datetime import datetime
-from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from typing import Any, Dict, Tuple
+
+from patriot_center_backend.utils.sleeper_api_handler import fetch_json, SleeperAPIError
 from patriot_center_backend.constants import LEAGUE_IDS
 
 
@@ -78,41 +82,31 @@ def save_cache(file_path, data):
     with open(file_path, "w") as file:
         json.dump(data, file, indent=4)
 
-def get_current_season_and_week():
-    """
-    Fetch the current season and week from the Sleeper API.
-
-    Behavior:
-    - Resolves the league ID from LEAGUE_IDS using the current calendar year.
-    - Calls Sleeper's league endpoint to obtain season and last scored week.
-    - Returns both as integers.
-
-    Raises:
-        Exception: If a league ID is not found for the current year, or if the
-        Sleeper API call fails.
-
-    Returns:
-        tuple: The current season (int) and the current week (int).
-    """
+def get_current_season_and_week() -> Tuple[int, int]:
+    """Fetch the current season and week from Sleeper."""
     current_year = datetime.now().year
-    # Look up the active league ID for the calendar year; required for API call
-    league_id = LEAGUE_IDS.get(int(current_year))  # Get the league ID for the current year
+    league_id = LEAGUE_IDS.get(int(current_year))
     if not league_id:
-        raise Exception(f"No league ID found for the current year: {current_year}")
-    
-    # OFFLINE DEBUGGING, comment out when online
-    # return "2025", 10
-
-    # Query Sleeper API for league metadata
-    sleeper_response_league = fetch_sleeper_data(f"league/{league_id}")
-    if sleeper_response_league[1] != 200:
-        # Surface a clear error if the upstream request fails
-        raise Exception("Failed to fetch league data from Sleeper API")
-
-    league_info = sleeper_response_league[0]
-    # Ensure current_season is an integer for downstream numeric comparisons
-    current_season = int(league_info.get("season"))  # Ensure current_season is an integer
-    # last_scored_leg is the latest completed/scored fantasy week
-    current_week = league_info.get("settings", {}).get("last_scored_leg", 0)
-
+        raise RuntimeError(f"No league ID found for the current year: {current_year}")
+    league_info = fetch_json(f"league/{league_id}")
+    current_season = int(league_info.get("season"))
+    current_week = int(league_info.get("settings", {}).get("last_scored_leg", 0))
     return current_season, current_week
+
+def get_max_weeks_for(kind: str, season: int, current_season: int, current_week: int) -> int:
+    """
+    Shared helper to cap the number of weeks processed per season.
+
+    Rules:
+    - starters, ffwar: cap regular season to 13 for 2019/2020, else 14.
+    - replacement: cap to 17 for <=2020, else 18.
+    - For the live season, clamp by current_week.
+    """
+    if kind in ("starters", "ffwar"):
+        cap = 13 if season in (2019, 2020) else 14
+        return min(current_week, cap) if season == current_season else cap
+    if kind == "replacement":
+        cap = 17 if season <= 2020 else 18
+        return min(current_week, cap) if season == current_season else cap
+    # Default conservative behavior
+    return min(current_week, 14) if season == current_season else 14

@@ -7,6 +7,14 @@ Responsibilities:
 Side effects:
 - Disk I/O and possible network requests via delegated utilities.
 """
+import argparse
+import logging
+from patriot_center_backend.utils import (
+    get_starters_cache,
+    get_replacement_score_cache,
+    get_ffwar_cache,
+    warm_all_caches,
+)
 from patriot_center_backend.utils.starters_loader import load_or_update_starters_cache
 from patriot_center_backend.utils.replacement_score_loader import load_or_update_replacement_score_cache
 

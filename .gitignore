@@ -13,3 +13,12 @@ env/
 *.pyo
 *.pyd
 *.pdb
+
+# CacheManager sidecar lock files
+patriot_center_backend/data/*.json.lock
+
+# Atomic write temp files
+patriot_center_backend/data/.tmp_*.json
+
+# Backups created on save
+patriot_center_backend/data/*.bak

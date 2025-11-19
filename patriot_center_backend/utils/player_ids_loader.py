@@ -13,13 +13,18 @@ Notes:
 - Only a subset of fields specified in FIELDS_TO_KEEP is retained from the API.
 """
 
-import json
-from datetime import datetime, timedelta
-import os
-from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from __future__ import annotations
 
-# Path to the player_ids.json file in the data directory
-PLAYER_IDS_FILE = "patriot_center_backend/data/player_ids.json"
+import json
+import logging
+from pathlib import Path
+from typing import Dict
+from datetime import datetime, timedelta
+
+from patriot_center_backend.utils.sleeper_api_handler import fetch_json, SleeperAPIError
+from patriot_center_backend.utils.config import PLAYER_IDS_FILE
+
+logger = logging.getLogger(__name__)
 
 # Fields to keep from Sleeper's player payload; reduces storage and surface area
 FIELDS_TO_KEEP = [
@@ -64,66 +69,69 @@ TEAM_DEFENSE_NAMES = {
     "WAS": "Washington Commanders"
 }
 
-def load_player_ids():
+def load_player_ids(force_refresh: bool = False, max_age_days: int = 7) -> Dict[str, Dict]:
     """
-    Load player metadata from the local cache, refreshing from Sleeper if stale.
-
-    Behavior:
-    - If PLAYER_IDS_FILE exists and is newer than one week (based on Last_Updated),
-      load it and ensure all team defenses are present as DEF entries.
-    - Otherwise, fetch fresh data from Sleeper, filter the fields, add defenses,
-      stamp Last_Updated, and persist to PLAYER_IDS_FILE.
-
-    Side effects:
-    - May perform network I/O via fetch_sleeper_data.
-    - Performs file reads/writes to PLAYER_IDS_FILE.
-
-    Returns:
-    - dict: Mapping of player_id (or team code for defenses) to a dict of metadata.
-
-    Raises:
-    - Exception: Propagates if Sleeper API fetch fails in refresh path.
+    Load player IDs from disk; refresh from Sleeper if missing or older than max_age_days.
+    - Returns a flat mapping of player_id -> metadata (callers remain unchanged).
+    - On refresh, writes a file wrapper with metadata:
+      { "schema_version": 1, "Last_Updated": "YYYY-MM-DD", "players": { ... } }
+    - Backward compatible with legacy flat JSON files (refreshed and rewritten on first run).
     """
-    # Check if the file exists
-    if os.path.exists(PLAYER_IDS_FILE):
-        with open(PLAYER_IDS_FILE, "r") as file:
-            data = json.load(file)
-        
-        # Determine whether the cache is still fresh (within 1 week)
-        last_updated = datetime.strptime(data.get("Last_Updated", "1970-01-01"), "%Y-%m-%d")
-        if datetime.now() - last_updated < timedelta(weeks=1):
-            # Ensure team defenses are included in the data even if file is fresh
-            for player_id, player_info in data.items():
-                # If the key matches a team code, populate a DEF entry
-                if player_id in TEAM_DEFENSE_NAMES:
-                    data[player_id] = {
-                        "full_name": TEAM_DEFENSE_NAMES[player_id],
-                        "team": player_id,
-                        "position": "DEF"  # Set position as "DEF" for team defenses
-                    }
-                    continue
-            return data  # Return the updated data
-    
-    # If the file is outdated or doesn't exist, fetch new data from Sleeper
-    new_data = fetch_updated_player_ids()
-    new_data["Last_Updated"] = datetime.now().strftime("%Y-%m-%d")
-    
-    # Ensure team defenses are included in the new data (idempotent insert)
-    for team_id, team_name in TEAM_DEFENSE_NAMES.items():
-        if team_id not in new_data:
-            new_data[team_id] = {
-                "full_name": team_name,
-                "team": team_id,
-                "position": "DEF"
-            }
-    
-    # Save the updated data to the file with pretty formatting
-    with open(PLAYER_IDS_FILE, "w") as file:
-        json.dump(new_data, file, indent=4)
-    
-    return new_data
+    path = Path(PLAYER_IDS_FILE)
 
-def fetch_updated_player_ids():
+    def _return_players_from_raw(raw: dict) -> Dict[str, Dict]:
+        # Support both wrapped and legacy flat formats
+        if isinstance(raw, dict) and "players" in raw:
+            return raw["players"]
+        return raw if isinstance(raw, dict) else {}
+
+    if path.exists() and not force_refresh:
+        try:
+            with path.open("r") as f:
+                raw = json.load(f)
+        except json.JSONDecodeError:
+            raw = None
+
+        if isinstance(raw, dict) and "players" in raw and "Last_Updated" in raw:
+            # Wrapped format with metadata
+            try:
+                last = datetime.fromisoformat(str(raw["Last_Updated"]))
+            except Exception:
+                last = None
+            if last and datetime.utcnow() - last < timedelta(days=max_age_days):
+                return raw["players"]
+            # stale -> refresh
+        elif isinstance(raw, dict):
+            # Legacy flat file without Last_Updated; treat as stale so we stamp it once
+            logger.info("player_ids.json is legacy (no Last_Updated); refreshing to add metadata.")
+
+    # Fetch fresh data
+    try:
+        data = fetch_updated_player_ids()
+    except SleeperAPIError as e:
+        logger.warning("Failed to refresh player IDs from Sleeper (%s). Falling back to existing cache if present.", e)
+        if path.exists():
+            try:
+                with path.open("r") as f:
+                    raw = json.load(f)
+                return _return_players_from_raw(raw)
+            except Exception:
+                pass
+        raise
+
+    # Persist wrapped with metadata
+    wrapped = {
+        "schema_version": 1,
+        "Last_Updated": datetime.utcnow().date().isoformat(),
+        "players": data,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as file:
+        json.dump(wrapped, file, indent=4)
+
+    return data
+
+def fetch_updated_player_ids() -> Dict[str, Dict]:
     """
     Fetch and filter player metadata from the Sleeper API.
 
@@ -136,26 +144,31 @@ def fetch_updated_player_ids():
     - dict: Mapping of player_id (or team code for defenses) to selected metadata fields.
 
     Raises:
-    - Exception: If the Sleeper API call returns a non-200 status code.
+    - SleeperAPIError: If the Sleeper API call fails.
     """
-    response, status_code = fetch_sleeper_data("players/nfl")
-    if status_code != 200:
-        # Bubble up a clear error to the caller when API request fails
-        raise Exception("Failed to fetch player data from Sleeper API")
-    
-    # Filter the response to include only the desired fields
-    filtered_data = {}
+    response = fetch_json("players/nfl")
+
+    filtered_data: Dict[str, Dict] = {}
     for player_id, player_info in response.items():
         # Add team defenses as synthetic players with position DEF
         if player_id in TEAM_DEFENSE_NAMES:
             filtered_data[player_id] = {
                 "full_name": TEAM_DEFENSE_NAMES[player_id],
                 "team": player_id,
-                "position": "DEF"  # Set position as "DEF" for team defenses
+                "position": "DEF",
             }
             continue
-        
+
         # For regular players, keep only the desired fields to minimize storage
         filtered_data[player_id] = {key: player_info[key] for key in FIELDS_TO_KEEP if key in player_info}
-    
+
     return filtered_data
+
+if __name__ == "__main__":
+    import logging
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(name)s %(levelname)s %(message)s")
+    from pprint import pprint
+    ids = load_player_ids()
+    print("Total player IDs:", len(ids))
+    sample = list(ids.items())[:5]
+    pprint(sample)
