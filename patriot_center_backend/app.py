@@ -56,7 +56,7 @@ def get_aggregated_players(arg1, arg2, arg3):
 @app.route('/api/arg2s/get_starters/<string:player>', defaults={'arg2': None, 'arg3': None}, methods=['GET'])
 @app.route('/api/arg2s/get_starters/<string:player>/<string:arg2>', defaults={'arg3': None}, methods=['GET'])
 @app.route('/api/arg2s/get_starters/<string:player>/<string:arg2>/<string:arg3>', methods=['GET'])
-def get_aggregated_managers(player, arg2, arg3):
+def get_aggregated_managers(arg1, arg2, arg3):
     """
     API endpoint to fetch starters in an aggregated json based on year, manager, and/or week.
 
