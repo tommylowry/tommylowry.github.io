@@ -6,10 +6,14 @@ This module:
 - Loads an ffWAR cache JSON file and incrementally updates it by year/week.
 - Persists the updated cache back to disk.
 
+Algorithm summary:
+- For each unprocessed week, derive per-position player scores.
+- Simulate hypothetical matchups replacing each player with a positional replacement average.
+- ffWAR = (net simulated wins difference) / (total simulations), rounded to 3 decimals.
+
 Notes:
-- Import-time cache loading is intentional for shared reuse and performance,
-  but it has side effects (I/O and potential network calls).
-- Weeks are capped at 14 to exclude playoff/post-season data from ffWAR.
+- Import-time cache loading performs I/O and possible network calls.
+- Weeks are capped at 14 (exclude playoff data).
 """
 
 from patriot_center_backend.utils.replacement_score_loader import load_or_update_replacement_score_cache
@@ -28,21 +32,12 @@ FFWAR_CACHE_FILE     = "patriot_center_backend/data/ffWAR_cache.json"
 
 def load_or_update_ffWAR_cache():
     """
-    Load or update the ffWAR cache incrementally and persist it to disk.
+    Incrementally update ffWAR cache.
 
-    Behavior:
-    - Loads the existing ffWAR cache JSON (or initializes an empty cache).
-    - Determines the current season and week; caps week at 14 to avoid playoffs.
-    - Iterates through all configured league years and updates missing data
-      based on the cache's Last_Updated_Season/Week markers.
-    - Saves the cache back to FFWAR_CACHE_FILE after updates.
-
-    Side effects:
-    - Reads from and writes to FFWAR_CACHE_FILE.
-    - May perform network calls to the Sleeper API via upstream utilities.
-
-    Returns:
-        dict: The in-memory ffWAR cache after applying any updates.
+    Process:
+        - Iterate seasons; compute missing weeks only.
+        - Cap weeks at 14.
+        - Store progress via Last_Updated_* markers.
     """
     # Load existing cache or initialize a new one if the file does not exist/cannot be parsed.
     cache = load_cache(FFWAR_CACHE_FILE)
@@ -115,15 +110,10 @@ def load_or_update_ffWAR_cache():
 
 def _get_max_weeks(season, current_season, current_week):
     """
-    Determine the maximum number of weeks for a given season.
-
-    Args:
-        season (int): The season to determine the max weeks for.
-        current_season (int): The current season.
-        current_week (int): The current week.
-
-    Returns:
-        int: The maximum number of weeks for the season.
+    Max playable weeks per season:
+        - Live season: current_week
+        - 2019/2020: 13
+        - Others: 14
     """
     if season == current_season:
         return current_week  # Use the current week for the current season
@@ -133,7 +123,12 @@ def _get_max_weeks(season, current_season, current_week):
         return 14  # Cap at 14 weeks for other seasons
 
 def _fetch_ffWAR(season, week):
+    """
+    Build positional score structures then compute ffWAR for one week.
 
+    Returns:
+        dict: player -> {ffWAR, manager, position}
+    """
     weekly_data = PLAYER_DATA[str(season)][str(week)]
 
     players = {
@@ -171,7 +166,15 @@ def _fetch_ffWAR(season, week):
     return ffWAR_results
 
 def _calculate_ffWAR_position(scores, season, week, position):
-    
+    """
+    Simulate ffWAR for one position group.
+
+    Replacement baseline:
+        Uses <position>_3yr_avg from replacement score cache.
+
+    Returns:
+        dict: player -> {ffWAR, manager, position}
+    """
     key = f"{position}_3yr_avg"
     replacement_average = REPLACEMENT_SCORES[str(season)][str(week)][key]
     
@@ -207,33 +210,29 @@ def _calculate_ffWAR_position(scores, season, week, position):
     ffWAR_position = {}
     for real_manager in scores:
         for player in scores[real_manager]['players']:
+            # Initialize counters for simulated head-to-head comparisons
             num_simulated_games = 0
-            num_wins   = 0
+            num_wins = 0
             player_score = scores[real_manager]['players'][player]
 
             for manager_playing in scores:
                 for manager_opposing in scores:
                     if manager_playing == manager_opposing:
-                        continue
+                        continue  # Skip self-matchups
 
-                    # score of the opponent
                     simulated_opponent_score = scores[manager_opposing]['weighted_total_score']
-
-                    # score if player was on manager_playing's lineup
                     simulated_player_score = scores[manager_playing]['total_minus_position'] + player_score
-
-                    # score if replacement player was on manager_playing's lineup
                     simulated_replacement_score = scores[manager_playing]['total_minus_position'] + replacement_average
-                    
-                    # win if player wouldve won and replacement wouldve lost
+
+                    # Player improves outcome where replacement fails
                     if (simulated_player_score > simulated_opponent_score) and (simulated_replacement_score < simulated_opponent_score):
                         num_wins += 1
-                    # loss if player wouldve lost and replacement wouldve won
+                    # Replacement improves outcome where player fails
                     if (simulated_player_score < simulated_opponent_score) and (simulated_replacement_score > simulated_opponent_score):
                         num_wins -= 1
-                    
+
                     num_simulated_games += 1
-            
+
             ffWAR_score = round(num_wins / num_simulated_games, 3)
 
             ffWAR_position[player] = {

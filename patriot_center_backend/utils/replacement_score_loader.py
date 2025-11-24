@@ -25,23 +25,12 @@ PLAYER_IDS = load_player_ids()
 
 def load_or_update_replacement_score_cache():
     """
-    Load or update the replacement score cache in an incremental, resumable fashion.
+    Incrementally build replacement-level scores cache.
 
-    Behavior:
-    - Loads existing JSON cache (or initializes structure if file missing).
-    - Determines current season/week; caps the week at 18 (post-2021 schedule).
-    - Iterates seasons: all configured LEAGUE_IDS plus three prior seasons
-      (to enable 3-year averages keyed by bye counts).
-    - For each season, computes missing weeks only, honoring Last_Updated_* markers.
-    - Computes and stores a 3-year average block when data from year-3 is present.
-    - Persists the cache and removes internal metadata before returning.
-
-    Side effects:
-    - Reads/writes REPLACEMENT_SCORE_FILE.
-    - Performs network I/O via Sleeper API (stats endpoint).
-
-    Returns:
-        dict: The updated replacement score cache with per-season/week entries.
+    Key points:
+    - Adds 3 historical seasons for 3yr averages.
+    - Computes only missing weeks (resumable).
+    - Injects <POS>_3yr_avg once prior year - 3 data exists.
     """
     # Load existing cache or initialize a new one
     cache = load_cache(REPLACEMENT_SCORE_FILE)
@@ -85,6 +74,7 @@ def load_or_update_replacement_score_cache():
             weeks_to_update = range(1, max_weeks + 1)
 
         if list(weeks_to_update) == []:
+            # No new weeks to process
             continue
 
         print(f"Updating replacement score cache for season {year}, weeks: {list(weeks_to_update)}")
@@ -99,6 +89,7 @@ def load_or_update_replacement_score_cache():
 
             # Compute the 3-year average if data from three years ago exists
             if str(year - 3) in cache:
+                # Augment with bye-aware 3-year rolling averages
                 cache[str(year)][str(week)] = _get_three_yr_avg(year, week, cache)
 
             # Update the metadata for the last updated season and week
@@ -145,26 +136,13 @@ def _get_max_weeks(season, current_season, current_week):
 
 def _fetch_replacement_score_for_week(season, week):
     """
-    Fetch replacement scores for a specific season and week.
+    Derive positional replacement thresholds for a week.
 
-    This function retrieves player data for a given season and week from the Sleeper API.
-    It calculates replacement scores for each position (QB, RB, WR, TE) and the number of byes.
-
-    Algorithm:
-    - Pull weekly stats (half-PPR) for all players from Sleeper.
-    - Collect positional point lists for QB/RB/WR/TE, ignoring non-rostered players.
-    - Determine replacement thresholds: QB13, RB31, WR31, TE13 (descending rank).
-    - Count byes using TEAM_ records present in the payload.
-
-    Args:
-        season (int): The season to fetch data for.
-        week (int): The week to fetch data for.
+    Thresholds (descending rank):
+        QB13, RB31, WR31, TE13
 
     Returns:
-        dict: The replacement scores for the given season and week, plus 'byes'.
-
-    Raises:
-        Exception: If the Sleeper API request fails.
+        dict: {QB, RB, WR, TE, byes}
     """
     # Fetch data from the Sleeper API for the given season and week
     sleeper_response_week_data = fetch_sleeper_data(f"stats/nfl/regular/{season}/{week}")
@@ -184,12 +162,11 @@ def _fetch_replacement_score_for_week(season, week):
     # Extract the data for the week
     week_data = sleeper_response_week_data[0]
     for player_id in week_data:
-        # Skip team-level data (e.g., "TEAM_...")
         if "TEAM_" in player_id:
-            byes -= 1  # Reduce the number of byes for each team found
+            # TEAM_ entries represent real teams -> decrement byes
+            byes -= 1
             continue
         elif player_id not in PLAYER_IDS:
-            # Skip players not found in the PLAYER_IDS mapping
             continue
 
         # Get player information from PLAYER_IDS
@@ -217,27 +194,10 @@ def _fetch_replacement_score_for_week(season, week):
 
 def _get_three_yr_avg(season, week, cache):
     """
-    Calculate the three-year average replacement scores for a given season and week.
+    Compute bye-aware 3-year rolling averages for replacement scores.
 
-    This function calculates the three-year average replacement scores for each position
-    (QB, RB, WR, TE) based on historical data. It ensures monotonicity, where more byes
-    should not lead to lower replacement scores.
-
-    Detailed behavior:
-    - Aggregate historical replacement scores across [season, season-1, season-2, season-3].
-    - Group scores by bye count to produce bye-aware averages.
-    - For the current season, consider weeks up to the current week.
-    - For season-3, consider weeks from the current week to the season end.
-    - Enforce monotonicity across bye counts by backfilling non-decreasing values.
-    - Write each position's "<POS>_3yr_avg" into the current week's record.
-
-    Args:
-        season (int): The current season.
-        week (int): The current week.
-        cache (dict): The replacement score cache containing historical data.
-
-    Returns:
-        dict: The updated current week's scores with three-year averages added.
+    Monotonicity:
+        More byes => scores must not decrease (enforced by backward pass).
     """
     # Get the current week's scores and the number of byes
     current_week_scores = cache[str(season)][str(week)]
@@ -261,10 +221,12 @@ def _get_three_yr_avg(season, week, cache):
 
         # For the current season, only consider up to the current week
         if past_year == season:
+            # Only include weeks completed this season
             weeks = range(1, week + 1)
 
         # For the season three years ago, only consider from the current week onward
         if past_year == season - 3:
+            # Mirror future-season portion to balance sample across bye distributions
             weeks = range(week, 18 if past_year <= 2020 else 19)
 
         # Process each week in the determined range
@@ -313,7 +275,7 @@ def _get_three_yr_avg(season, week, cache):
 
     # Add the three-year averages to the current week's scores
     for past_position in three_yr_season_average:
-        new_key = f"{past_position}_3yr_avg"  # Create a new key for the three-year average
+        new_key = f"{past_position}_3yr_avg"
         current_week_scores[new_key] = three_yr_season_average[past_position][byes]
 
     # Return the updated current week's scores with three-year averages added

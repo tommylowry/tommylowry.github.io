@@ -11,6 +11,7 @@ Notes:
 - This module performs file I/O and may perform network requests to Sleeper.
 - The cache is timestamped with a Last_Updated YYYY-MM-DD string.
 - Only a subset of fields specified in FIELDS_TO_KEEP is retained from the API.
+- Returned structure includes a "Last_Updated" key plus player/team entries.
 """
 
 import json
@@ -66,96 +67,74 @@ TEAM_DEFENSE_NAMES = {
 
 def load_player_ids():
     """
-    Load player metadata from the local cache, refreshing from Sleeper if stale.
+    Load player metadata (cached) or refresh if >7 days stale.
 
-    Behavior:
-    - If PLAYER_IDS_FILE exists and is newer than one week (based on Last_Updated),
-      load it and ensure all team defenses are present as DEF entries.
-    - Otherwise, fetch fresh data from Sleeper, filter the fields, add defenses,
-      stamp Last_Updated, and persist to PLAYER_IDS_FILE.
-
-    Side effects:
-    - May perform network I/O via fetch_sleeper_data.
-    - Performs file reads/writes to PLAYER_IDS_FILE.
-
-    Returns:
-    - dict: Mapping of player_id (or team code for defenses) to a dict of metadata.
-
-    Raises:
-    - Exception: Propagates if Sleeper API fetch fails in refresh path.
+    Ensures:
+        - Synthetic DEF entries present for all teams.
+        - Only whitelisted fields retained.
     """
-    # Check if the file exists
+    # Fast path: existing cache present
     if os.path.exists(PLAYER_IDS_FILE):
         with open(PLAYER_IDS_FILE, "r") as file:
             data = json.load(file)
-        
-        # Determine whether the cache is still fresh (within 1 week)
+
+        # Parse timestamp (fallback to epoch for missing/malformed value)
         last_updated = datetime.strptime(data.get("Last_Updated", "1970-01-01"), "%Y-%m-%d")
+        # Reuse cache if still fresh
         if datetime.now() - last_updated < timedelta(weeks=1):
-            # Ensure team defenses are included in the data even if file is fresh
-            for player_id, player_info in data.items():
-                # If the key matches a team code, populate a DEF entry
-                if player_id in TEAM_DEFENSE_NAMES:
-                    data[player_id] = {
-                        "full_name": TEAM_DEFENSE_NAMES[player_id],
-                        "team": player_id,
-                        "position": "DEF"  # Set position as "DEF" for team defenses
+            # Ensure defense entries always present even on reuse
+            for team_code, team_name in TEAM_DEFENSE_NAMES.items():
+                if team_code not in data or data[team_code].get("position") != "DEF":
+                    data[team_code] = {
+                        "full_name": team_name,
+                        "team": team_code,
+                        "position": "DEF"
                     }
-                    continue
-            return data  # Return the updated data
-    
-    # If the file is outdated or doesn't exist, fetch new data from Sleeper
+            return data
+
+    # Slow path: stale or missing -> rebuild
     new_data = fetch_updated_player_ids()
     new_data["Last_Updated"] = datetime.now().strftime("%Y-%m-%d")
-    
-    # Ensure team defenses are included in the new data (idempotent insert)
+
+    # Ensure all team defenses exist (avoid overwriting if already inserted)
     for team_id, team_name in TEAM_DEFENSE_NAMES.items():
-        if team_id not in new_data:
-            new_data[team_id] = {
-                "full_name": team_name,
-                "team": team_id,
-                "position": "DEF"
-            }
-    
-    # Save the updated data to the file with pretty formatting
+        new_data.setdefault(team_id, {
+            "full_name": team_name,
+            "team": team_id,
+            "position": "DEF"
+        })
+
     with open(PLAYER_IDS_FILE, "w") as file:
         json.dump(new_data, file, indent=4)
-    
+
     return new_data
 
 def fetch_updated_player_ids():
     """
-    Fetch and filter player metadata from the Sleeper API.
+    Refresh player metadata from Sleeper players/nfl endpoint.
 
-    Behavior:
-    - Calls Sleeper endpoint "players/nfl".
-    - On success, returns a dict filtered to FIELDS_TO_KEEP for players.
-    - Inserts synthetic DEF entries for every NFL team specified in TEAM_DEFENSE_NAMES.
-
-    Returns:
-    - dict: Mapping of player_id (or team code for defenses) to selected metadata fields.
-
-    Raises:
-    - Exception: If the Sleeper API call returns a non-200 status code.
+    Skips:
+        - Defense payload originals (synthetic entries override).
     """
     response, status_code = fetch_sleeper_data("players/nfl")
     if status_code != 200:
-        # Bubble up a clear error to the caller when API request fails
         raise Exception("Failed to fetch player data from Sleeper API")
-    
-    # Filter the response to include only the desired fields
+
     filtered_data = {}
     for player_id, player_info in response.items():
-        # Add team defenses as synthetic players with position DEF
+        # Insert synthetic team defense entries early; skip original payload
         if player_id in TEAM_DEFENSE_NAMES:
             filtered_data[player_id] = {
                 "full_name": TEAM_DEFENSE_NAMES[player_id],
                 "team": player_id,
-                "position": "DEF"  # Set position as "DEF" for team defenses
+                "position": "DEF"
             }
             continue
-        
-        # For regular players, keep only the desired fields to minimize storage
-        filtered_data[player_id] = {key: player_info[key] for key in FIELDS_TO_KEEP if key in player_info}
-    
+
+        # Select only desired fields (presence-checked)
+        filtered_data[player_id] = {
+            key: player_info[key] for key in FIELDS_TO_KEEP if key in player_info
+        }
+
+    # (Defense entries already ensured above)
     return filtered_data
