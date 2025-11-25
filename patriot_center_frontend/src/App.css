@@ -20,9 +20,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* center horizontally */
+  align-items: center;
   justify-content: flex-start;
-  text-align: center;    /* center headings/text by default */
+  text-align: center;
   padding: 2rem 1rem;
   background: var(--bg);
 }
@@ -118,8 +118,8 @@ body {
 .table-wrapper {
   position: relative;
   width: 100%;
-  max-width: 760px;
-  margin: 0 auto;        /* center container */
+  max-width: 800px; /* optional width */
+  margin: 1rem auto; /* center block */
   background: var(--bg-alt);
   padding: 1rem 1rem .5rem;
   border: 1px solid var(--border);
@@ -129,13 +129,14 @@ body {
 
 .table-wrapper table {
   width: 100%;
-  margin: 0 auto;        /* center table element */
+  margin: 0 auto; /* center table */
+  border-collapse: collapse;
 }
 
 .table-wrapper table th,
 .table-wrapper table td {
-  text-align: center;
-  padding: 8px 6px;
+  text-align: center; /* center cells */
+  padding: 0.5rem;
 }
 
 .table-wrapper table th {
@@ -154,6 +155,16 @@ body {
   background: rgba(255,255,255,0.04);
 }
 
+.table-wrapper a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.table-wrapper a:hover {
+  color: var(--accent);
+}
+
 p {
   margin: .35rem 0;
 }
@@ -161,3 +172,7 @@ p {
 p[style*="red"] {
   color: var(--danger) !important;
 }
+
+.war-positive { color: var(--success); font-weight: 600; }
+.war-negative { color: var(--danger); font-weight: 600; }
+.war-neutral  { color: var(--muted);  font-weight: 600; }

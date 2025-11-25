@@ -3,14 +3,14 @@ import './App.css';
 import { useAggregatedPlayers } from './hooks/useAggregatedPlayers';
 import { PlayerRow } from './components/PlayerRow';
 import { FilterDropdown } from './components/FilterDropdown';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PlayerPage from './pages/PlayerPage';
 
-function App() {
-  // committed values (null means ALL)
+function HomePage() {
   const [year, setYear] = useState('2025');
   const [week, setWeek] = useState(null);      // ALL weeks
   const [manager, setManager] = useState(null); // ALL managers
 
-  // dropdown draft handled inside component; we just update committed via onChange
   const { players, loading, error } = useAggregatedPlayers(year, week, manager);
 
   const [sortKey, setSortKey] = useState('ffWAR');
@@ -93,6 +93,17 @@ function App() {
         </div>
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/player/:playerSlug" element={<PlayerPage />} />
+      </Routes>
+    </Router>
   );
 }
 
