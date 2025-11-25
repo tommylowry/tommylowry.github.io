@@ -1,9 +1,17 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from constants import LEAGUE_IDS, NAME_TO_MANAGER_USERNAME
 from services.managers import fetch_starters
 from services.aggregated_data import fetch_aggregated_players, fetch_aggregated_managers
 
 app = Flask(__name__)
+CORS(app, resources={
+    r"/get_aggregated_players*": {"origins": "https://tommylowry.github.io"},
+    r"/meta/options": {"origins": "https://tommylowry.github.io"},
+    r"/get_starters*": {"origins": "https://tommylowry.github.io"},
+    r"/get_aggregated_managers*": {"origins": "https://tommylowry.github.io"}
+})
+CORS(app)  # Enable CORS for all routes during development
 
 def _flatten_dict(d, parent_key="", sep="."):
     """
