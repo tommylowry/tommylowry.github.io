@@ -9,8 +9,8 @@ Notes:
 - Results are simple dicts suitable for JSON responses.
 - Totals are rounded to two decimals via Decimal normalization (ffWAR to 3).
 """
-from patriot_center_backend.utils.ffWAR_loader import load_or_update_ffWAR_cache
-from patriot_center_backend.services.managers import fetch_starters
+from utils.ffWAR_loader import load_or_update_ffWAR_cache
+from services.managers import fetch_starters
 from decimal import Decimal
 
 ffWAR_cache = load_or_update_ffWAR_cache()

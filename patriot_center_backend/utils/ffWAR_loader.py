@@ -16,10 +16,10 @@ Notes:
 - Weeks are capped at 14 (exclude playoff data).
 """
 
-from patriot_center_backend.utils.replacement_score_loader import load_or_update_replacement_score_cache
-from patriot_center_backend.utils.starters_loader import load_or_update_starters_cache
-from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
-from patriot_center_backend.constants import LEAGUE_IDS
+from utils.replacement_score_loader import load_or_update_replacement_score_cache
+from utils.starters_loader import load_or_update_starters_cache
+from utils.cache_utils import load_cache, save_cache, get_current_season_and_week
+from constants import LEAGUE_IDS
 
 # Constants
 # Load and memoize supporting datasets at import time so subsequent calls can reuse them.

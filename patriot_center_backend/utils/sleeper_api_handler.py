@@ -4,7 +4,7 @@ Provides a single helper to fetch JSON from Sleeper endpoints, normalizing
 success/error responses for upstream utilities.
 """
 import requests
-import patriot_center_backend.constants as consts
+import constants as consts
 
 def fetch_sleeper_data(endpoint: str):
     """

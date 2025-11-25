@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
-from patriot_center_backend.constants import LEAGUE_IDS, NAME_TO_MANAGER_USERNAME
-from patriot_center_backend.services.managers import fetch_starters
-from patriot_center_backend.services.aggregated_data import fetch_aggregated_players, fetch_aggregated_managers
+from constants import LEAGUE_IDS, NAME_TO_MANAGER_USERNAME
+from services.managers import fetch_starters
+from services.aggregated_data import fetch_aggregated_players, fetch_aggregated_managers
 
 app = Flask(__name__)
 

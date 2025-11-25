@@ -17,7 +17,7 @@ Notes:
 import json
 from datetime import datetime, timedelta
 import os
-from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from utils.sleeper_api_handler import fetch_sleeper_data
 
 # Path to the player_ids.json file in the data directory
 PLAYER_IDS_FILE = "patriot_center_backend/data/player_ids.json"
