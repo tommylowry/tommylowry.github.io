@@ -145,6 +145,18 @@ def get_aggregated_managers(player, arg2, arg3):
         return jsonify(data), 200
     return jsonify(_to_records(data, key_name="player")), 200
 
+@app.route('/meta/options', methods=['GET'])
+def meta_options():
+    """
+    Expose selectable seasons, weeks, and managers for frontend filters.
+    Omitting any in requests to /get_aggregated_players yields ALL for that category.
+    """
+    return jsonify({
+        "seasons": list(LEAGUE_IDS),
+        "weeks": list(range(1, 15)),
+        "managers": list(NAME_TO_MANAGER_USERNAME.keys())
+    }), 200
+
 def parse_arguments(arg1, arg2, arg3):
     """
     Infer season (year), week, and manager from up to three positional args.

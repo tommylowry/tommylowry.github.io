@@ -1,0 +1,163 @@
+:root {
+  --bg: #121417;
+  --bg-alt: #1e2329;
+  --text: #e4e7eb;
+  --muted: #88909b;
+  --accent: #3d7bfd;
+  --border: #2a3139;
+  --danger: #ff5f56;
+  --success: #2ecc71;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen;
+  margin: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center horizontally */
+  justify-content: flex-start;
+  text-align: center;    /* center headings/text by default */
+  padding: 2rem 1rem;
+  background: var(--bg);
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App h1 {
+  margin: 0 0 1.25rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.App form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center; /* center form controls */
+}
+
+.App form input {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.App form input:focus {
+  outline: 1px solid var(--accent);
+}
+
+.App form button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.App form button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,20,23,0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+  backdrop-filter: blur(2px);
+}
+
+.table-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;        /* center container */
+  background: var(--bg-alt);
+  padding: 1rem 1rem .5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,.6);
+}
+
+.table-wrapper table {
+  width: 100%;
+  margin: 0 auto;        /* center table element */
+}
+
+.table-wrapper table th,
+.table-wrapper table td {
+  text-align: center;
+  padding: 8px 6px;
+}
+
+.table-wrapper table th {
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.table-wrapper table tbody tr {
+  transition: background .15s ease;
+}
+
+.table-wrapper table tbody tr:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+p {
+  margin: .35rem 0;
+}
+
+p[style*="red"] {
+  color: var(--danger) !important;
+}
