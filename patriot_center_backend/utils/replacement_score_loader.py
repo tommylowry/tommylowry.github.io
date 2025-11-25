@@ -172,6 +172,9 @@ def _fetch_replacement_score_for_week(season, week):
         # Get player information from PLAYER_IDS
         player_info = PLAYER_IDS[player_id]
         if player_info["position"] in week_scores and "pts_half_ppr" in week_data[player_id]:
+            if player_info["position"] == "QB":
+                player_data = week_data[player_id]
+                print("")
             # Add the player's half-PPR points to the appropriate position list
             week_scores[player_info["position"]].append(week_data[player_id]["pts_half_ppr"])
 

@@ -1,0 +1,73 @@
+passing:
+  passing_yards: 0.04
+  passing_td: 4
+  2pt_conversion: 2
+  pass_intercepted: -2
+
+rushing:
+  rushing_yards: 0.1
+  rushing_td: 6
+  2pt_conversion: 2
+
+receiving:
+  reception: 0.5
+  receiving_yards: 0.1
+  receiving_td: 6
+  2pt_conversion: 2
+
+kicking:
+  fg_made_0-19: 1
+  fg_made_20-29: 1.5
+  fg_made_30-39: 2
+  fg_made_40-49: 3
+  fg_made_50+: 4.5
+  pat_made: 0.5
+  
+  fg_missed_0-19: -2
+  fg_missed_20-29: -2
+  fg_missed_30-39: -1
+  fg_missed_40-49: -1
+  fg_missed_50+: 0
+  pat_missed: -1
+
+team_defense:
+  defensive_td: 6
+
+  points_allowed_0: 8
+  points_allowed_1-6: 5
+  points_allowed_7-13: 4.5
+  points_allowed_14-20: 4
+  points_allowed_21-27: 1.5
+  points_allowed_28-34: 0
+  points_allowed_35+: 0
+
+  lesss_than_100_yards_allowed: 6
+  100-199_yards_allowed: 6
+  200-299_yards_allowed: 3.75
+  300-349_yards_allowed: 1.5
+  350-399_yards_allowed: 0
+  400-449_yards_allowed: -2
+  450-499_yards_allowed: -2.6
+  500-549_yards_allowed: -4.5
+  550+_yards_allowed: -4.5
+
+  sacks: 1
+  interceptions: 2
+  fumble_recovery: 1
+  safety: 2
+  fumble_forced: 1
+  blocked_kick: 2
+
+  special_teams_td: 6
+  special_teams_forced_fumble: 1
+  special_teams_fumble_recovery: 1
+
+special_teams:
+  special_teams_player_td: 6
+  special_teams_player_forced_fumble: 1
+  special_teams_player_fumble_recovery: 1
+
+misc:
+  fumble: -1.5
+  fumble_lost: 0
+  fumble_recovery_td: 6
