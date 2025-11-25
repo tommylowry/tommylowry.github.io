@@ -2,7 +2,7 @@
   "name": "patriot_center_frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tommylowry.github.io",
+  "homepage": "https://tommylowry.github.io/patriot_center_frontend",
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -17,5 +17,17 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
