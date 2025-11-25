@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://127.0.0.1:5000",
-  "homepage": "https://tommylowry.github.io/patriot_center_frontend",
+  "homepage": "https://tommylowry.github.io",
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "REACT_APP_API_BASE=https://patriot_center_backend npm run build",
+    "predeploy": "REACT_APP_API_BASE=https://tommylowry-github-io.onrender.com npm run build",
     "deploy": "gh-pages -d build",
     "deploy:local": "rm -rf ../tommylowry.github.io/* && cp -R build/* ../tommylowry.github.io/"
   },
