@@ -74,6 +74,32 @@ def _to_records(data, key_name="key"):
     # Fallback for scalar values
     return [{"value": data}]
 
+@app.route('/')
+def index():
+    """Root endpoint with basic info."""
+    return jsonify({
+        "service": "Patriot Center Backend",
+        "version": "1.0.0",
+        "endpoints": [
+            "/get_starters",
+            "/get_aggregated_players",
+            "/get_aggregated_managers/<player>",
+            "/meta/options",
+            "/ping",
+            "/health"
+        ]
+    }), 200
+
+@app.route('/ping')
+def ping():
+    """Liveness check endpoint."""
+    return "pong", 200
+
+@app.route('/health')
+def health():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy"}), 200
+
 # Multiple route variants allow optional path parameters (year, manager, week)
 @app.route('/get_starters', defaults={'arg1': None, 'arg2': None, 'arg3': None}, methods=['GET'])
 @app.route('/get_starters/<string:arg1>', defaults={'arg2': None, 'arg3': None}, methods=['GET'])

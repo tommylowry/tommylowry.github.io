@@ -1,4 +1,10 @@
-const BASE = (process.env.REACT_APP_API_BASE || 'http://localhost:8080').replace(/\/+$/, '');
+const DEFAULT_BASE = 'https://academic-lauren-tommys-code-for-fun-d5473d9d.koyeb.app';
+const rawBase = process.env.REACT_APP_API_BASE;
+const BASE = (
+  rawBase && rawBase.trim() && !/localhost|127\.0\.0\.1/i.test(rawBase)
+    ? rawBase.trim()
+    : DEFAULT_BASE
+).replace(/\/+$/, '');
 
 export async function apiGet(path) {
   const url = path.startsWith('http') ? path : `${BASE}${path.startsWith('/') ? '' : '/'}${path}`;
