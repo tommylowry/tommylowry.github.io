@@ -31,3 +31,7 @@ def update_all_caches():
         "replacement_score_cache": replacement_score_cache,
         "ffWAR_cache": ffWAR_cache
     }
+
+if __name__ == "__main__":
+    # Direct invocation for manual cache updates
+    update_all_caches()
