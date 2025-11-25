@@ -12,7 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "REACT_APP_API_BASE=https://tommylowry-github-io.onrender.com npm run build",
+    "predeploy": "REACT_APP_API_BASE=https://academic-lauren-tommys-code-for-fun-d5473d9d.koyeb.app npm run build",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
