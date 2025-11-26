@@ -157,8 +157,6 @@ def _fetch_ffWAR(season, week):
 
     ffWAR_results = {}
     for position in players:
-        if position not in ['QB', 'RB', 'WR', 'TE']:
-            continue
         calculated_ffWAR = _calculate_ffWAR_position(players[position], season, week, position)
         for player in calculated_ffWAR:
             ffWAR_results[player] = calculated_ffWAR[player]

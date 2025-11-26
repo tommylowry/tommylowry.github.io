@@ -38,3 +38,5 @@ NAME_TO_MANAGER_USERNAME = {v: k for k, v in USERNAME_TO_REAL_NAME.items()}
 
 # Sleeper API base URL
 SLEEPER_API_URL = "https://api.sleeper.app/v1"
+
+# Map scoring_settings.yml to sleeper api stat keys
