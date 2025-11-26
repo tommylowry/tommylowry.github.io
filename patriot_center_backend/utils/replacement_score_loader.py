@@ -17,7 +17,6 @@ from utils.sleeper_api_handler import fetch_sleeper_data
 from constants import LEAGUE_IDS
 from utils.player_ids_loader import load_player_ids
 from utils.cache_utils import load_cache, save_cache, get_current_season_and_week
-from utils.position_score_calculator import calculate_player_score
 
 # Constants
 REPLACEMENT_SCORE_FILE = "data/replacement_score_cache.json"
@@ -151,57 +150,96 @@ def _fetch_replacement_score_for_week(season, week):
         # Raise an exception if the API call fails
         raise Exception(f"Failed to fetch week data from Sleeper API for season {season}, week {week}")
     
-    # Initialize the number of byes to 32 (all teams initially assumed to be playing)
-    byes = 32
-    week_scores = {
-        "QB": [],  # List of QB scores for the week
-        "RB": [],  # List of RB scores for the week
-        "WR": [],  # List of WR scores for the week
-        "TE": [],  # List of TE scores for the week
-        "K":  [],  # List of K scores for the week
-        "DEF": []  # List of DEF scores for the week
-    }
-
+    final_week_scores = {"byes": None}
+    yearly_scoring_settings = {}
+    for yr in range(season, season + 4):
+        if yr not in LEAGUE_IDS.keys():
+            continue
+        scoring_settings = fetch_sleeper_data(f"league/{LEAGUE_IDS[yr]}")
+        if scoring_settings[1] != 200:
+            raise Exception(f"Failed to fetch league data from Sleeper API for season {yr}")
+        yearly_scoring_settings[yr] = scoring_settings[0]["scoring_settings"]
+        final_week_scores[f"{yr}_scoring"] = {}
+    
     # Extract the data for the week
     week_data = sleeper_response_week_data[0]
-    for player_id in week_data:
-        if "TEAM_" in player_id:
-            # TEAM_ entries represent real teams -> decrement byes
-            byes -= 1
-            continue
-        elif player_id not in PLAYER_IDS:
-            continue
 
-        # Get player information from PLAYER_IDS
-        player_info = PLAYER_IDS[player_id]
+    # Initialize the number of byes to 32 (all teams initially assumed to be playing)
+    byes = 32
 
-        # Check if player id is numeric
-        if player_id.isnumeric() and player_info["position"] == "DEF":
-            continue
+    for yr in yearly_scoring_settings.keys():
+        
+        week_scores = {
+                "QB": [],  # List of QB scores for the week
+                "RB": [],  # List of RB scores for the week
+                "WR": [],  # List of WR scores for the week
+                "TE": [],  # List of TE scores for the week
+                "K":  [],  # List of K scores for the week
+                "DEF": []  # List of DEF scores for the week
+            }
+        
+        for player_id in week_data:
 
-        if player_info["position"] in week_scores:
-            player_data = week_data[player_id]
-            player_score = calculate_player_score(player_data)
-            # Add the player's points to the appropriate position list
-            week_scores[player_info["position"]].append(player_score)
+            if "TEAM_" in player_id:
+                    if final_week_scores.get("byes") is None:
+                        # TEAM_ entries represent real teams -> decrement byes
+                        byes -= 1
+                    continue
 
-    # Sort scores for each position in descending order
-    for position in week_scores:
-        week_scores[position].sort(reverse=True)
+            if player_id not in PLAYER_IDS:
+                only_numeric = ''.join(filter(str.isdigit, player_id))
+                if only_numeric in PLAYER_IDS:
+                    player_name = PLAYER_IDS[only_numeric]["full_name"]
+                    print(f"Weird possibly traded player id encountered in replacement score calculation for season {season} week {week}, probably {player_name}, using {only_numeric} instead of {player_id}")
+                    player_id = only_numeric
+                else:
+                    print("Unknown numeric player id encountered in replacement score calculation for:", player_id)
+                    continue
 
-    # Determine the replacement scores for each position
-    # QB13 (13th best QB), RB31 (31st best RB), WR31 (31st best WR), TE13 (13th best TE)
-    week_scores["QB"]  = week_scores["QB"][12]  # 13th QB
-    week_scores["RB"]  = week_scores["RB"][30]  # 31st RB
-    week_scores["WR"]  = week_scores["WR"][30]  # 31st WR
-    week_scores["TE"]  = week_scores["TE"][12]  # 13th TE
-    week_scores["K"]   = week_scores["K"][12]   # 13th K
-    week_scores["DEF"] = week_scores["DEF"][12] # 13th DEF
+            # Get player information from PLAYER_IDS
+            player_info = PLAYER_IDS[player_id]
 
-    # Add the final number of byes to the scores
-    week_scores["byes"] = byes
+            # Check if player id is numeric
+            if player_id.isnumeric() and player_info["position"] == "DEF":
+                continue
 
-    return week_scores
+            if player_info["position"] in week_scores:
+                player_data = week_data[player_id]
+                
+                if "gp" not in player_data or player_data["gp"] == 0.0:
+                    continue
+
+                player_score = _calculate_player_score(player_data, yearly_scoring_settings[yr])
+                # Add the player's points to the appropriate position list
+                week_scores[player_info["position"]].append(player_score)
+
+        # Sort scores for each position in descending order
+        for position in week_scores:
+            week_scores[position].sort(reverse=True)
+
+        # Determine the replacement scores for each position
+        # QB13 (13th best QB), RB31 (31st best RB), WR31 (31st best WR), TE13 (13th best TE)
+        final_week_scores[f"{yr}_scoring"]["QB"]  = week_scores["QB"][12]  # 13th QB
+        final_week_scores[f"{yr}_scoring"]["RB"]  = week_scores["RB"][30]  # 31st RB
+        final_week_scores[f"{yr}_scoring"]["WR"]  = week_scores["WR"][30]  # 31st WR
+        final_week_scores[f"{yr}_scoring"]["TE"]  = week_scores["TE"][12]  # 13th TE
+        final_week_scores[f"{yr}_scoring"]["K"]   = week_scores["K"][12]   # 13th K
+        final_week_scores[f"{yr}_scoring"]["DEF"] = week_scores["DEF"][12] # 13th DEF
+
+        # Add the final number of byes to the scores
+        final_week_scores["byes"] = byes
+
+    return final_week_scores
+
+
+def _calculate_player_score(player_data, scoring_settings):
+    total_score = 0.0
+    for stat_key, stat_value in player_data.items():
+
+        if stat_key in scoring_settings:
+            points_per_unit = scoring_settings[stat_key]
+            total_score += stat_value * points_per_unit
+    return round(total_score, 2)
 
 
 def _get_three_yr_avg(season, week, cache):
@@ -220,7 +258,7 @@ def _get_three_yr_avg(season, week, cache):
     three_yr_season_average = {}
 
     # Prepare structures for each position (QB, RB, WR, TE)
-    for current_week_position in current_week_scores:
+    for current_week_position in current_week_scores[f"{season}_scoring"]:
         if current_week_position == "byes":
             continue  # Skip the "byes" field
         three_yr_season_scores[current_week_position] = {}
@@ -253,7 +291,7 @@ def _get_three_yr_avg(season, week, cache):
             # Process scores for each position (QB, RB, WR, TE)
             for past_position in three_yr_season_scores:
                 # Get the score for the position in the past week
-                past_score = cache[str(past_year)][str(w)][past_position]
+                past_score = cache[str(past_year)][str(w)][f"{season}_scoring"][past_position]
 
                 # Initialize the list for the bye count if it doesn't exist
                 if past_byes not in three_yr_season_scores[past_position]:
