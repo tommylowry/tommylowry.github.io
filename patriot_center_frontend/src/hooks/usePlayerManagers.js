@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { apiGet } from '../config/api';
 
 export function usePlayerManagers(playerSlug, { year = null, week = null } = {}) {
   const [managers, setManagers] = useState([]);
@@ -11,20 +12,14 @@ export function usePlayerManagers(playerSlug, { year = null, week = null } = {})
     setLoading(true);
     setError(null);
 
-    // playerSlug already capitalized and encoded (Amon-Ra_St._Brown, etc.)
     const segments = [playerSlug];
-    if (year) segments.push(String(year));
-    if (week) segments.push(String(week));
-    const path = segments.join('/');
+    if (year != null) segments.push(String(year));
+    if (week != null) segments.push(String(week));
+    const path = `/get_aggregated_managers/${segments.join('/')}`;
 
-    fetch(`${process.env.REACT_APP_API_BASE}/get_aggregated_managers/${path}`)
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
+    apiGet(path)
       .then(data => {
         if (!active) return;
-        // Endpoint returns flattened records (list of dicts)
         setManagers(Array.isArray(data) ? data : []);
       })
       .catch(e => active && setError(e.message))

@@ -14,9 +14,7 @@ export function useMetaOptions() {
     fetchOptions()
       .then(json => {
         if (!active) return;
-        // Use seasons -> years
         const yrs = Array.isArray(json?.seasons) ? json.seasons.map(y => String(y)) : [];
-        // Use global weeks for all years
         const globalWeeks = Array.isArray(json?.weeks)
           ? Array.from(new Set(json.weeks.map(n => Number(n)).filter(Number.isFinite))).sort((a, b) => a - b)
           : [];

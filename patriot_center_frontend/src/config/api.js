@@ -1,13 +1,20 @@
 const DEFAULT_BASE = 'https://academic-lauren-tommys-code-for-fun-d5473d9d.koyeb.app';
 const rawBase = process.env.REACT_APP_API_BASE;
+const DEV_FALLBACK = 'http://localhost:8080';
+
 const BASE = (
-  rawBase && rawBase.trim() && !/localhost|127\.0\.0\.1/i.test(rawBase)
+  rawBase && rawBase.trim()
     ? rawBase.trim()
-    : DEFAULT_BASE
+    : (process.env.NODE_ENV === 'development' ? DEV_FALLBACK : DEFAULT_BASE)
 ).replace(/\/+$/, '');
 
+export function apiUrl(path) {
+  const p = path.startsWith('/') ? path : `/${path}`;
+  return `${BASE}${p}`;
+}
+
 export async function apiGet(path) {
-  const url = path.startsWith('http') ? path : `${BASE}${path.startsWith('/') ? '' : '/'}${path}`;
+  const url = path.startsWith('http') ? path : apiUrl(path);
   const res = await fetch(url, { credentials: 'omit' });
   const ct = res.headers.get('content-type') || '';
   if (!res.ok) {
@@ -23,5 +30,7 @@ export async function apiGet(path) {
 
 export function sanitizeManager(m) {
   if (m == null) return '';
-  return encodeURIComponent(String(m).trim()); // remove toLowerCase
+  return encodeURIComponent(String(m).trim());
 }
+
+export { BASE };
