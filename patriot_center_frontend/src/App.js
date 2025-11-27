@@ -28,7 +28,13 @@ function HomePage() {
     ? players
     : players.filter(p => p.position === positionFilter);
 
-  const sortedPlayers = [...filteredPlayers].sort((a, b) => {
+  // Added: normalize games started for consistent sorting/display
+  const normalizedPlayers = filteredPlayers.map(p => ({
+    ...p,
+    num_games_started: Number(p.num_games_started ?? p.games_started ?? p.started ?? 0),
+  }));
+
+  const sortedPlayers = [...normalizedPlayers].sort((a, b) => {
     const dir = sortDir === 'asc' ? 1 : -1;
     let av = a[sortKey];
     let bv = b[sortKey];
@@ -78,6 +84,9 @@ function HomePage() {
                 </th>
                 <th align="center" style={{ cursor: 'pointer' }} onClick={() => toggleSort('total_points')}>
                   Points {sortKey === 'total_points' && (sortDir === 'asc' ? '▲' : '▼')}
+                </th>
+                <th align="center" style={{ cursor: 'pointer' }} onClick={() => toggleSort('num_games_started')}>
+                  Games Started {sortKey === 'num_games_started' && (sortDir === 'asc' ? '▲' : '▼')}
                 </th>
                 <th align="center" style={{ cursor: 'pointer' }} onClick={() => toggleSort('ffWAR')}>
                   ffWAR {sortKey === 'ffWAR' && (sortDir === 'asc' ? '▲' : '▼')}

@@ -22,6 +22,7 @@ export function PlayerRow({ player }) {
       </td>
       <td align="center">{player.position}</td>
       <td align="center">{player.total_points}</td>
+      <td align="center">{player.num_games_started}</td>
       <td align="center" className={warClass}>{player.ffWAR}</td>
     </tr>
   );
