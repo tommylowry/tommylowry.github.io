@@ -15,13 +15,13 @@ Notes:
 - Import-time execution at bottom warms the cache for downstream consumers.
 """
 from decimal import Decimal
-from utils.sleeper_api_handler import fetch_sleeper_data
-from constants import LEAGUE_IDS, USERNAME_TO_REAL_NAME
-from utils.player_ids_loader import load_player_ids
-from utils.cache_utils import load_cache, save_cache, get_current_season_and_week
+from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from patriot_center_backend.constants import LEAGUE_IDS, USERNAME_TO_REAL_NAME
+from patriot_center_backend.utils.player_ids_loader import load_player_ids
+from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
 
 # Path to starters cache; PLAYER_IDS maps IDs -> names/positions.
-STARTERS_CACHE_FILE = "data/starters_cache.json"
+STARTERS_CACHE_FILE = "patriot_center_backend/data/starters_cache.json"
 PLAYER_IDS = load_player_ids()
 
 def load_or_update_starters_cache():

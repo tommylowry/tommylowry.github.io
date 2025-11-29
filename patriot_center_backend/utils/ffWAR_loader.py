@@ -16,10 +16,10 @@ Notes:
 - Weeks are capped at 14 (exclude playoff data).
 """
 
-from utils.replacement_score_loader import load_or_update_replacement_score_cache
-from utils.starters_loader import load_or_update_starters_cache
-from utils.cache_utils import load_cache, save_cache, get_current_season_and_week
-from constants import LEAGUE_IDS
+from patriot_center_backend.utils.replacement_score_loader import load_or_update_replacement_score_cache
+from patriot_center_backend.utils.starters_loader import load_or_update_starters_cache
+from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
+from patriot_center_backend.constants import LEAGUE_IDS
 
 # Constants
 # Load and memoize supporting datasets at import time so subsequent calls can reuse them.
@@ -27,7 +27,7 @@ from constants import LEAGUE_IDS
 REPLACEMENT_SCORES   = load_or_update_replacement_score_cache()
 PLAYER_DATA          = load_or_update_starters_cache()
 # File path for persisted ffWAR cache across runs.
-FFWAR_CACHE_FILE     = "data/ffWAR_cache.json"
+FFWAR_CACHE_FILE     = "patriot_center_backend/data/ffWAR_cache.json"
 
 
 def load_or_update_ffWAR_cache():
@@ -158,6 +158,8 @@ def _fetch_ffWAR(season, week):
     ffWAR_results = {}
     for position in players:
         calculated_ffWAR = _calculate_ffWAR_position(players[position], season, week, position)
+        if calculated_ffWAR == {}:
+            continue
         for player in calculated_ffWAR:
             ffWAR_results[player] = calculated_ffWAR[player]
 
@@ -185,6 +187,9 @@ def _calculate_ffWAR_position(scores, season, week, position):
         for player in scores[manager]['players']:
             total_position_score += scores[manager]['players'][player]
     
+    if num_players == 0:
+        return {}
+
     average_player_score_this_week = total_position_score / num_players
 
 
@@ -231,7 +236,10 @@ def _calculate_ffWAR_position(scores, season, week, position):
 
                     num_simulated_games += 1
 
-            ffWAR_score = round(num_wins / num_simulated_games, 3)
+            if num_simulated_games == 0:
+                ffWAR_score = 0.0
+            else:
+                ffWAR_score = round(num_wins / num_simulated_games, 3)
 
             ffWAR_position[player] = {
                 'ffWAR': ffWAR_score,

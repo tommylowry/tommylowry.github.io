@@ -13,3 +13,9 @@ env/
 *.pyo
 *.pyd
 *.pdb
+
+# Ignore test coverage files
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/

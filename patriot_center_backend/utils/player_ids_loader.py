@@ -17,10 +17,10 @@ Notes:
 import json
 from datetime import datetime, timedelta
 import os
-from utils.sleeper_api_handler import fetch_sleeper_data
+from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
 
 # Path to the player_ids.json file in the data directory
-PLAYER_IDS_FILE = "data/player_ids.json"
+PLAYER_IDS_FILE = "patriot_center_backend/data/player_ids.json"
 
 # Fields to keep from Sleeper's player payload; reduces storage and surface area
 FIELDS_TO_KEEP = [
@@ -77,22 +77,33 @@ def load_player_ids():
     """
     # Fast path: existing cache present
     if os.path.exists(PLAYER_IDS_FILE):
-        with open(PLAYER_IDS_FILE, "r") as file:
-            data = json.load(file)
+        try:
+            with open(PLAYER_IDS_FILE, "r") as file:
+                data = json.load(file)
 
-        # Parse timestamp (fallback to epoch for missing/malformed value)
-        last_updated = datetime.strptime(data.get("Last_Updated", "1970-01-01"), "%Y-%m-%d")
-        # Reuse cache if still fresh
-        if datetime.now() - last_updated < timedelta(weeks=1):
-            # Ensure defense entries always present even on reuse
-            for team_code, team_name in TEAM_DEFENSE_NAMES.items():
-                if team_code not in data or data[team_code].get("position") != "DEF":
-                    data[team_code] = {
-                        "full_name": team_name,
-                        "team": team_code,
-                        "position": "DEF"
-                    }
-            return data
+            try:
+                # Parse timestamp (fallback to epoch for missing/malformed value)
+                last_updated = datetime.strptime(data.get("Last_Updated", "1970-01-01"), "%Y-%m-%d")
+                refresh = False
+            except:
+                refresh = True
+
+            if not refresh:
+            # Reuse cache if still fresh
+                if datetime.now() - last_updated < timedelta(weeks=1):
+                    # Ensure defense entries always present even on reuse
+                    for team_code, team_name in TEAM_DEFENSE_NAMES.items():
+                        if team_code not in data or data[team_code].get("position") != "DEF":
+                            data[team_code] = {
+                                "full_name": team_name,
+                                "team": team_code,
+                                "position": "DEF"
+                            }
+                    return data
+            refresh = True
+        except json.JSONDecodeError:
+            # File exists but is empty or corrupted - trigger refresh
+            refresh = True
 
     # Slow path: stale or missing -> rebuild
     new_data = fetch_updated_player_ids()

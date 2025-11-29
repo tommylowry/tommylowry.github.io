@@ -4,7 +4,7 @@ Provides a single helper to fetch JSON from Sleeper endpoints, normalizing
 success/error responses for upstream utilities.
 """
 import requests
-import constants as consts
+import patriot_center_backend.constants as consts
 
 def fetch_sleeper_data(endpoint: str):
     """
@@ -24,7 +24,14 @@ def fetch_sleeper_data(endpoint: str):
     """
     # Construct full URL from configured base and endpoint
     url = f"{consts.SLEEPER_API_URL}/{endpoint}"
-    response = requests.get(url)
+    
+    try:
+        response = requests.get(url)
+    except:
+        # Standardized error wrapper for upstream consumers
+        error_string = f"Failed to fetch data from Sleeper API with call to {url}"
+        return {"error": error_string}, 500
+    
     if response.status_code != 200:
         # Standardized error wrapper for upstream consumers
         error_string = f"Failed to fetch data from Sleeper API with call to {url}"
