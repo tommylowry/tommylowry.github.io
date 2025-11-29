@@ -12,11 +12,11 @@ from datetime import datetime, timedelta
 class TestLoadPlayerIds:
     """Test load_player_ids function."""
 
-    @patch('utils.player_ids_loader.PLAYER_IDS_FILE')
-    @patch('utils.player_ids_loader.datetime')
+    @patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE')
+    @patch('patriot_center_backend.utils.player_ids_loader.datetime')
     def test_returns_fresh_cache_when_less_than_7_days_old(self, mock_datetime, mock_file_path):
         """Test returns cached data when cache is less than 7 days old."""
-        from utils.player_ids_loader import load_player_ids
+        from patriot_center_backend.utils.player_ids_loader import load_player_ids
 
         # Mock current time
         mock_datetime.now.return_value = datetime(2024, 11, 20)
@@ -34,7 +34,7 @@ class TestLoadPlayerIds:
             temp_path = f.name
 
         try:
-            with patch('utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
+            with patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
                 result = load_player_ids()
 
             # Should return cached data without calling API
@@ -43,11 +43,11 @@ class TestLoadPlayerIds:
         finally:
             os.remove(temp_path)
 
-    @patch('utils.player_ids_loader.PLAYER_IDS_FILE')
-    @patch('utils.player_ids_loader.datetime')
+    @patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE')
+    @patch('patriot_center_backend.utils.player_ids_loader.datetime')
     def test_ensures_defenses_present_in_cached_data(self, mock_datetime, mock_file_path):
         """Test adds missing defense entries to cached data."""
-        from utils.player_ids_loader import load_player_ids
+        from patriot_center_backend.utils.player_ids_loader import load_player_ids
 
         mock_datetime.now.return_value = datetime(2024, 11, 20)
         mock_datetime.strptime = datetime.strptime
@@ -64,7 +64,7 @@ class TestLoadPlayerIds:
             temp_path = f.name
 
         try:
-            with patch('utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
+            with patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
                 result = load_player_ids()
 
             # All defenses should be present
@@ -76,11 +76,11 @@ class TestLoadPlayerIds:
         finally:
             os.remove(temp_path)
 
-    @patch('utils.player_ids_loader.fetch_updated_player_ids')
-    @patch('utils.player_ids_loader.datetime')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_updated_player_ids')
+    @patch('patriot_center_backend.utils.player_ids_loader.datetime')
     def test_refreshes_stale_cache(self, mock_datetime, mock_fetch):
         """Test refreshes cache when older than 7 days."""
-        from utils.player_ids_loader import load_player_ids
+        from patriot_center_backend.utils.player_ids_loader import load_player_ids
 
         # Mock current time
         mock_datetime.now.return_value = datetime(2024, 11, 20)
@@ -102,7 +102,7 @@ class TestLoadPlayerIds:
                 "7547": {"full_name": "Amon-Ra St. Brown", "position": "WR"}
             }
 
-            with patch('utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
+            with patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
                 result = load_player_ids()
 
             # Should have called fetch to refresh
@@ -112,11 +112,11 @@ class TestLoadPlayerIds:
         finally:
             os.remove(temp_path)
 
-    @patch('utils.player_ids_loader.fetch_updated_player_ids')
-    @patch('utils.player_ids_loader.datetime')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_updated_player_ids')
+    @patch('patriot_center_backend.utils.player_ids_loader.datetime')
     def test_creates_cache_when_file_missing(self, mock_datetime, mock_fetch):
         """Test creates new cache when file doesn't exist."""
-        from utils.player_ids_loader import load_player_ids
+        from patriot_center_backend.utils.player_ids_loader import load_player_ids
 
         mock_datetime.now.return_value = datetime(2024, 11, 20)
 
@@ -128,7 +128,7 @@ class TestLoadPlayerIds:
         }
 
         try:
-            with patch('utils.player_ids_loader.PLAYER_IDS_FILE', non_existent_path):
+            with patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE', non_existent_path):
                 result = load_player_ids()
 
             # Should have called fetch
@@ -139,10 +139,10 @@ class TestLoadPlayerIds:
             if os.path.exists(non_existent_path):
                 os.remove(non_existent_path)
 
-    @patch('utils.player_ids_loader.datetime')
+    @patch('patriot_center_backend.utils.player_ids_loader.datetime')
     def test_handles_malformed_timestamp(self, mock_datetime):
         """Test handles malformed Last_Updated timestamp gracefully."""
-        from utils.player_ids_loader import load_player_ids
+        from patriot_center_backend.utils.player_ids_loader import load_player_ids
 
         mock_datetime.now.return_value = datetime(2024, 11, 20)
         mock_datetime.strptime = datetime.strptime
@@ -158,22 +158,22 @@ class TestLoadPlayerIds:
             temp_path = f.name
 
         try:
-            with patch('utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
+            with patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
                 # Should handle gracefully by falling back to epoch (will trigger refresh)
-                with patch('utils.player_ids_loader.fetch_updated_player_ids') as mock_fetch:
+                with patch('patriot_center_backend.utils.player_ids_loader.fetch_updated_player_ids') as mock_fetch:
                     mock_fetch.return_value = {"new": "data"}
                     result = load_player_ids()
 
-                    # Should have refreshed due to epoch fallback making cache ancient
+                    # Should have refreshed due to malformed timestamp
                     mock_fetch.assert_called_once()
         finally:
             os.remove(temp_path)
 
-    @patch('utils.player_ids_loader.fetch_updated_player_ids')
-    @patch('utils.player_ids_loader.datetime')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_updated_player_ids')
+    @patch('patriot_center_backend.utils.player_ids_loader.datetime')
     def test_saves_refreshed_cache_to_disk(self, mock_datetime, mock_fetch):
         """Test saves refreshed cache to disk with timestamp."""
-        from utils.player_ids_loader import load_player_ids
+        from patriot_center_backend.utils.player_ids_loader import load_player_ids
 
         mock_datetime.now.return_value = datetime(2024, 11, 20)
 
@@ -185,7 +185,7 @@ class TestLoadPlayerIds:
                 "7547": {"full_name": "Amon-Ra St. Brown"}
             }
 
-            with patch('utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
+            with patch('patriot_center_backend.utils.player_ids_loader.PLAYER_IDS_FILE', temp_path):
                 result = load_player_ids()
 
             # Should have saved to disk
@@ -201,10 +201,10 @@ class TestLoadPlayerIds:
 class TestFetchUpdatedPlayerIds:
     """Test fetch_updated_player_ids function."""
 
-    @patch('utils.player_ids_loader.fetch_sleeper_data')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_sleeper_data')
     def test_fetches_from_sleeper_api(self, mock_fetch):
         """Test fetches player data from Sleeper API."""
-        from utils.player_ids_loader import fetch_updated_player_ids
+        from patriot_center_backend.utils.player_ids_loader import fetch_updated_player_ids
 
         mock_fetch.return_value = (
             {
@@ -224,20 +224,20 @@ class TestFetchUpdatedPlayerIds:
         mock_fetch.assert_called_once_with("players/nfl")
         assert "7547" in result
 
-    @patch('utils.player_ids_loader.fetch_sleeper_data')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_sleeper_data')
     def test_raises_exception_on_api_failure(self, mock_fetch):
         """Test raises Exception when Sleeper API fails."""
-        from utils.player_ids_loader import fetch_updated_player_ids
+        from patriot_center_backend.utils.player_ids_loader import fetch_updated_player_ids
 
         mock_fetch.return_value = ({"error": "Not found"}, 404)
 
         with pytest.raises(Exception, match="Failed to fetch player data from Sleeper API"):
             fetch_updated_player_ids()
 
-    @patch('utils.player_ids_loader.fetch_sleeper_data')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_sleeper_data')
     def test_filters_to_only_allowed_fields(self, mock_fetch):
         """Test only keeps fields in FIELDS_TO_KEEP."""
-        from utils.player_ids_loader import fetch_updated_player_ids
+        from patriot_center_backend.utils.player_ids_loader import fetch_updated_player_ids
 
         mock_fetch.return_value = (
             {
@@ -265,10 +265,10 @@ class TestFetchUpdatedPlayerIds:
         assert "extra_field_1" not in player
         assert "extra_field_2" not in player
 
-    @patch('utils.player_ids_loader.fetch_sleeper_data')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_sleeper_data')
     def test_creates_synthetic_defense_entries(self, mock_fetch):
         """Test creates synthetic DEF entries for team defenses."""
-        from utils.player_ids_loader import fetch_updated_player_ids
+        from patriot_center_backend.utils.player_ids_loader import fetch_updated_player_ids
 
         mock_fetch.return_value = (
             {
@@ -294,10 +294,10 @@ class TestFetchUpdatedPlayerIds:
         # Regular player should be unaffected
         assert result["7547"]["full_name"] == "Amon-Ra St. Brown"
 
-    @patch('utils.player_ids_loader.fetch_sleeper_data')
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_sleeper_data')
     def test_handles_missing_fields_gracefully(self, mock_fetch):
         """Test handles players with missing optional fields."""
-        from utils.player_ids_loader import fetch_updated_player_ids
+        from patriot_center_backend.utils.player_ids_loader import fetch_updated_player_ids
 
         mock_fetch.return_value = (
             {
@@ -318,17 +318,23 @@ class TestFetchUpdatedPlayerIds:
         assert "position" in player
         assert "age" not in player  # Was missing from source
 
-    @patch('utils.player_ids_loader.fetch_sleeper_data')
-    def test_includes_all_team_defenses(self, mock_fetch):
+    @patch('patriot_center_backend.utils.player_ids_loader.fetch_sleeper_data')
+    def test_includes_all_team_defenses(self,  mock_fetch, sample_defenses_in_sleeper_data):
         """Test ensures all NFL team defenses are included."""
-        from utils.player_ids_loader import fetch_updated_player_ids, TEAM_DEFENSE_NAMES
+        from patriot_center_backend.utils.player_ids_loader import fetch_updated_player_ids
 
-        mock_fetch.return_value = ({}, 200)  # Empty response
+        mock_fetch.return_value = sample_defenses_in_sleeper_data, 200
+
+        mock_defensive_names = {
+            "ARI": "Arizona Cardinals",
+            "ATL": "Atlanta Falcons",
+            "BAL": "Baltimore Ravens"
+        }
 
         result = fetch_updated_player_ids()
 
         # All team codes should be present as DEF
-        for team_code in TEAM_DEFENSE_NAMES.keys():
+        for team_code in mock_defensive_names.keys():
             assert team_code in result
             assert result[team_code]["position"] == "DEF"
             assert result[team_code]["team"] == team_code

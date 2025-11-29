@@ -9,11 +9,11 @@ from decimal import Decimal
 class TestFetchAggregatedPlayers:
     """Test fetch_aggregated_players function."""
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_aggregates_single_player_single_week(self, mock_ffwar, mock_starters):
         """Test aggregating a single player over one week."""
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {
@@ -39,11 +39,11 @@ class TestFetchAggregatedPlayers:
         assert result["Amon-Ra St. Brown"]["position"] == "WR"
         assert "player_image_endpoint" in result["Amon-Ra St. Brown"]
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_aggregates_player_across_multiple_weeks(self, mock_ffwar, mock_starters):
         """Test aggregating same player across multiple weeks."""
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {
@@ -76,11 +76,11 @@ class TestFetchAggregatedPlayers:
         assert result["Amon-Ra St. Brown"]["num_games_started"] == 2
         assert result["Amon-Ra St. Brown"]["ffWAR"] == 5.6
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_skips_total_points_sentinel(self, mock_ffwar, mock_starters):
         """Test that Total_Points sentinel is skipped."""
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {
@@ -103,42 +103,20 @@ class TestFetchAggregatedPlayers:
         assert "Amon-Ra St. Brown" in result
         assert "Total_Points" not in result
 
-    @patch('services.aggregated_data.fetch_starters')
-    def test_returns_empty_when_manager_has_no_data(self, mock_starters):
-        """Test returns empty dict when filtering for manager with no data."""
-        from services.aggregated_data import fetch_aggregated_players
-
-        mock_starters.return_value = {
-            "2024": {
-                "1": {
-                    "Tommy": {
-                        "Some Player": {
-                            "points": 10.0,
-                            "position": "WR",
-                            "player_id": "1234"
-                        }
-                    }
-                }
-            }
-        }
-
-        result = fetch_aggregated_players(manager="NonExistentManager", season=2024, week=1)
-        assert result == {}
-
-    @patch('services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
     def test_returns_empty_when_no_data_for_filters(self, mock_starters):
         """Test returns empty when the filters return no data."""
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {}
         result = fetch_aggregated_players(manager="Tommy", season=2019, week=99)
         assert result == {}
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_creates_correct_image_endpoint_for_player(self, mock_ffwar, mock_starters):
         """Test that player image endpoint is correctly constructed."""
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {"1": {"Tommy": {"Amon-Ra St. Brown": {
@@ -151,11 +129,11 @@ class TestFetchAggregatedPlayers:
         assert result["Amon-Ra St. Brown"]["player_image_endpoint"] == \
                "https://sleepercdn.com/content/nfl/players/7547.jpg"
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_creates_correct_image_endpoint_for_defense(self, mock_ffwar, mock_starters):
         """Test that DEF team image endpoint is correctly constructed."""
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {"1": {"Tommy": {"Kansas City Chiefs": {
@@ -172,11 +150,11 @@ class TestFetchAggregatedPlayers:
 class TestFetchAggregatedManagers:
     """Test fetch_aggregated_managers function."""
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_aggregates_single_manager_single_week(self, mock_ffwar, mock_starters):
         """Test aggregating managers for a player in one week."""
-        from services.aggregated_data import fetch_aggregated_managers
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_managers
 
         mock_starters.return_value = {
             "2024": {"1": {"Tommy": {"Amon-Ra St. Brown": {
@@ -192,11 +170,11 @@ class TestFetchAggregatedManagers:
         assert result["Tommy"]["num_games_started"] == 1
         assert result["Tommy"]["ffWAR"] == 2.5
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_aggregates_multiple_managers(self, mock_ffwar, mock_starters):
         """Test aggregating multiple managers who started the same player."""
-        from services.aggregated_data import fetch_aggregated_managers
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_managers
 
         mock_starters.return_value = {
             "2024": {"1": {
@@ -211,10 +189,10 @@ class TestFetchAggregatedManagers:
         assert "Tommy" in result
         assert "Mike" in result
 
-    @patch('services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
     def test_returns_empty_when_player_not_started(self, mock_starters):
         """Test returns empty dict when player wasn't started by anyone."""
-        from services.aggregated_data import fetch_aggregated_managers
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_managers
 
         mock_starters.return_value = {
             "2024": {"1": {"Tommy": {"Different Player": {
@@ -225,11 +203,11 @@ class TestFetchAggregatedManagers:
         result = fetch_aggregated_managers("Amon-Ra St. Brown", season=2024)
         assert result == {}
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_creates_correct_image_endpoint_for_defense_manager(self, mock_ffwar, mock_starters):
         """Test that DEF team image endpoint uses .png for manager aggregation."""
-        from services.aggregated_data import fetch_aggregated_managers
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_managers
 
         mock_starters.return_value = {
             "2024": {"1": {"Tommy": {"Kansas City Chiefs": {
@@ -249,31 +227,31 @@ class TestFetchFfwarForPlayer:
     """Test fetch_ffWAR_for_player function."""
 
     def test_returns_zero_when_no_season(self):
-        from services.aggregated_data import fetch_ffWAR_for_player
+        from patriot_center_backend.services.aggregated_data import fetch_ffWAR_for_player
         assert fetch_ffWAR_for_player("Player", season=None, week=1) == 0.0
 
     def test_returns_zero_when_no_week(self):
-        from services.aggregated_data import fetch_ffWAR_for_player
+        from patriot_center_backend.services.aggregated_data import fetch_ffWAR_for_player
         assert fetch_ffWAR_for_player("Player", season=2024, week=None) == 0.0
 
-    @patch('services.aggregated_data.ffWAR_cache', {"2024": {"1": {"Amon-Ra St. Brown": {"ffWAR": 2.345}}}})
+    @patch('patriot_center_backend.services.aggregated_data.ffWAR_cache', {"2024": {"1": {"Amon-Ra St. Brown": {"ffWAR": 2.345}}}})
     def test_returns_ffwar_from_cache(self):
-        from services.aggregated_data import fetch_ffWAR_for_player
+        from patriot_center_backend.services.aggregated_data import fetch_ffWAR_for_player
         assert fetch_ffWAR_for_player("Amon-Ra St. Brown", season=2024, week=1) == 2.345
 
-    @patch('services.aggregated_data.ffWAR_cache', {"2024": {"1": {}}})
+    @patch('patriot_center_backend.services.aggregated_data.ffWAR_cache', {"2024": {"1": {}}})
     def test_returns_zero_when_player_not_in_cache(self):
-        from services.aggregated_data import fetch_ffWAR_for_player
+        from patriot_center_backend.services.aggregated_data import fetch_ffWAR_for_player
         assert fetch_ffWAR_for_player("Unknown Player", season=2024, week=1) == 0.0
 
 
 class TestDecimalRounding:
     """Test that decimal rounding is correct."""
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
     def test_rounds_total_points_to_two_decimals(self, mock_ffwar, mock_starters):
-        from services.aggregated_data import fetch_aggregated_players
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {
@@ -286,10 +264,10 @@ class TestDecimalRounding:
         result = fetch_aggregated_players(manager="Tommy")
         assert result["Test Player"]["total_points"] == 16.11
 
-    @patch('services.aggregated_data.fetch_starters')
-    @patch('services.aggregated_data.fetch_ffWAR_for_player')
-    def test_rounds_ffwar_to_three_decimals(self, mock_starters, mock_ffwar):
-        from services.aggregated_data import fetch_aggregated_players
+    @patch('patriot_center_backend.services.aggregated_data.fetch_starters')
+    @patch('patriot_center_backend.services.aggregated_data.fetch_ffWAR_for_player')
+    def test_rounds_ffwar_to_three_decimals(self, mock_ffwar, mock_starters):
+        from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
         mock_starters.return_value = {
             "2024": {

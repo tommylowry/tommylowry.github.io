@@ -17,7 +17,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./patriot_center_backend
+        working-directory: .
 
     steps:
     - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
       with:
         python-version: '3.11'
         cache: 'pip'
-        cache-dependency-path: patriot_center_backend/requirements.txt
+        cache-dependency-path: requirements.txt
 
     - name: Install dependencies
       run: |

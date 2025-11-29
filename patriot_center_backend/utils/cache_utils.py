@@ -17,8 +17,8 @@ All functions return plain dicts or tuples for easy JSON serialization.
 import os
 import json
 from datetime import datetime
-from utils.sleeper_api_handler import fetch_sleeper_data
-from constants import LEAGUE_IDS
+from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from patriot_center_backend.constants import LEAGUE_IDS
 
 
 def load_cache(file_path):

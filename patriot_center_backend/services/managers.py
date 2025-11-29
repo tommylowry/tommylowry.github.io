@@ -9,8 +9,8 @@ Notes:
 - STARTERS_CACHE is loaded at import time to serve requests quickly.
 - Returns empty dicts on missing seasons/weeks/managers instead of raising.
 """
-from utils.player_ids_loader import load_player_ids
-from utils.starters_loader import load_or_update_starters_cache
+from patriot_center_backend.utils.player_ids_loader import load_player_ids
+from patriot_center_backend.utils.starters_loader import load_or_update_starters_cache
 
 PLAYER_IDS = load_player_ids()
 STARTERS_CACHE = load_or_update_starters_cache()

@@ -13,13 +13,13 @@ Notes:
 - Importing this module triggers a cache warm-up by calling load_or_update_replacement_score_cache().
 """
 
-from utils.sleeper_api_handler import fetch_sleeper_data
-from constants import LEAGUE_IDS
-from utils.player_ids_loader import load_player_ids
-from utils.cache_utils import load_cache, save_cache, get_current_season_and_week
+from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
+from patriot_center_backend.constants import LEAGUE_IDS
+from patriot_center_backend.utils.player_ids_loader import load_player_ids
+from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
 
 # Constants
-REPLACEMENT_SCORE_FILE = "data/replacement_score_cache.json"
+REPLACEMENT_SCORE_FILE = "patriot_center_backend/data/replacement_score_cache.json"
 PLAYER_IDS = load_player_ids()
 
 

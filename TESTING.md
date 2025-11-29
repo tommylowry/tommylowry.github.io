@@ -6,7 +6,6 @@ This document explains how to run tests for the Patriot Center backend.
 
 1. **Install test dependencies:**
    ```bash
-   cd patriot_center_backend
    pip install -r requirements.txt
    ```
 
@@ -24,7 +23,7 @@ pytest --cov=. --cov-report=term-missing
 
 ### Run specific test file:
 ```bash
-pytest tests/test_app.py
+pytest patriot_center_backend/tests/test_app.py
 ```
 
 ### Run tests matching a pattern:
@@ -60,7 +59,7 @@ tests/
 ```python
 def test_aggregates_player_data(mock_starters, mock_ffwar):
     """Test description."""
-    from services.aggregated_data import fetch_aggregated_players
+    from patriot_center_backend.services.aggregated_data import fetch_aggregated_players
 
     # Setup
     mock_starters.return_value = {...}

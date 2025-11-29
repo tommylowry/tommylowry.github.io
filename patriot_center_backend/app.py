@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from constants import LEAGUE_IDS, NAME_TO_MANAGER_USERNAME
-from services.managers import fetch_starters
-from services.aggregated_data import fetch_aggregated_players, fetch_aggregated_managers
+from patriot_center_backend.constants import LEAGUE_IDS, NAME_TO_MANAGER_USERNAME
+from patriot_center_backend.services.managers import fetch_starters
+from patriot_center_backend.services.aggregated_data import fetch_aggregated_players, fetch_aggregated_managers
 
 app = Flask(__name__)
 CORS(app, resources={
@@ -119,10 +119,7 @@ def get_starters(arg1, arg2, arg3):
     Returns:
         Flask Response: JSON payload (filtered starters or error).
     """
-    try:
-        year, week, manager = parse_arguments(arg1, arg2, arg3)
-    except ValueError as e:
-        return jsonify({"error": str(e)}), 400
+    year, week, manager = parse_arguments(arg1, arg2, arg3)
 
     data = fetch_starters(season=year, manager=manager, week=week)
     if request.args.get("format") == "json":
@@ -217,7 +214,8 @@ def parse_arguments(arg1, arg2, arg3):
     for arg in (arg1, arg2, arg3):
         if arg is None:
             continue
-        try:
+        
+        if arg.isnumeric() == True:
             arg_int = int(arg)
             if arg_int in LEAGUE_IDS:
                 if year is not None:
@@ -229,12 +227,13 @@ def parse_arguments(arg1, arg2, arg3):
                 week = arg_int
             else:
                 raise ValueError("Invalid integer argument provided.")
-        except ValueError:
+        else:
             # Non-integer -> attempt manager match
             if arg in NAME_TO_MANAGER_USERNAME:
                 if manager is not None:
                     raise ValueError("Multiple manager arguments provided.")
                 manager = arg
+                continue
             else:
                 raise ValueError(f"Invalid argument provided: {arg}")
 

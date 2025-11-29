@@ -191,7 +191,7 @@ def temp_cache_file():
 def flask_app():
     """Create a Flask app instance for testing."""
     # Import here to avoid circular imports
-    from app import app
+    from patriot_center_backend.app import app
 
     app.config['TESTING'] = True
     app.config['DEBUG'] = False
@@ -208,7 +208,7 @@ def flask_client(flask_app):
 @pytest.fixture
 def mock_fetch_sleeper_data():
     """Mock the fetch_sleeper_data function."""
-    with patch('utils.sleeper_api_handler.fetch_sleeper_data') as mock:
+    with patch('patriot_center_backend.utils.sleeper_api_handler.fetch_sleeper_data') as mock:
         mock.return_value = ({"test": "data"}, 200)
         yield mock
 
@@ -216,7 +216,7 @@ def mock_fetch_sleeper_data():
 @pytest.fixture
 def mock_load_cache():
     """Mock the load_cache function."""
-    with patch('utils.cache_utils.load_cache') as mock:
+    with patch('patriot_center_backend.utils.cache_utils.load_cache') as mock:
         mock.return_value = {}
         yield mock
 
@@ -224,14 +224,14 @@ def mock_load_cache():
 @pytest.fixture
 def mock_save_cache():
     """Mock the save_cache function."""
-    with patch('utils.cache_utils.save_cache') as mock:
+    with patch('patriot_center_backend.utils.cache_utils.save_cache') as mock:
         yield mock
 
 
 @pytest.fixture
 def mock_current_season_week():
     """Mock get_current_season_and_week to return fixed values."""
-    with patch('utils.cache_utils.get_current_season_and_week') as mock:
+    with patch('patriot_center_backend.utils.cache_utils.get_current_season_and_week') as mock:
         mock.return_value = (2024, 14)
         yield mock
 
@@ -274,5 +274,41 @@ def sample_aggregated_player_data():
             "ffWAR": 15.234,
             "position": "TE",
             "player_image_endpoint": "https://sleepercdn.com/content/nfl/players/4866.jpg"
+        }
+    }
+
+@ pytest.fixture
+def sample_defenses_in_sleeper_data():
+    """Sample Sleeper data including all team defenses."""
+    return {
+        "7547": {
+            "full_name": "Amon-Ra St. Brown",
+            "team": "DET",
+            "position": "WR"
+        },
+        "4866": {
+            "full_name": "Travis Kelce",
+            "team": "KC",
+            "position": "TE"
+        },
+        "ARI": {
+            "full_name": "Arizona Cardinals",
+            "team": "ARI",
+            "position": "DEF"
+        },
+        "ATL": {
+            "full_name": "Atlanta Falcons",
+            "team": "ATL",
+            "position": "DEF"
+        },
+        "BAL": {
+            "full_name": "Baltimore Ravens",
+            "team": "BAL",
+            "position": "DEF"
+        },
+        "1667": {
+            "full_name": "Some Other Player",
+            "team": "XYZ",
+            "position": "RB"
         }
     }
