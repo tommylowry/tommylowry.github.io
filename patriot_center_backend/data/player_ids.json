@@ -69,8 +69,8 @@
         "age": 26,
         "years_exp": 3,
         "college": "Toledo",
-        "team": "TEN",
-        "depth_chart_position": "NB",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -1801,7 +1801,7 @@
         "years_exp": 4,
         "college": "Illinois",
         "team": "GB",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -3185,7 +3185,7 @@
     },
     "11756": {
         "full_name": "Hunter Nourzad",
-        "age": 24,
+        "age": 25,
         "years_exp": 1,
         "college": "Penn State",
         "team": "KC",
@@ -3750,8 +3750,8 @@
         "age": 32,
         "years_exp": 9,
         "college": "Temple",
-        "team": "WAS",
-        "depth_chart_position": "LWR",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
@@ -4026,7 +4026,7 @@
         "years_exp": 4,
         "college": "Houston Christian",
         "team": "MIA",
-        "depth_chart_position": null,
+        "depth_chart_position": "LILB",
         "fantasy_positions": [
             "LB"
         ],
@@ -5200,7 +5200,7 @@
         "years_exp": 3,
         "college": "South Dakota State",
         "team": "GB",
-        "depth_chart_position": "RB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
@@ -6564,13 +6564,13 @@
         "age": 24,
         "years_exp": 3,
         "college": "Florida",
-        "team": "DAL",
-        "depth_chart_position": null,
+        "team": "TEN",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
         "position": "DB",
-        "number": 20
+        "number": 35
     },
     "5079": {
         "full_name": "Darius Phillips",
@@ -6874,7 +6874,7 @@
     },
     "6555": {
         "full_name": "AJ Cole",
-        "age": 29,
+        "age": 30,
         "years_exp": 6,
         "college": "North Carolina State",
         "team": "LV",
@@ -6962,6 +6962,19 @@
         ],
         "position": "RB",
         "number": 47
+    },
+    "13262": {
+        "full_name": "Paschal Ekeji",
+        "age": 23,
+        "years_exp": 0,
+        "college": null,
+        "team": "NYJ",
+        "depth_chart_position": null,
+        "fantasy_positions": [
+            "DL"
+        ],
+        "position": "DE",
+        "number": 54
     },
     "11667": {
         "full_name": "Dallas Turner",
@@ -9253,13 +9266,13 @@
         "age": 26,
         "years_exp": 3,
         "college": "Ohio State",
-        "team": "CLE",
-        "depth_chart_position": null,
+        "team": "NE",
+        "depth_chart_position": "OL",
         "fantasy_positions": [
             "OL"
         ],
         "position": "OL",
-        "number": 64
+        "number": 74
     },
     "11428": {
         "full_name": "Brandon Bouyer-Randle",
@@ -10865,7 +10878,7 @@
         "years_exp": 7,
         "college": "Alabama",
         "team": "LAC",
-        "depth_chart_position": "LDE",
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -11111,8 +11124,8 @@
         "age": 32,
         "years_exp": 9,
         "college": "Maryland",
-        "team": "DET",
-        "depth_chart_position": "LDT",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
@@ -11386,7 +11399,7 @@
         "years_exp": 5,
         "college": "Utah",
         "team": "LV",
-        "depth_chart_position": "LDT",
+        "depth_chart_position": "RDT",
         "fantasy_positions": [
             "DL"
         ],
@@ -11945,13 +11958,13 @@
         "age": 25,
         "years_exp": 2,
         "college": "Western Kentucky",
-        "team": null,
+        "team": "MIN",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
         "position": "CB",
-        "number": 20
+        "number": 25
     },
     "2484": {
         "full_name": "Tayo Fabuluje",
@@ -13271,7 +13284,7 @@
     },
     "7526": {
         "full_name": "Jaylen Waddle",
-        "age": 26,
+        "age": 27,
         "years_exp": 4,
         "college": "Alabama",
         "team": "MIA",
@@ -14118,7 +14131,7 @@
         "years_exp": 7,
         "college": "Southeast Missouri State",
         "team": "ATL",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -14594,13 +14607,13 @@
         "age": 32,
         "years_exp": 11,
         "college": "Oregon State",
-        "team": null,
-        "depth_chart_position": null,
+        "team": "BUF",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
         "position": "WR",
-        "number": 10
+        "number": 18
     },
     "645": {
         "full_name": "Dwan Edwards",
@@ -16321,7 +16334,7 @@
         "years_exp": 2,
         "college": "Clemson",
         "team": "CHI",
-        "depth_chart_position": "OL",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "OL"
         ],
@@ -17109,7 +17122,7 @@
     },
     "7642": {
         "full_name": "Jaycee Horn",
-        "age": 25,
+        "age": 26,
         "years_exp": 4,
         "college": "South Carolina",
         "team": "CAR",
@@ -18096,7 +18109,7 @@
         "years_exp": 0,
         "college": "Cal Poly",
         "team": "NE",
-        "depth_chart_position": "ROLB",
+        "depth_chart_position": "LOLB",
         "fantasy_positions": [
             "DL"
         ],
@@ -19861,7 +19874,7 @@
         "age": 24,
         "years_exp": 0,
         "college": "Kansas",
-        "team": "SEA",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "OT"
@@ -20571,7 +20584,7 @@
         "years_exp": 7,
         "college": "Miami (FL)",
         "team": "HOU",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "SWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -20676,7 +20689,7 @@
         "years_exp": 6,
         "college": "Utah",
         "team": "SF",
-        "depth_chart_position": null,
+        "depth_chart_position": "K",
         "fantasy_positions": [
             "K"
         ],
@@ -20929,7 +20942,7 @@
         "years_exp": 6,
         "college": "Penn State",
         "team": "BAL",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -21245,7 +21258,7 @@
         "years_exp": 9,
         "college": "Holy Cross",
         "team": "DET",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": "SWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -21403,7 +21416,7 @@
         "years_exp": 0,
         "college": "Ohio State",
         "team": "ARI",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -21750,7 +21763,7 @@
     },
     "6817": {
         "full_name": "Noah Igbinoghene",
-        "age": 25,
+        "age": 26,
         "years_exp": 5,
         "college": "Auburn",
         "team": "WAS",
@@ -22574,7 +22587,7 @@
     },
     "8446": {
         "full_name": "Charles Cross",
-        "age": 24,
+        "age": 25,
         "years_exp": 3,
         "college": "Mississippi State",
         "team": "SEA",
@@ -22770,13 +22783,13 @@
         "age": 28,
         "years_exp": 5,
         "college": "Miami (FL)",
-        "team": null,
+        "team": "ATL",
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
         "position": "WR",
-        "number": 13
+        "number": 88
     },
     "4783": {
         "full_name": "Noor Davis",
@@ -23111,7 +23124,7 @@
         "years_exp": 5,
         "college": "UCLA",
         "team": "CAR",
-        "depth_chart_position": null,
+        "depth_chart_position": "RILB",
         "fantasy_positions": [
             "LB"
         ],
@@ -23706,7 +23719,7 @@
     },
     "12153": {
         "full_name": "Donovan Jennings",
-        "age": 25,
+        "age": 26,
         "years_exp": 1,
         "college": "South Florida",
         "team": "GB",
@@ -23906,7 +23919,7 @@
         "age": 22,
         "years_exp": 0,
         "college": "Elon",
-        "team": "NE",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
@@ -25252,7 +25265,7 @@
         "years_exp": 8,
         "college": "Ohio State",
         "team": "BUF",
-        "depth_chart_position": "SWR",
+        "depth_chart_position": "KR",
         "fantasy_positions": [
             "WR"
         ],
@@ -26006,13 +26019,13 @@
         "age": 23,
         "years_exp": 0,
         "college": "Louisiana Tech",
-        "team": null,
+        "team": "SEA",
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
         "position": "WR",
-        "number": 82
+        "number": 17
     },
     "6958": {
         "full_name": "Mike Danna",
@@ -28196,7 +28209,7 @@
         "years_exp": 1,
         "college": "South Alabama",
         "team": "SEA",
-        "depth_chart_position": "RILB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
@@ -29208,16 +29221,16 @@
     },
     "12868": {
         "full_name": "Montrell Johnson",
-        "age": 22,
+        "age": 23,
         "years_exp": 0,
         "college": "Florida",
-        "team": null,
+        "team": "ARI",
         "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
         "position": "RB",
-        "number": 34
+        "number": 26
     },
     "2287": {
         "full_name": "Adrian Phillips",
@@ -29352,7 +29365,7 @@
     },
     "12731": {
         "full_name": "Dan Jackson",
-        "age": 24,
+        "age": 25,
         "years_exp": 0,
         "college": "Georgia",
         "team": "DET",
@@ -29900,12 +29913,12 @@
         "years_exp": 3,
         "college": "Utah",
         "team": "PHI",
-        "depth_chart_position": null,
+        "depth_chart_position": "SWR",
         "fantasy_positions": [
             "WR"
         ],
         "position": "WR",
-        "number": 85
+        "number": 18
     },
     "8417": {
         "full_name": "Player Invalid",
@@ -29961,7 +29974,7 @@
     },
     "8523": {
         "full_name": "Nick Muse",
-        "age": 26,
+        "age": 27,
         "years_exp": 3,
         "college": "South Carolina",
         "team": "LAR",
@@ -30369,7 +30382,7 @@
         "years_exp": 0,
         "college": "Texas",
         "team": "GB",
-        "depth_chart_position": "LDE",
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -30562,7 +30575,7 @@
         "years_exp": 9,
         "college": "Oregon",
         "team": "IND",
-        "depth_chart_position": "RDT",
+        "depth_chart_position": "DL",
         "fantasy_positions": [
             "DL"
         ],
@@ -31135,7 +31148,7 @@
         "years_exp": 2,
         "college": "Virginia",
         "team": "GB",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "SWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -31689,7 +31702,7 @@
         "years_exp": 4,
         "college": "Stony Brook",
         "team": "CLE",
-        "depth_chart_position": null,
+        "depth_chart_position": "LDT",
         "fantasy_positions": [
             "DL"
         ],
@@ -31857,7 +31870,7 @@
         "years_exp": 8,
         "college": "West Virginia",
         "team": "MIA",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -31959,7 +31972,7 @@
         "years_exp": 2,
         "college": "Penn State",
         "team": "CIN",
-        "depth_chart_position": "QB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "QB"
         ],
@@ -32616,13 +32629,13 @@
         "age": 25,
         "years_exp": 3,
         "college": "Georgia",
-        "team": "SEA",
-        "depth_chart_position": "NB",
+        "team": "LAR",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
         "position": "DB",
-        "number": 1
+        "number": 36
     },
     "5355": {
         "full_name": "Nick Sharga",
@@ -33989,11 +34002,11 @@
     },
     "12689": {
         "full_name": "JJ Pegues",
-        "age": 23,
+        "age": 24,
         "years_exp": 0,
         "college": "Ole Miss",
         "team": "LV",
-        "depth_chart_position": "RDT",
+        "depth_chart_position": "LDT",
         "fantasy_positions": [
             "DL"
         ],
@@ -34632,13 +34645,13 @@
         "age": 27,
         "years_exp": 4,
         "college": "Wake Forest",
-        "team": null,
+        "team": "LV",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
         "position": "DE",
-        "number": 54
+        "number": 57
     },
     "12897": {
         "full_name": "Nathan Carter",
@@ -35500,7 +35513,7 @@
     },
     "12946": {
         "full_name": "Dontae Fleming",
-        "age": 23,
+        "age": 24,
         "years_exp": 0,
         "college": "Tulane",
         "team": "MIN",
@@ -35509,7 +35522,7 @@
             "WR"
         ],
         "position": "WR",
-        "number": 89
+        "number": 81
     },
     "7471": {
         "full_name": "David Reese",
@@ -35776,7 +35789,7 @@
         "age": 25,
         "years_exp": 1,
         "college": "Rutgers",
-        "team": "NYG",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "K"
@@ -36300,7 +36313,7 @@
         "years_exp": 3,
         "college": "Arizona",
         "team": "GB",
-        "depth_chart_position": "K",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "K"
         ],
@@ -36703,13 +36716,13 @@
         "age": 25,
         "years_exp": 1,
         "college": "Oklahoma State",
-        "team": null,
+        "team": "PIT",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
         "position": "DE",
-        "number": 95
+        "number": 72
     },
     "7524": {
         "full_name": "Player Invalid",
@@ -37790,13 +37803,13 @@
         "age": 29,
         "years_exp": 6,
         "college": "Kutztown",
-        "team": "DET",
-        "depth_chart_position": "RB",
+        "team": "NE",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
         "position": "RB",
-        "number": 13
+        "number": 49
     },
     "5573": {
         "full_name": "Greer Martini",
@@ -39034,7 +39047,7 @@
     },
     "11894": {
         "full_name": "Kyler Baugh",
-        "age": 23,
+        "age": 24,
         "years_exp": 1,
         "college": "Minnesota",
         "team": "PIT",
@@ -40105,7 +40118,7 @@
         "years_exp": 5,
         "college": "Auburn",
         "team": "DET",
-        "depth_chart_position": "FS",
+        "depth_chart_position": "SS",
         "fantasy_positions": [
             "DB"
         ],
@@ -40655,7 +40668,7 @@
         "years_exp": 4,
         "college": "Ole Miss",
         "team": "BUF",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
@@ -41228,7 +41241,7 @@
         "age": 28,
         "years_exp": 5,
         "college": "Southeast Missouri State",
-        "team": "TEN",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
@@ -41777,7 +41790,7 @@
     },
     "11586": {
         "full_name": "Blake Corum",
-        "age": 24,
+        "age": 25,
         "years_exp": 1,
         "college": "Michigan",
         "team": "LAR",
@@ -42078,7 +42091,7 @@
         "years_exp": 4,
         "college": "Michigan",
         "team": "CLE",
-        "depth_chart_position": null,
+        "depth_chart_position": "LB",
         "fantasy_positions": [
             "LB"
         ],
@@ -42976,7 +42989,7 @@
         "years_exp": 8,
         "college": "USC",
         "team": "KC",
-        "depth_chart_position": "SWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -45116,7 +45129,7 @@
         "years_exp": 3,
         "college": "Western Kentucky",
         "team": "CLE",
-        "depth_chart_position": "QB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "QB"
         ],
@@ -45218,7 +45231,7 @@
         "years_exp": 3,
         "college": "Tennessee",
         "team": "SEA",
-        "depth_chart_position": null,
+        "depth_chart_position": "RB",
         "fantasy_positions": [
             "RB"
         ],
@@ -45936,7 +45949,7 @@
         "years_exp": 2,
         "college": "Monmouth",
         "team": "TB",
-        "depth_chart_position": "RB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
@@ -45975,7 +45988,7 @@
         "years_exp": 0,
         "college": "USC",
         "team": "LV",
-        "depth_chart_position": null,
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -46776,7 +46789,7 @@
         "years_exp": 5,
         "college": "Arkansas",
         "team": "LAR",
-        "depth_chart_position": "SS",
+        "depth_chart_position": "FS",
         "fantasy_positions": [
             "DB"
         ],
@@ -46789,7 +46802,7 @@
         "years_exp": 3,
         "college": "Utah State",
         "team": "ATL",
-        "depth_chart_position": null,
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -48081,7 +48094,7 @@
         "years_exp": 2,
         "college": "Northwestern",
         "team": "NO",
-        "depth_chart_position": null,
+        "depth_chart_position": "RB",
         "fantasy_positions": [
             "RB"
         ],
@@ -48315,7 +48328,7 @@
         "years_exp": 1,
         "college": "Washington State",
         "team": "KC",
-        "depth_chart_position": "FS",
+        "depth_chart_position": "SS",
         "fantasy_positions": [
             "DB"
         ],
@@ -50182,8 +50195,8 @@
         "age": 32,
         "years_exp": 8,
         "college": "Memphis",
-        "team": "DET",
-        "depth_chart_position": "RCB",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -50390,7 +50403,7 @@
         "years_exp": 0,
         "college": "Washington",
         "team": "BUF",
-        "depth_chart_position": null,
+        "depth_chart_position": "TE",
         "fantasy_positions": [
             "TE"
         ],
@@ -50546,7 +50559,7 @@
         "years_exp": 0,
         "college": "Notre Dame",
         "team": "NYJ",
-        "depth_chart_position": null,
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -51524,13 +51537,13 @@
         "age": 27,
         "years_exp": 6,
         "college": "Michigan",
-        "team": null,
+        "team": "CAR",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
         "position": "CB",
-        "number": 39
+        "number": 35
     },
     "11663": {
         "full_name": "Chop Robinson",
@@ -51668,13 +51681,13 @@
         "age": 28,
         "years_exp": 5,
         "college": "William & Mary",
-        "team": null,
+        "team": "NE",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
         "position": "DT",
-        "number": 60
+        "number": 62
     },
     "1173": {
         "full_name": "Jarrett Boykin",
@@ -52048,7 +52061,7 @@
     },
     "6699": {
         "full_name": "Gunner Olszewski",
-        "age": 28,
+        "age": 29,
         "years_exp": 6,
         "college": "Bemidji State",
         "team": "NYG",
@@ -53272,7 +53285,7 @@
         "years_exp": 6,
         "college": "Temple",
         "team": "DET",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -53310,13 +53323,13 @@
         "age": 24,
         "years_exp": 3,
         "college": "LSU",
-        "team": null,
+        "team": "NO",
         "depth_chart_position": null,
         "fantasy_positions": [
             "K"
         ],
         "position": "K",
-        "number": 3
+        "number": 36
     },
     "2309": {
         "full_name": "Amari Cooper",
@@ -54483,16 +54496,16 @@
     },
     "12036": {
         "full_name": "Ian Wheeler",
-        "age": 23,
+        "age": 24,
         "years_exp": 1,
         "college": "Howard",
-        "team": null,
+        "team": "NO",
         "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
         "position": "RB",
-        "number": 33
+        "number": 22
     },
     "5999": {
         "full_name": "D'Cota Dixon",
@@ -55240,7 +55253,7 @@
         "years_exp": 0,
         "college": "Louisiana",
         "team": "NYG",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
@@ -55691,7 +55704,7 @@
         "years_exp": 9,
         "college": "Oklahoma State",
         "team": "JAX",
-        "depth_chart_position": "LDE",
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL",
             "LB"
@@ -55771,7 +55784,7 @@
         "years_exp": 2,
         "college": "Cincinnati",
         "team": "LV",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -55796,7 +55809,7 @@
         "age": 29,
         "years_exp": 7,
         "college": "Arkansas",
-        "team": null,
+        "team": "DET",
         "depth_chart_position": null,
         "fantasy_positions": [
             "OL"
@@ -55976,7 +55989,7 @@
     },
     "6969": {
         "full_name": "Dane Jackson",
-        "age": 28,
+        "age": 29,
         "years_exp": 5,
         "college": "Pittsburgh",
         "team": "BUF",
@@ -56254,7 +56267,7 @@
         "years_exp": 2,
         "college": "UCLA",
         "team": "LV",
-        "depth_chart_position": null,
+        "depth_chart_position": "OL",
         "fantasy_positions": [
             "OL"
         ],
@@ -59296,17 +59309,17 @@
     },
     "3182": {
         "full_name": "Shaq Lawson",
-        "age": 30,
-        "years_exp": 8,
+        "age": 31,
+        "years_exp": 9,
         "college": "Clemson",
-        "team": null,
+        "team": "BUF",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL",
             "LB"
         ],
         "position": "DE",
-        "number": 46
+        "number": 51
     },
     "4391": {
         "full_name": "Larry Hope",
@@ -60922,7 +60935,7 @@
         "years_exp": 5,
         "college": "Florida International",
         "team": "LAC",
-        "depth_chart_position": "NT",
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -61223,7 +61236,7 @@
         "years_exp": 0,
         "college": "Memphis",
         "team": "BAL",
-        "depth_chart_position": "LOLB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
@@ -61731,7 +61744,7 @@
         "years_exp": 7,
         "college": "Pittsburgh",
         "team": "DET",
-        "depth_chart_position": "SS",
+        "depth_chart_position": "FS",
         "fantasy_positions": [
             "DB"
         ],
@@ -61782,13 +61795,13 @@
         "age": 24,
         "years_exp": 1,
         "college": "Army",
-        "team": null,
+        "team": "MIA",
         "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
         "position": "LB",
-        "number": 35
+        "number": 45
     },
     "7925": {
         "full_name": "Jerome Johnson",
@@ -62607,7 +62620,7 @@
         "age": 26,
         "years_exp": 2,
         "college": "Washington",
-        "team": null,
+        "team": "CHI",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
@@ -63704,14 +63717,14 @@
         "age": 27,
         "years_exp": 5,
         "college": "Clemson",
-        "team": null,
-        "depth_chart_position": null,
+        "team": "CAR",
+        "depth_chart_position": "RILB",
         "fantasy_positions": [
             "DB",
             "LB"
         ],
         "position": "DB",
-        "number": 28
+        "number": 27
     },
     "465": {
         "full_name": "Brandon Pettigrew",
@@ -63897,7 +63910,7 @@
     },
     "11700": {
         "full_name": "Dru Phillips",
-        "age": 23,
+        "age": 24,
         "years_exp": 1,
         "college": "Kentucky",
         "team": "NYG",
@@ -64223,7 +64236,7 @@
         "age": 25,
         "years_exp": 1,
         "college": "Georgia Southern",
-        "team": "MIN",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
@@ -65752,7 +65765,7 @@
         "years_exp": 7,
         "college": "Utah State",
         "team": "CIN",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -66077,7 +66090,7 @@
         "years_exp": 2,
         "college": "Montana",
         "team": "SEA",
-        "depth_chart_position": "LILB",
+        "depth_chart_position": "RILB",
         "fantasy_positions": [
             "LB"
         ],
@@ -66533,7 +66546,7 @@
         "years_exp": 0,
         "college": "Bowling Green",
         "team": "TB",
-        "depth_chart_position": null,
+        "depth_chart_position": "QB",
         "fantasy_positions": [
             "QB"
         ],
@@ -70284,16 +70297,16 @@
     },
     "12827": {
         "full_name": "Myles Purchase",
-        "age": 22,
+        "age": 23,
         "years_exp": 0,
         "college": "Iowa State",
-        "team": null,
+        "team": "NYG",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
         "position": "DB",
-        "number": 35
+        "number": 15
     },
     "3034": {
         "full_name": "Blaine Clausell",
@@ -70892,7 +70905,7 @@
     },
     "7039": {
         "full_name": "Cody White",
-        "age": 26,
+        "age": 27,
         "years_exp": 5,
         "college": "Michigan State",
         "team": "SEA",
@@ -70987,7 +71000,7 @@
         "years_exp": 0,
         "college": "Oregon",
         "team": "LAC",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "NT",
         "fantasy_positions": [
             "DL"
         ],
@@ -71880,7 +71893,7 @@
         "years_exp": 6,
         "college": "Oklahoma",
         "team": "KC",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -72495,13 +72508,13 @@
         "age": 33,
         "years_exp": 10,
         "college": "UCLA",
-        "team": null,
+        "team": "SF",
         "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
         "position": "LB",
-        "number": 50
+        "number": 43
     },
     "8519": {
         "full_name": "Deane Leonard",
@@ -72548,7 +72561,7 @@
         "years_exp": 1,
         "college": "Texas",
         "team": "KC",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -72912,13 +72925,13 @@
         "age": 23,
         "years_exp": 0,
         "college": "Arkansas State",
-        "team": "CAR",
+        "team": "JAX",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
         "position": "DB",
-        "number": 42
+        "number": 34
     },
     "1081": {
         "full_name": "James-Michael Johnson",
@@ -73054,7 +73067,7 @@
         "years_exp": 3,
         "college": "Clemson",
         "team": "BUF",
-        "depth_chart_position": null,
+        "depth_chart_position": "LOLB",
         "fantasy_positions": [
             "LB"
         ],
@@ -74357,7 +74370,7 @@
         "age": 25,
         "years_exp": 0,
         "college": "Utah State",
-        "team": null,
+        "team": "LAR",
         "depth_chart_position": null,
         "fantasy_positions": [
             "OL"
@@ -75441,7 +75454,7 @@
         "years_exp": 0,
         "college": "TCU",
         "team": "LV",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -75715,7 +75728,7 @@
         "years_exp": 2,
         "college": "Army",
         "team": "MIA",
-        "depth_chart_position": "ROLB",
+        "depth_chart_position": "LOLB",
         "fantasy_positions": [
             "LB"
         ],
@@ -76123,7 +76136,7 @@
         "years_exp": 3,
         "college": "Fresno State",
         "team": "GB",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "LDE",
         "fantasy_positions": [
             "LB"
         ],
@@ -76232,7 +76245,7 @@
         "years_exp": 8,
         "college": "Miami (FL)",
         "team": "DET",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "LDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -76960,7 +76973,7 @@
         "years_exp": 4,
         "college": "Florida State",
         "team": "PIT",
-        "depth_chart_position": null,
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -77262,7 +77275,7 @@
             "DB"
         ],
         "position": "DB",
-        "number": 37
+        "number": 43
     },
     "8247": {
         "full_name": "Gerrit Prince",
@@ -77305,16 +77318,16 @@
     },
     "7541": {
         "full_name": "Cornell Powell",
-        "age": 27,
+        "age": 28,
         "years_exp": 4,
         "college": "Clemson",
-        "team": null,
+        "team": "PIT",
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
         "position": "WR",
-        "number": 11
+        "number": 82
     },
     "8914": {
         "full_name": "Jeremiah Pharms",
@@ -77322,7 +77335,7 @@
         "years_exp": 3,
         "college": "Friends",
         "team": "NE",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
@@ -77453,7 +77466,7 @@
         "years_exp": 3,
         "college": "Alabama",
         "team": "DET",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -78194,7 +78207,7 @@
         "years_exp": 4,
         "college": "Arizona",
         "team": "CIN",
-        "depth_chart_position": "RB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
@@ -78338,7 +78351,7 @@
         "years_exp": 5,
         "college": "Notre Dame",
         "team": "ATL",
-        "depth_chart_position": "ROLB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
@@ -78441,7 +78454,7 @@
         "age": 25,
         "years_exp": 1,
         "college": "Washington",
-        "team": null,
+        "team": "CHI",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
@@ -78795,13 +78808,13 @@
         "age": 32,
         "years_exp": 9,
         "college": "Ohio State",
-        "team": "MIN",
-        "depth_chart_position": null,
+        "team": "LAR",
+        "depth_chart_position": "TE",
         "fantasy_positions": [
             "TE"
         ],
         "position": "TE",
-        "number": 81
+        "number": 38
     },
     "1392": {
         "full_name": "Margus Hunt",
@@ -79397,7 +79410,7 @@
         "years_exp": 8,
         "college": "UCF",
         "team": "SEA",
-        "depth_chart_position": null,
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -80909,7 +80922,7 @@
         "age": 25,
         "years_exp": 1,
         "college": "Tulane",
-        "team": "NO",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
@@ -81014,7 +81027,7 @@
         "years_exp": 0,
         "college": "Colorado",
         "team": "JAX",
-        "depth_chart_position": "NB",
+        "depth_chart_position": "SS",
         "fantasy_positions": [
             "DB"
         ],
@@ -81729,7 +81742,7 @@
         "age": 28,
         "years_exp": 5,
         "college": "Central Michigan",
-        "team": "NE",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
@@ -81794,8 +81807,8 @@
         "age": 28,
         "years_exp": 3,
         "college": "UCLA",
-        "team": "CHI",
-        "depth_chart_position": "RB",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
@@ -81847,7 +81860,7 @@
         "years_exp": 5,
         "college": "LSU",
         "team": "CAR",
-        "depth_chart_position": null,
+        "depth_chart_position": "OL",
         "fantasy_positions": [
             "OL",
             "OT"
@@ -82020,7 +82033,7 @@
         "years_exp": 1,
         "college": "International Pathway Program",
         "team": "NO",
-        "depth_chart_position": null,
+        "depth_chart_position": "K",
         "fantasy_positions": [
             "K"
         ],
@@ -82459,7 +82472,7 @@
     },
     "1234": {
         "full_name": "Russell Wilson",
-        "age": 36,
+        "age": 37,
         "years_exp": 13,
         "college": "Wisconsin",
         "team": "NYG",
@@ -82537,11 +82550,11 @@
     },
     "12541": {
         "full_name": "Dont'e Thornton",
-        "age": 22,
+        "age": 23,
         "years_exp": 0,
         "college": "Tennessee",
         "team": "LV",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -82667,7 +82680,7 @@
     },
     "7891": {
         "full_name": "Brock Wright",
-        "age": 26,
+        "age": 27,
         "years_exp": 4,
         "college": "Notre Dame",
         "team": "DET",
@@ -82853,7 +82866,7 @@
         "years_exp": 1,
         "college": "Southern Miss",
         "team": "NYG",
-        "depth_chart_position": "ROLB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
@@ -83075,7 +83088,7 @@
         "years_exp": 0,
         "college": "Kansas",
         "team": "ATL",
-        "depth_chart_position": "NB",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -83811,7 +83824,7 @@
     },
     "11899": {
         "full_name": "Rico Payton",
-        "age": 25,
+        "age": 26,
         "years_exp": 1,
         "college": "Pittsburg State",
         "team": "NYG",
@@ -84166,7 +84179,7 @@
         "years_exp": 4,
         "college": "Colorado",
         "team": "NO",
-        "depth_chart_position": "OL",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "OL",
             "OT"
@@ -84180,7 +84193,7 @@
         "years_exp": 6,
         "college": "Texas A&M",
         "team": "LAC",
-        "depth_chart_position": null,
+        "depth_chart_position": "RB",
         "fantasy_positions": [
             "RB"
         ],
@@ -84832,7 +84845,7 @@
         "years_exp": 3,
         "college": "Oklahoma State",
         "team": "DET",
-        "depth_chart_position": "LOLB",
+        "depth_chart_position": "MLB",
         "fantasy_positions": [
             "LB"
         ],
@@ -84924,7 +84937,7 @@
         "years_exp": 2,
         "college": "Florida State",
         "team": "ATL",
-        "depth_chart_position": "FS",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -85335,13 +85348,13 @@
         "age": 32,
         "years_exp": 10,
         "college": "Texas",
-        "team": null,
-        "depth_chart_position": null,
+        "team": "SEA",
+        "depth_chart_position": "DB",
         "fantasy_positions": [
             "DB"
         ],
         "position": "DB",
-        "number": 28
+        "number": 37
     },
     "2723": {
         "full_name": "RJ Harris",
@@ -85384,7 +85397,7 @@
     },
     "11535": {
         "full_name": "Josh Butler",
-        "age": 28,
+        "age": 29,
         "years_exp": 2,
         "college": "Michigan State",
         "team": "DAL",
@@ -85427,7 +85440,7 @@
         "age": 27,
         "years_exp": 2,
         "college": "Louisiana",
-        "team": "BUF",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
@@ -85532,7 +85545,7 @@
         "years_exp": 4,
         "college": "USC",
         "team": "DET",
-        "depth_chart_position": "SWR",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -85977,7 +85990,7 @@
         "years_exp": 4,
         "college": "Fayetteville State",
         "team": "MIA",
-        "depth_chart_position": "OL",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "OL",
             "OT"
@@ -86017,7 +86030,7 @@
         "years_exp": 8,
         "college": "Illinois",
         "team": "JAX",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "LDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -86142,7 +86155,7 @@
     },
     "11062": {
         "full_name": "Ali Gaye",
-        "age": 26,
+        "age": 27,
         "years_exp": 2,
         "college": "LSU",
         "team": "TEN",
@@ -86840,7 +86853,7 @@
         "years_exp": 0,
         "college": "Pittsburgh",
         "team": "LAR",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -87580,13 +87593,13 @@
         "age": 25,
         "years_exp": 3,
         "college": "Florida",
-        "team": null,
+        "team": "KC",
         "depth_chart_position": null,
         "fantasy_positions": [
             "RB"
         ],
         "position": "RB",
-        "number": 31
+        "number": 34
     },
     "8434": {
         "full_name": "Player Invalid",
@@ -88577,7 +88590,7 @@
     },
     "6999": {
         "full_name": "Benito Jones",
-        "age": 27,
+        "age": 28,
         "years_exp": 5,
         "college": "Ole Miss",
         "team": "MIA",
@@ -88994,7 +89007,7 @@
         "age": 29,
         "years_exp": 6,
         "college": "TCU",
-        "team": "DET",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
@@ -89712,13 +89725,13 @@
         "age": 27,
         "years_exp": 4,
         "college": "Central Arkansas",
-        "team": "DAL",
-        "depth_chart_position": null,
+        "team": "CAR",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
         "position": "DB",
-        "number": 30
+        "number": 33
     },
     "5071": {
         "full_name": "DeShon Elliott",
@@ -89789,7 +89802,7 @@
     },
     "8857": {
         "full_name": "Kader Kohou",
-        "age": 26,
+        "age": 27,
         "years_exp": 3,
         "college": "East Texas A&M",
         "team": "MIA",
@@ -90079,7 +90092,7 @@
         "years_exp": 1,
         "college": "UConn",
         "team": "NYJ",
-        "depth_chart_position": null,
+        "depth_chart_position": "LDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -90519,8 +90532,8 @@
         "age": 27,
         "years_exp": 2,
         "college": "Notre Dame",
-        "team": "NO",
-        "depth_chart_position": "K",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "K"
         ],
@@ -90844,7 +90857,7 @@
     },
     "5298": {
         "full_name": "Bradley Bozeman",
-        "age": 30,
+        "age": 31,
         "years_exp": 7,
         "college": "Alabama",
         "team": "LAC",
@@ -91534,7 +91547,7 @@
         "years_exp": 5,
         "college": "UCF",
         "team": "BUF",
-        "depth_chart_position": null,
+        "depth_chart_position": "SWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -92023,7 +92036,7 @@
     },
     "2449": {
         "full_name": "Stefon Diggs",
-        "age": 31,
+        "age": 32,
         "years_exp": 10,
         "college": "Maryland",
         "team": "NE",
@@ -93929,12 +93942,12 @@
         "years_exp": 5,
         "college": "Oklahoma State",
         "team": "MIA",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
         "position": "CB",
-        "number": 21
+        "number": 24
     },
     "4344": {
         "full_name": "C.J. Board",
@@ -94202,13 +94215,13 @@
         "age": 26,
         "years_exp": 3,
         "college": "Cincinnati",
-        "team": null,
+        "team": "MIN",
         "depth_chart_position": null,
         "fantasy_positions": [
             "QB"
         ],
         "position": "QB",
-        "number": 5
+        "number": 14
     },
     "448": {
         "full_name": "Josh Freeman",
@@ -96496,13 +96509,13 @@
         "age": 25,
         "years_exp": 0,
         "college": "Syracuse",
-        "team": null,
+        "team": "NYG",
         "depth_chart_position": null,
         "fantasy_positions": [
             "TE"
         ],
         "position": "TE",
-        "number": 45
+        "number": 49
     },
     "4365": {
         "full_name": "Darrin Laufasa",
@@ -96794,7 +96807,7 @@
         "years_exp": 3,
         "college": "Arizona State",
         "team": "MIA",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -97077,7 +97090,7 @@
     },
     "12497": {
         "full_name": "Tory Horton",
-        "age": 22,
+        "age": 23,
         "years_exp": 0,
         "college": "Colorado State",
         "team": "SEA",
@@ -98718,7 +98731,7 @@
     },
     "7571": {
         "full_name": "Rashod Bateman",
-        "age": 25,
+        "age": 26,
         "years_exp": 4,
         "college": "Minnesota",
         "team": "BAL",
@@ -100408,7 +100421,7 @@
     },
     "6950": {
         "full_name": "Braden Mann",
-        "age": 27,
+        "age": 28,
         "years_exp": 5,
         "college": "Texas A&M",
         "team": "PHI",
@@ -100588,7 +100601,7 @@
     },
     "12936": {
         "full_name": "Mason Miller",
-        "age": 23,
+        "age": 24,
         "years_exp": 0,
         "college": "North Dakota State",
         "team": "DET",
@@ -100942,7 +100955,7 @@
         "years_exp": 2,
         "college": "Iowa State",
         "team": "HOU",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -101217,7 +101230,7 @@
         "years_exp": 8,
         "college": "Michigan",
         "team": "IND",
-        "depth_chart_position": null,
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -101712,7 +101725,7 @@
         "age": 24,
         "years_exp": 1,
         "college": "Penn State",
-        "team": "PIT",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
@@ -101878,7 +101891,7 @@
     },
     "12663": {
         "full_name": "Drew Kendall",
-        "age": 23,
+        "age": 24,
         "years_exp": 0,
         "college": "Boston College",
         "team": "PHI",
@@ -102882,7 +102895,7 @@
         "years_exp": 4,
         "college": "Tennessee",
         "team": "BUF",
-        "depth_chart_position": "RWR",
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -103270,7 +103283,7 @@
         "years_exp": 1,
         "college": "Penn State",
         "team": "CAR",
-        "depth_chart_position": null,
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -103787,7 +103800,7 @@
     },
     "11747": {
         "full_name": "Jaylan Ford",
-        "age": 23,
+        "age": 24,
         "years_exp": 1,
         "college": "Texas",
         "team": "NO",
@@ -104181,7 +104194,7 @@
     },
     "8123": {
         "full_name": "Hassan Haskins",
-        "age": 25,
+        "age": 26,
         "years_exp": 3,
         "college": "Michigan",
         "team": "LAC",
@@ -104471,7 +104484,7 @@
         "age": 26,
         "years_exp": 3,
         "college": "Ole Miss",
-        "team": "PIT",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
@@ -104715,11 +104728,11 @@
     },
     "12607": {
         "full_name": "Jamon Johnson",
-        "age": 23,
+        "age": 24,
         "years_exp": 0,
         "college": "Kentucky",
         "team": "GB",
-        "depth_chart_position": "ROLB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
@@ -105490,7 +105503,7 @@
         "years_exp": 2,
         "college": "Louisville",
         "team": "ARI",
-        "depth_chart_position": "NB",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -107368,7 +107381,7 @@
         "years_exp": 1,
         "college": "Miami (FL)",
         "team": "LAR",
-        "depth_chart_position": "FS",
+        "depth_chart_position": "SS",
         "fantasy_positions": [
             "DB"
         ],
@@ -107702,7 +107715,7 @@
         "years_exp": 3,
         "college": "Rutgers",
         "team": "GB",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -107894,16 +107907,16 @@
     },
     "11006": {
         "full_name": "Ameer Speed",
-        "age": 25,
+        "age": 26,
         "years_exp": 2,
         "college": "Michigan State",
-        "team": null,
-        "depth_chart_position": null,
+        "team": "HOU",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
         "position": "CB",
-        "number": 27
+        "number": 37
     },
     "2395": {
         "full_name": "Carl Davis",
@@ -107963,7 +107976,7 @@
         "years_exp": 3,
         "college": "UCLA",
         "team": "LAC",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "DL",
         "fantasy_positions": [
             "DL"
         ],
@@ -108363,7 +108376,7 @@
     },
     "11815": {
         "full_name": "Cornelius Johnson",
-        "age": 24,
+        "age": 25,
         "years_exp": 1,
         "college": "Michigan",
         "team": "BAL",
@@ -109150,7 +109163,7 @@
         "years_exp": 2,
         "college": "San Diego State",
         "team": "BUF",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -110071,8 +110084,8 @@
         "age": 28,
         "years_exp": 6,
         "college": "Washington",
-        "team": null,
-        "depth_chart_position": null,
+        "team": "SEA",
+        "depth_chart_position": "RB",
         "fantasy_positions": [
             "RB"
         ],
@@ -110536,7 +110549,7 @@
         "years_exp": 0,
         "college": "Louisville",
         "team": "CAR",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "DB",
         "fantasy_positions": [
             "DB"
         ],
@@ -111266,7 +111279,7 @@
         "age": 26,
         "years_exp": 2,
         "college": "Auburn",
-        "team": "NO",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
@@ -111884,7 +111897,7 @@
         "years_exp": 7,
         "college": "Central Arkansas",
         "team": "IND",
-        "depth_chart_position": null,
+        "depth_chart_position": "FS",
         "fantasy_positions": [
             "DB"
         ],
@@ -112117,7 +112130,7 @@
         "years_exp": 1,
         "college": "Wisconsin",
         "team": "MIA",
-        "depth_chart_position": "TE",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "TE"
         ],
@@ -112404,13 +112417,13 @@
         "age": 26,
         "years_exp": 5,
         "college": "Florida State",
-        "team": "MIN",
-        "depth_chart_position": null,
+        "team": "SEA",
+        "depth_chart_position": "RB",
         "fantasy_positions": [
             "RB"
         ],
         "position": "RB",
-        "number": 31
+        "number": 30
     },
     "3493": {
         "full_name": "Darius Latham",
@@ -113174,7 +113187,7 @@
         "years_exp": 4,
         "college": "Buffalo",
         "team": "LAC",
-        "depth_chart_position": null,
+        "depth_chart_position": "RB",
         "fantasy_positions": [
             "RB"
         ],
@@ -113955,7 +113968,7 @@
         "age": 25,
         "years_exp": 0,
         "college": "Florida",
-        "team": "NYJ",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
@@ -114008,7 +114021,7 @@
         "years_exp": 3,
         "college": "UCLA",
         "team": "LAR",
-        "depth_chart_position": "NB",
+        "depth_chart_position": "DB",
         "fantasy_positions": [
             "DB"
         ],
@@ -114060,7 +114073,7 @@
         "years_exp": 6,
         "college": "Oregon",
         "team": "NO",
-        "depth_chart_position": "DB",
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -114855,7 +114868,7 @@
         "years_exp": 5,
         "college": "Northern Arizona",
         "team": "DET",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": "RCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -115193,7 +115206,7 @@
         "years_exp": 4,
         "college": "Houston",
         "team": "DET",
-        "depth_chart_position": "LB",
+        "depth_chart_position": "LOLB",
         "fantasy_positions": [
             "LB"
         ],
@@ -115904,7 +115917,7 @@
         "years_exp": 7,
         "college": "UTSA",
         "team": "DET",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "DL",
         "fantasy_positions": [
             "DL"
         ],
@@ -115956,7 +115969,7 @@
         "years_exp": 3,
         "college": "South Carolina",
         "team": "GB",
-        "depth_chart_position": "RDE",
+        "depth_chart_position": "LDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -116437,7 +116450,7 @@
         "years_exp": 2,
         "college": "Saginaw Valley State",
         "team": "DET",
-        "depth_chart_position": "LCB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -117591,7 +117604,7 @@
     },
     "8680": {
         "full_name": "Jack Gibbens",
-        "age": 26,
+        "age": 27,
         "years_exp": 3,
         "college": "Minnesota",
         "team": "NE",
@@ -118010,13 +118023,13 @@
         "age": 27,
         "years_exp": 3,
         "college": "Nebraska",
-        "team": null,
+        "team": "NO",
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
         "position": "WR",
-        "number": 81
+        "number": 89
     },
     "13122": {
         "full_name": "Carter Runyon",
@@ -118856,7 +118869,7 @@
         "years_exp": 0,
         "college": "Georgia",
         "team": "GB",
-        "depth_chart_position": "RDT",
+        "depth_chart_position": "LDT",
         "fantasy_positions": [
             "DL"
         ],
@@ -119789,8 +119802,8 @@
         "age": 23,
         "years_exp": 1,
         "college": "Stanford",
-        "team": "LAR",
-        "depth_chart_position": "K",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "K"
         ],
@@ -120704,7 +120717,7 @@
     },
     "12883": {
         "full_name": "Joshua Simon",
-        "age": 24,
+        "age": 25,
         "years_exp": 0,
         "college": "South Carolina",
         "team": "ATL",
@@ -121333,7 +121346,7 @@
         "years_exp": 0,
         "college": "Georgia",
         "team": "GB",
-        "depth_chart_position": "LDT",
+        "depth_chart_position": "RDT",
         "fantasy_positions": [
             "DL"
         ],
@@ -121708,7 +121721,7 @@
         "age": null,
         "years_exp": 0,
         "college": "Kentucky",
-        "team": null,
+        "team": "DEN",
         "depth_chart_position": null,
         "fantasy_positions": [
             "OT"
@@ -122754,7 +122767,7 @@
     },
     "8800": {
         "full_name": "Malik Davis",
-        "age": 26,
+        "age": 27,
         "years_exp": 3,
         "college": "Florida",
         "team": "DAL",
@@ -124012,13 +124025,13 @@
         "age": 24,
         "years_exp": 0,
         "college": "SMU",
-        "team": null,
+        "team": "NE",
         "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
         "position": "CB",
-        "number": 37
+        "number": 46
     },
     "3155": {
         "full_name": "Laquon Treadwell",
@@ -126724,7 +126737,7 @@
     },
     "12678": {
         "full_name": "Mac McWilliams",
-        "age": 23,
+        "age": 24,
         "years_exp": 0,
         "college": "UCF",
         "team": "PHI",
@@ -126750,7 +126763,7 @@
     },
     "6121": {
         "full_name": "Jawaan Taylor",
-        "age": 27,
+        "age": 28,
         "years_exp": 6,
         "college": "Florida",
         "team": "KC",
@@ -127102,7 +127115,7 @@
         "years_exp": 3,
         "college": "Buffalo",
         "team": "BUF",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -127297,7 +127310,7 @@
         "years_exp": 3,
         "college": "Kentucky",
         "team": "DET",
-        "depth_chart_position": "LDE",
+        "depth_chart_position": "DL",
         "fantasy_positions": [
             "DL"
         ],
@@ -127763,7 +127776,7 @@
         "years_exp": 8,
         "college": "Colorado",
         "team": "LAR",
-        "depth_chart_position": "DB",
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -128234,7 +128247,7 @@
         "years_exp": 0,
         "college": "UCF",
         "team": "NYJ",
-        "depth_chart_position": null,
+        "depth_chart_position": "OL",
         "fantasy_positions": [
             "OL"
         ],
@@ -128600,7 +128613,7 @@
         "years_exp": 6,
         "college": "North Texas",
         "team": "TEN",
-        "depth_chart_position": null,
+        "depth_chart_position": "NB",
         "fantasy_positions": [
             "DB"
         ],
@@ -128895,7 +128908,7 @@
     },
     "8343": {
         "full_name": "Boye Mafe",
-        "age": 26,
+        "age": 27,
         "years_exp": 3,
         "college": "Minnesota",
         "team": "SEA",
@@ -130120,8 +130133,8 @@
         "age": 34,
         "years_exp": 8,
         "college": "Assumption",
-        "team": null,
-        "depth_chart_position": null,
+        "team": "WAS",
+        "depth_chart_position": "LS",
         "fantasy_positions": [
             "LS"
         ],
@@ -130674,7 +130687,7 @@
     },
     "11993": {
         "full_name": "Tyrek Funderburk",
-        "age": 24,
+        "age": 25,
         "years_exp": 1,
         "college": "Appalachian State",
         "team": "MIN",
@@ -130743,7 +130756,7 @@
         "years_exp": 2,
         "college": "Southern Miss",
         "team": "ATL",
-        "depth_chart_position": "DB",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -131808,7 +131821,7 @@
         "years_exp": 0,
         "college": "Oklahoma State",
         "team": "LAR",
-        "depth_chart_position": "LWR",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
         ],
@@ -133177,7 +133190,7 @@
         "years_exp": 1,
         "college": "Utah",
         "team": "NE",
-        "depth_chart_position": null,
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -135155,7 +135168,7 @@
         "age": 25,
         "years_exp": 1,
         "college": "Samford",
-        "team": null,
+        "team": "CHI",
         "depth_chart_position": null,
         "fantasy_positions": [
             "WR"
@@ -136334,7 +136347,7 @@
         "years_exp": 6,
         "college": "Bryant",
         "team": "DET",
-        "depth_chart_position": null,
+        "depth_chart_position": "RWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -137534,14 +137547,14 @@
         "age": 28,
         "years_exp": 6,
         "college": "Middle Tennessee",
-        "team": null,
+        "team": "TEN",
         "depth_chart_position": null,
         "fantasy_positions": [
             "OG",
             "OL"
         ],
         "position": "OL",
-        "number": 67
+        "number": 66
     },
     "744": {
         "full_name": "Mike Windt",
@@ -138055,7 +138068,7 @@
         "years_exp": 7,
         "college": "Wake Forest",
         "team": "MIN",
-        "depth_chart_position": null,
+        "depth_chart_position": "QB",
         "fantasy_positions": [
             "QB"
         ],
@@ -138264,7 +138277,7 @@
         "years_exp": 0,
         "college": "Colorado",
         "team": "GB",
-        "depth_chart_position": null,
+        "depth_chart_position": "LWR",
         "fantasy_positions": [
             "WR"
         ],
@@ -138446,7 +138459,7 @@
         "years_exp": 2,
         "college": "North Carolina State",
         "team": "LAR",
-        "depth_chart_position": "SS",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DB"
         ],
@@ -141690,7 +141703,7 @@
         "years_exp": 2,
         "college": "Purdue",
         "team": "SF",
-        "depth_chart_position": null,
+        "depth_chart_position": "LOLB",
         "fantasy_positions": [
             "DB"
         ],
@@ -142131,7 +142144,7 @@
         "years_exp": 1,
         "college": "Marshall",
         "team": "LAR",
-        "depth_chart_position": "RILB",
+        "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
         ],
@@ -143763,7 +143776,7 @@
         "years_exp": 2,
         "college": "Iowa",
         "team": "GB",
-        "depth_chart_position": "LDE",
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -144143,7 +144156,7 @@
         "years_exp": 0,
         "college": null,
         "team": "WAS",
-        "depth_chart_position": null,
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -144963,7 +144976,7 @@
         "years_exp": 0,
         "college": "Houston",
         "team": "HOU",
-        "depth_chart_position": "RCB",
+        "depth_chart_position": "LCB",
         "fantasy_positions": [
             "DB"
         ],
@@ -145406,7 +145419,7 @@
         "years_exp": 0,
         "college": "Hawai'i",
         "team": "PHI",
-        "depth_chart_position": null,
+        "depth_chart_position": "OL",
         "fantasy_positions": null,
         "position": "T",
         "number": 72
@@ -145997,7 +146010,7 @@
         "years_exp": 4,
         "college": "North Carolina State",
         "team": "DET",
-        "depth_chart_position": "RDT",
+        "depth_chart_position": "RDE",
         "fantasy_positions": [
             "DL"
         ],
@@ -146270,7 +146283,7 @@
         "age": null,
         "years_exp": 0,
         "college": "Mississippi State",
-        "team": "SF",
+        "team": null,
         "depth_chart_position": null,
         "fantasy_positions": [
             "LB"
@@ -146426,8 +146439,8 @@
         "age": 25,
         "years_exp": 1,
         "college": "Clemson",
-        "team": "ARI",
-        "depth_chart_position": "ROLB",
+        "team": null,
+        "depth_chart_position": null,
         "fantasy_positions": [
             "DL"
         ],
@@ -147998,5 +148011,15 @@
         "position": null,
         "number": 0
     },
-    "Last_Updated": "2025-11-22"
+    "Last_Updated": "2025-11-29",
+    "SD": {
+        "full_name": "Los Angeles Chargers",
+        "team": "SD",
+        "position": "DEF"
+    },
+    "OAK": {
+        "full_name": "Las Vegas Raiders",
+        "team": "OAK",
+        "position": "DEF"
+    }
 }

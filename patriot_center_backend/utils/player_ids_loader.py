@@ -19,8 +19,11 @@ from datetime import datetime, timedelta
 import os
 from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
 
-# Path to the player_ids.json file in the data directory
-PLAYER_IDS_FILE = "patriot_center_backend/data/player_ids.json"
+# Path to the player_ids.json file in the data directory (absolute path based on repository root)
+_UTILS_DIR = os.path.dirname(os.path.abspath(__file__))
+_BACKEND_DIR = os.path.dirname(_UTILS_DIR)
+_REPO_ROOT = os.path.dirname(_BACKEND_DIR)
+PLAYER_IDS_FILE = os.path.join(_REPO_ROOT, "patriot_center_backend", "data", "player_ids.json")
 
 # Fields to keep from Sleeper's player payload; reduces storage and surface area
 FIELDS_TO_KEEP = [

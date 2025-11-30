@@ -279,12 +279,16 @@ class TestGetThreeYrAvg:
         result = _get_three_yr_avg(2022, 1, cache)
 
         # For bye count 0, average across all week 1s with 0 byes from 2019-2022
-        # QB: (15 + 17 + 16 + 18) / 4 = 16.5
-        # RB: (8 + 8.5 + 9 + 10) / 4 = 8.875
+        # QB: (17 + 16 + 18) / 3
+        # RB: (8.5 + 9 + 10) / 3
+        qb_expected_avg = (17.0 + 16.0 + 18.0) / 3
+        rb_expected_avg = (8.5 + 9.0 + 10.0) / 3
+
+
         assert "QB_3yr_avg" in result
         assert "RB_3yr_avg" in result
-        assert result["QB_3yr_avg"] == pytest.approx(16.5)
-        assert result["RB_3yr_avg"] == pytest.approx(8.875)
+        assert result["QB_3yr_avg"] == pytest.approx(qb_expected_avg)
+        assert result["RB_3yr_avg"] == pytest.approx(rb_expected_avg)
 
     @patch('patriot_center_backend.utils.replacement_score_loader.LEAGUE_IDS', {2022: "id1"})
     def test_enforces_monotonicity_backward_pass(self):
@@ -344,13 +348,13 @@ class TestGetThreeYrAvg:
         result = _get_three_yr_avg(2022, 5, cache)
 
         # Should aggregate from:
-        # 2019: weeks 5-17 (13 weeks)
+        # 2019: weeks 6-17 (12 weeks)
         # 2020: weeks 1-17 (17 weeks)
         # 2021: weeks 1-18 (18 weeks)
         # 2022: weeks 1-5 (5 weeks)
-        # Total: 13 + 17 + 18 + 5 = 53 weeks
-        # Average: (15*13 + 16*17 + 17*18 + 18*5) / 53
-        expected_avg = (15*13 + 16*17 + 17*18 + 18*5) / 53
+        # Total: 12 + 17 + 18 + 5 = 52 weeks
+        # Average: (15*12 + 16*17 + 17*18 + 18*5) / 52
+        expected_avg = (15*12 + 16*17 + 17*18 + 18*5) / 52
         assert result["QB_3yr_avg"] == pytest.approx(expected_avg)
 
     @patch('patriot_center_backend.utils.replacement_score_loader.LEAGUE_IDS', {2022: "id1"})
@@ -381,9 +385,11 @@ class TestGetThreeYrAvg:
         # Plus new 3yr avg fields should be added
         assert "QB_3yr_avg" in result
         assert "RB_3yr_avg" in result
-        # Verify 3yr avg calculated correctly: (15+16+17+18)/4 = 16.5, (8+9+10+11)/4 = 9.5
-        assert result["QB_3yr_avg"] == pytest.approx(16.5)
-        assert result["RB_3yr_avg"] == pytest.approx(9.5)
+        # Verify 3yr avg calculated correctly: (16+17+18)/3, (9+10+11)/3
+        qb_expected_avg = (16 + 17 + 18) / 3
+        rb_expected_avg = (9 + 10 + 11) / 3
+        assert result["QB_3yr_avg"] == pytest.approx(qb_expected_avg)
+        assert result["RB_3yr_avg"] == pytest.approx(rb_expected_avg)
 
 
 class TestLoadOrUpdateReplacementScoreCache:

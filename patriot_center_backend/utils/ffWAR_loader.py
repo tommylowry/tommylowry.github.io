@@ -16,6 +16,7 @@ Notes:
 - Weeks are capped at 14 (exclude playoff data).
 """
 
+import os
 from patriot_center_backend.utils.replacement_score_loader import load_or_update_replacement_score_cache
 from patriot_center_backend.utils.starters_loader import load_or_update_starters_cache
 from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
@@ -26,8 +27,11 @@ from patriot_center_backend.constants import LEAGUE_IDS
 # Be aware: these may perform network and disk I/O during import.
 REPLACEMENT_SCORES   = load_or_update_replacement_score_cache()
 PLAYER_DATA          = load_or_update_starters_cache()
-# File path for persisted ffWAR cache across runs.
-FFWAR_CACHE_FILE     = "patriot_center_backend/data/ffWAR_cache.json"
+# File path for persisted ffWAR cache across runs (absolute path based on repository root).
+_UTILS_DIR = os.path.dirname(os.path.abspath(__file__))
+_BACKEND_DIR = os.path.dirname(_UTILS_DIR)
+_REPO_ROOT = os.path.dirname(_BACKEND_DIR)
+FFWAR_CACHE_FILE     = os.path.join(_REPO_ROOT, "patriot_center_backend", "data", "ffWAR_cache.json")
 
 
 def load_or_update_ffWAR_cache():

@@ -13,13 +13,18 @@ Notes:
 - Importing this module triggers a cache warm-up by calling load_or_update_replacement_score_cache().
 """
 
+import os
 from patriot_center_backend.utils.sleeper_api_handler import fetch_sleeper_data
 from patriot_center_backend.constants import LEAGUE_IDS
 from patriot_center_backend.utils.player_ids_loader import load_player_ids
 from patriot_center_backend.utils.cache_utils import load_cache, save_cache, get_current_season_and_week
 
 # Constants
-REPLACEMENT_SCORE_FILE = "patriot_center_backend/data/replacement_score_cache.json"
+# Construct absolute path to cache file based on repository root
+_UTILS_DIR = os.path.dirname(os.path.abspath(__file__))
+_BACKEND_DIR = os.path.dirname(_UTILS_DIR)
+_REPO_ROOT = os.path.dirname(_BACKEND_DIR)
+REPLACEMENT_SCORE_FILE = os.path.join(_REPO_ROOT, "patriot_center_backend", "data", "replacement_score_cache.json")
 PLAYER_IDS = load_player_ids()
 
 
@@ -283,6 +288,10 @@ def _get_three_yr_avg(season, week, cache):
         for w in weeks:
             # Skip if the data for the past year or week is missing
             if str(past_year) not in cache or str(w) not in cache[str(past_year)]:
+                continue
+
+            if w == week and past_year == season - 3:
+                # Skip the current week of the season three years ago as this week makes it 3 years
                 continue
 
             # Get the number of byes for the past week
