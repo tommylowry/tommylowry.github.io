@@ -35,17 +35,28 @@ Patriot Center tracks 16 managers in a multi-year fantasy football league and pr
 
 ```
 .
-├── public/              # Static assets and HTML
-├── src/                 # React frontend source
-│   ├── components/      # React components
-│   ├── App.js          # Main application component
-│   └── index.js        # Application entry point
-├── api/                 # Python Flask backend
-│   ├── app.py          # Main Flask application
-│   ├── cache/          # JSON data caches
-│   └── requirements.txt
-├── fly.toml            # Fly.io deployment config
-└── Dockerfile          # Backend container config
+├── patriot_center_frontend/    # React frontend
+│   ├── src/                    # React source code
+│   │   ├── components/         # Reusable components
+│   │   ├── pages/             # Page components
+│   │   ├── hooks/             # Custom React hooks
+│   │   ├── services/          # API service layer
+│   │   └── App.js             # Main application
+│   ├── public/                # Static assets
+│   ├── build/                 # Production build output
+│   └── package.json           # Frontend dependencies
+│
+├── patriot_center_backend/    # Python Flask backend
+│   ├── app.py                 # Main Flask application
+│   ├── services/              # Business logic services
+│   ├── utils/                 # Utility functions
+│   ├── data/                  # JSON data caches
+│   ├── tests/                 # Unit tests
+│   └── constants.py           # Configuration constants
+│
+├── Dockerfile                 # Docker configuration
+├── fly.toml                   # Fly.io deployment config
+└── requirements.txt           # Backend dependencies
 ```
 
 ## API Endpoints
@@ -62,6 +73,8 @@ Patriot Center tracks 16 managers in a multi-year fantasy football league and pr
 ### Frontend
 
 ```bash
+cd patriot_center_frontend
+
 # Install dependencies
 npm install
 
@@ -75,17 +88,15 @@ npm run build
 ### Backend
 
 ```bash
-cd api
-
-# Create virtual environment
+# Create virtual environment (from project root)
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run development server
-python app.py
+# Run development server (from project root)
+python -m patriot_center_backend.app
 ```
 
 ## Deployment
@@ -107,7 +118,7 @@ fly deploy
 ## Testing
 
 ```bash
-cd api
+# Run from project root
 pytest
 pytest --cov  # Run with coverage
 ```
