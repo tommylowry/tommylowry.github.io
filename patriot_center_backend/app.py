@@ -6,10 +6,10 @@ from patriot_center_backend.services.aggregated_data import fetch_aggregated_pla
 
 app = Flask(__name__)
 CORS(app, resources={
-    r"/get_aggregated_players*": {"origins": "https://tommylowry.github.io"},
-    r"/meta/options": {"origins": "https://tommylowry.github.io"},
-    r"/get_starters*": {"origins": "https://tommylowry.github.io"},
-    r"/get_aggregated_managers*": {"origins": "https://tommylowry.github.io"}
+    r"/get_aggregated_players*": {"origins": ["https://tommylowry.github.io", "https://patriotcenter.netlify.app"]},
+    r"/meta/options": {"origins": ["https://tommylowry.github.io", "https://patriotcenter.netlify.app"]},
+    r"/get_starters*": {"origins": ["https://tommylowry.github.io", "https://patriotcenter.netlify.app"]},
+    r"/get_aggregated_managers*": {"origins": ["https://tommylowry.github.io", "https://patriotcenter.netlify.app"]}
 })
 CORS(app)  # Enable CORS for all routes during development
 
