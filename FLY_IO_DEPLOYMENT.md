@@ -242,7 +242,47 @@ flyctl deploy
 
 ---
 
-## Part 9: Monitoring & Management
+## Part 9: Auto-Deploy with GitHub Actions
+
+### Step 13: Set Up Automatic Deployments
+
+Your repo already has a GitHub Actions workflow ([.github/workflows/fly-deploy.yml](.github/workflows/fly-deploy.yml)) that will automatically deploy to Fly.io when you push to main!
+
+You just need to add your Fly.io API token as a GitHub secret:
+
+**1. Get your Fly.io API token:**
+```bash
+flyctl auth token
+```
+
+Copy the token that's printed.
+
+**2. Add it to GitHub:**
+1. Go to your GitHub repo: `https://github.com/YOUR_USERNAME/tommylowry.github.io`
+2. Click **Settings** → **Secrets and variables** → **Actions**
+3. Click **New repository secret**
+4. Name: `FLY_API_TOKEN`
+5. Value: Paste the token from step 1
+6. Click **Add secret**
+
+**3. Test it:**
+```bash
+# Make a small change
+echo "# Test" >> README.md
+
+# Commit and push
+git add README.md
+git commit -m "Test auto-deploy"
+git push origin main
+```
+
+Go to your repo's **Actions** tab on GitHub and watch the deployment happen automatically! 🎉
+
+Now every time you push to `main`, your API will auto-deploy to Fly.io.
+
+---
+
+## Part 10: Monitoring & Management
 
 ### Useful Commands
 
@@ -287,7 +327,7 @@ This opens a web dashboard with:
 
 ---
 
-## Part 10: Troubleshooting
+## Part 11: Troubleshooting
 
 ### App Won't Start
 

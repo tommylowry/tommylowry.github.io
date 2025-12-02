@@ -1,4 +1,4 @@
-const DEFAULT_BASE = 'https://academic-lauren-tommys-code-for-fun-d5473d9d.koyeb.app';
+const DEFAULT_BASE = 'https://patriot-center-api.fly.dev';
 const rawBase = process.env.REACT_APP_API_BASE;
 const DEV_FALLBACK = 'http://localhost:8080';
 
