@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+.github
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Testing
+.pytest_cache
+.coverage
+htmlcov/
+coverage.xml
+*.cover
+
+# IDEs
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend
+patriot_center_frontend/
+node_modules/
+
+# Deployment files for other platforms
+deploy/
+
+# Documentation
+*.md
+!README.md
+
+# Other
+.env
+*.log
