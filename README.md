@@ -19,7 +19,7 @@ Patriot Center tracks 16 managers in a multi-year fantasy football league and pr
 
 ### Frontend
 - React 19.2.0 with React Router
-- Deployed on GitHub Pages
+- Deployed on Netlify
 - Built with react-scripts
 
 ### Backend
@@ -101,19 +101,15 @@ python -m patriot_center_backend.app
 
 ## Deployment
 
-### Frontend (GitHub Pages)
-The frontend is automatically deployed to GitHub Pages at [tommylowry.github.io](https://tommylowry.github.io)
+### Frontend (Netlify)
+The frontend is automatically deployed to Netlify at [patriotcenter.netlify.app](https://patriotcenter.netlify.app)
 
-```bash
-npm run deploy
-```
+Deployment is triggered automatically on push to `main` branch via Netlify's GitHub integration.
 
 ### Backend (Fly.io)
 The backend API is deployed on Fly.io at `patriot-center-api.fly.dev`
 
-```bash
-fly deploy
-```
+Deployment is triggered automatically on push to `main` branch via GitHub Actions.
 
 ## Testing
 
