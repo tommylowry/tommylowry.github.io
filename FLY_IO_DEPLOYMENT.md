@@ -91,7 +91,7 @@ I've already created these files for you:
 ### Step 4: Commit These Files
 
 ```bash
-cd ~/Documents/tommylowry.github.io
+cd ~/Documents/patriot-center
 
 # Add new files
 git add Dockerfile fly.toml .dockerignore FLY_IO_DEPLOYMENT.md
@@ -111,7 +111,7 @@ git push origin main
 
 From your project directory:
 ```bash
-cd ~/Documents/tommylowry.github.io
+cd ~/Documents/patriot-center
 
 # Launch app (this deploys it!)
 flyctl launch
@@ -258,7 +258,7 @@ flyctl auth token
 Copy the token that's printed.
 
 **2. Add it to GitHub:**
-1. Go to your GitHub repo: `https://github.com/YOUR_USERNAME/tommylowry.github.io`
+1. Go to your GitHub repo: `https://github.com/YOUR_USERNAME/patriot-center`
 2. Click **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Name: `FLY_API_TOKEN`
