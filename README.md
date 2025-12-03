@@ -24,8 +24,8 @@ Patriot Center tracks 16 managers in a multi-year fantasy football league and pr
 
 ### Backend
 - Python Flask with CORS support
-- Gunicorn WSGI server
-- Deployed on Fly.io
+- Gunicorn WSGI server with nginx reverse proxy
+- Deployed on Oracle Cloud Infrastructure (Always Free Tier)
 
 ### Data Sources
 - Sleeper API for real-time fantasy football data
@@ -54,8 +54,12 @@ Patriot Center tracks 16 managers in a multi-year fantasy football league and pr
 │   ├── tests/                 # Unit tests
 │   └── constants.py           # Configuration constants
 │
+├── deployment/                # Deployment scripts and guides
+│   ├── oracle_deploy.sh       # Oracle Cloud setup script
+│   ├── upload_to_oracle.sh    # File upload helper
+│   ├── ORACLE_DEPLOYMENT_GUIDE.md  # Deployment docs
+│   └── GITHUB_SECRETS_SETUP.md     # GitHub Actions setup
 ├── Dockerfile                 # Docker configuration
-├── fly.toml                   # Fly.io deployment config
 └── requirements.txt           # Backend dependencies
 ```
 
@@ -106,10 +110,25 @@ The frontend is automatically deployed to Netlify at [patriotcenter.netlify.app]
 
 Deployment is triggered automatically on push to `main` branch via Netlify's GitHub integration.
 
-### Backend (Fly.io)
-The backend API is deployed on Fly.io at `patriot-center-api.fly.dev`
+### Backend (Oracle Cloud)
+The backend API is deployed on Oracle Cloud Infrastructure's Always Free Tier.
 
-Deployment is triggered automatically on push to `main` branch via GitHub Actions.
+**Initial Setup:**
+See [deployment/ORACLE_DEPLOYMENT_GUIDE.md](deployment/ORACLE_DEPLOYMENT_GUIDE.md) for complete deployment instructions.
+
+**Auto-Deployment:**
+Pushes to `main` branch automatically deploy the backend via GitHub Actions, which:
+- SSHs into the Oracle Cloud instance
+- Pulls the latest code
+- Restarts the backend service
+
+**Manual Deployment:**
+```bash
+ssh ubuntu@<oracle-ip>
+cd /opt/patriot-center
+git pull
+sudo systemctl restart patriot-center
+```
 
 ## Testing
 

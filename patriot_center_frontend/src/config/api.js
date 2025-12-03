@@ -1,4 +1,4 @@
-const DEFAULT_BASE = 'https://patriot-center-api.fly.dev';
+const DEFAULT_BASE = 'http://129.80.188.14';
 const rawBase = process.env.REACT_APP_API_BASE;
 const DEV_FALLBACK = 'http://localhost:8080';
 
