@@ -143,8 +143,7 @@ class TestGetRelevantPlayoffRosterIds:
         from patriot_center_backend.utils.starters_loader import _get_relevant_playoff_roster_ids
 
         # Week 17 in 2019 maps to round 4 which explicitly raises error
-        playoff_bracket = []
-        mock_fetch.return_value = (playoff_bracket, 200)
+        mock_fetch.return_value = ([], 200)
 
         with pytest.raises(ValueError, match="Cannot get playoff roster IDs for week 17"):
             _get_relevant_playoff_roster_ids(2019, 17, "league_123")
