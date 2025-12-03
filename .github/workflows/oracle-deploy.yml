@@ -1,0 +1,32 @@
+name: Deploy to Oracle Cloud
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'patriot_center_backend/**'
+      - 'requirements.txt'
+      - '.github/workflows/oracle-deploy.yml'
+
+jobs:
+  deploy:
+    name: Deploy Backend to Oracle Cloud
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 129.80.188.14
+          username: ubuntu
+          key: ${{ secrets.ORACLE_SSH_KEY }}
+          script: |
+            cd /opt/patriot-center
+            git pull origin main
+            source venv/bin/activate
+            pip install -r requirements.txt
+            sudo systemctl restart patriot-center
+            sudo systemctl status patriot-center --no-pager
+            echo "✅ Deployment complete!"
