@@ -23,10 +23,21 @@ jobs:
           username: ubuntu
           key: ${{ secrets.ORACLE_SSH_KEY }}
           script: |
+            set -e  # Exit immediately if any command fails
+
+            echo "📦 Pulling latest code from GitHub..."
             cd /opt/patriot-center
             git pull origin main
+
+            echo "📚 Installing dependencies..."
             source venv/bin/activate
             pip install -r requirements.txt
+
+            echo "🔄 Restarting backend service..."
             sudo systemctl restart patriot-center
+
+            echo "✅ Verifying service is running..."
+            sudo systemctl is-active --quiet patriot-center || exit 1
             sudo systemctl status patriot-center --no-pager
+
             echo "✅ Deployment complete!"
