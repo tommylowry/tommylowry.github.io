@@ -179,7 +179,7 @@ export default function PlayerPage() {
                             fontSize: '1.1rem',
                             fontWeight: 500
                         }}>
-                            {managers[0].position}
+                            {managers[0].position}{managers[0].team ? ` • ${managers[0].team}` : ''}
                         </p>
                     )}
                 </div>
@@ -286,31 +286,120 @@ export default function PlayerPage() {
                     ← Back
                 </Link>
             </p>
-            <div style={{ display: 'inline-flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '0.75rem', justifyContent: 'center' }}>
-                <label>
-                    Year:{' '}
-                    <select
-                        value={year ?? ''}
-                        disabled={optionsLoading || optionsError}
-                        onChange={e => setYear(e.target.value || null)}
-                    >
-                        <option value="">ALL</option>
-                        {years.map(y => <option key={y} value={y}>{y}</option>)}
-                    </select>
-                </label>
-                <label>
-                    Week:{' '}
-                    <select
-                        value={week ?? ''}
-                        disabled={optionsLoading || optionsError || year == null}
-                        onChange={e => setWeek(e.target.value ? Number(e.target.value) : null)}
-                    >
-                        <option value="">ALL</option>
-                        {(year && Array.isArray(weeksByYear[year]) ? weeksByYear[year] : []).map(w => (
-                            <option key={w} value={w}>{w}</option>
+
+            {/* Radio button filters */}
+            <div style={{ marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem' }}>
+                {/* Season Filter */}
+                <section style={{ marginBottom: '1rem' }}>
+                    <strong style={{ display: 'block', marginBottom: '0.5rem' }}>Season</strong>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>
+                        <label
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 4,
+                                background: year === null ? 'var(--accent)' : 'var(--bg-alt)',
+                                padding: '6px 12px',
+                                borderRadius: 4,
+                                cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer',
+                                fontSize: 14,
+                                opacity: optionsLoading || optionsError ? 0.5 : 1
+                            }}
+                        >
+                            <input
+                                type="radio"
+                                name="year"
+                                checked={year === null}
+                                onChange={() => setYear(null)}
+                                disabled={optionsLoading || optionsError}
+                                style={{ cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer' }}
+                            />
+                            ALL
+                        </label>
+                        {years.map(y => (
+                            <label
+                                key={y}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 4,
+                                    background: year === y ? 'var(--accent)' : 'var(--bg-alt)',
+                                    padding: '6px 12px',
+                                    borderRadius: 4,
+                                    cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer',
+                                    fontSize: 14,
+                                    opacity: optionsLoading || optionsError ? 0.5 : 1
+                                }}
+                            >
+                                <input
+                                    type="radio"
+                                    name="year"
+                                    checked={year === y}
+                                    onChange={() => setYear(y)}
+                                    disabled={optionsLoading || optionsError}
+                                    style={{ cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer' }}
+                                />
+                                {y}
+                            </label>
                         ))}
-                    </select>
-                </label>
+                    </div>
+                </section>
+
+                {/* Week Filter */}
+                <section>
+                    <strong style={{ display: 'block', marginBottom: '0.5rem' }}>Week</strong>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center' }}>
+                        <label
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 4,
+                                background: week === null ? 'var(--accent)' : 'var(--bg-alt)',
+                                padding: '6px 12px',
+                                borderRadius: 4,
+                                cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer',
+                                fontSize: 14,
+                                opacity: optionsLoading || optionsError ? 0.5 : 1
+                            }}
+                        >
+                            <input
+                                type="radio"
+                                name="week"
+                                checked={week === null}
+                                onChange={() => setWeek(null)}
+                                disabled={optionsLoading || optionsError}
+                                style={{ cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer' }}
+                            />
+                            ALL
+                        </label>
+                        {(year && Array.isArray(weeksByYear[year]) ? weeksByYear[year] : []).map(w => (
+                            <label
+                                key={w}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 4,
+                                    background: week === w ? 'var(--accent)' : 'var(--bg-alt)',
+                                    padding: '6px 12px',
+                                    borderRadius: 4,
+                                    cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer',
+                                    fontSize: 14,
+                                    opacity: optionsLoading || optionsError ? 0.5 : 1
+                                }}
+                            >
+                                <input
+                                    type="radio"
+                                    name="week"
+                                    checked={week === w}
+                                    onChange={() => setWeek(w)}
+                                    disabled={optionsLoading || optionsError}
+                                    style={{ cursor: optionsLoading || optionsError ? 'not-allowed' : 'pointer' }}
+                                />
+                                {w}
+                            </label>
+                        ))}
+                    </div>
+                </section>
             </div>
 
             {loading && <p>Loading manager breakdown...</p>}
@@ -354,8 +443,9 @@ export default function PlayerPage() {
                                                         {m.placements[1].map((year, idx) => (
                                                             <span
                                                                 key={`1-${idx}`}
+                                                                className="ribbon-tooltip"
+                                                                data-tooltip={`${year}`}
                                                                 style={{ fontSize: '1.2rem', cursor: 'pointer' }}
-                                                                title={`1st Place: ${year}`}
                                                             >
                                                                 🥇
                                                             </span>
@@ -364,8 +454,9 @@ export default function PlayerPage() {
                                                         {m.placements[2].map((year, idx) => (
                                                             <span
                                                                 key={`2-${idx}`}
+                                                                className="ribbon-tooltip"
+                                                                data-tooltip={`${year}`}
                                                                 style={{ fontSize: '1.2rem', cursor: 'pointer' }}
-                                                                title={`2nd Place: ${year}`}
                                                             >
                                                                 🥈
                                                             </span>
@@ -374,8 +465,9 @@ export default function PlayerPage() {
                                                         {m.placements[3].map((year, idx) => (
                                                             <span
                                                                 key={`3-${idx}`}
+                                                                className="ribbon-tooltip"
+                                                                data-tooltip={`${year}`}
                                                                 style={{ fontSize: '1.2rem', cursor: 'pointer' }}
-                                                                title={`3rd Place: ${year}`}
                                                             >
                                                                 🥉
                                                             </span>

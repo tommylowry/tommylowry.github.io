@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchOptions } from '../services/options';
 
-export function FilterDropdown({ value, onChange, loadingExternal }) {
+export function FilterDropdown({ value, onChange, loadingExternal, positionFilter, onPositionChange }) {
   // value shape: { year: number|null, week: number|null, manager: string|null }
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState({ seasons: [], weeks: [], managers: [] });
@@ -10,6 +10,7 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
 
   // local draft selections
   const [draft, setDraft] = useState(value);
+  const [draftPosition, setDraftPosition] = useState(positionFilter);
 
   useEffect(() => {
     setLoading(true);
@@ -21,20 +22,15 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
 
   const toggleOpen = () => setOpen(o => !o);
 
-  const selectSingle = (category, val) => {
-    setDraft(d => ({
-      ...d,
-      [category]: d[category] === val ? null : val // click again to unset -> ALL
-    }));
-  };
-
   const apply = () => {
     onChange(draft); // commit selections
+    onPositionChange(draftPosition); // commit position selection
     setOpen(false);
   };
 
   const resetAll = () => {
     setDraft({ year: null, week: null, manager: null });
+    setDraftPosition('ALL');
   };
 
   return (
@@ -43,15 +39,18 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
         type="button"
         onClick={toggleOpen}
         style={{
-          background: 'var(--accent)',
-          color: '#fff',
-            border: 'none',
-            padding: '8px 14px',
-            borderRadius: 6,
-            cursor: 'pointer',
-            fontWeight: 500
+          background: 'var(--bg-alt)',
+          color: 'var(--text)',
+          border: '1px solid var(--border)',
+          padding: '8px 14px',
+          borderRadius: 6,
+          cursor: 'pointer',
+          fontWeight: 500,
+          transition: 'all 0.2s'
         }}
         disabled={loadingExternal}
+        onMouseEnter={(e) => e.target.style.borderColor = 'var(--accent)'}
+        onMouseLeave={(e) => e.target.style.borderColor = 'var(--border)'}
       >
         Filters {open ? '▲' : '▼'}
       </button>
@@ -76,8 +75,29 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
           {!loading && !error && (
             <>
               <section style={{ marginBottom: 10 }}>
-                <strong>Season (one or ALL)</strong>
+                <strong>Season</strong>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 6 }}>
+                  <label
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 4,
+                      background: draft.year === null ? 'var(--accent)' : 'var(--bg)',
+                      padding: '4px 8px',
+                      borderRadius: 4,
+                      cursor: 'pointer',
+                      fontSize: 12
+                    }}
+                  >
+                    <input
+                      type="radio"
+                      name="year"
+                      checked={draft.year === null}
+                      onChange={() => setDraft(d => ({ ...d, year: null }))}
+                      style={{ cursor: 'pointer' }}
+                    />
+                    ALL
+                  </label>
                   {options.seasons.map(season => (
                     <label
                       key={season}
@@ -93,20 +113,27 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
                       }}
                     >
                       <input
-                        type="checkbox"
+                        type="radio"
+                        name="year"
                         checked={draft.year === season}
-                        onChange={() => selectSingle('year', season)}
+                        onChange={() => setDraft(d => ({ ...d, year: season }))}
                         style={{ cursor: 'pointer' }}
                       />
                       {season}
                     </label>
                   ))}
+                </div>
+              </section>
+
+              <section style={{ marginBottom: 10 }}>
+                <strong>Week</strong>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 6 }}>
                   <label
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       gap: 4,
-                      background: draft.year === null ? 'var(--accent)' : 'var(--bg)',
+                      background: draft.week === null ? 'var(--accent)' : 'var(--bg)',
                       padding: '4px 8px',
                       borderRadius: 4,
                       cursor: 'pointer',
@@ -114,49 +141,22 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
                     }}
                   >
                     <input
-                      type="checkbox"
-                      checked={draft.year === null}
-                      onChange={() => selectSingle('year', null)}
+                      type="radio"
+                      name="week"
+                      checked={draft.week === null}
+                      onChange={() => setDraft(d => ({ ...d, week: null }))}
                       style={{ cursor: 'pointer' }}
                     />
                     ALL
                   </label>
-                </div>
-              </section>
-
-              <section style={{ marginBottom: 10 }}>
-                <strong>Week (one or ALL)</strong>
-                <div style={{ maxHeight: 120, overflowY: 'auto', paddingRight: 4 }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 6 }}>
-                    {options.weeks.map(w => (
-                      <label
-                        key={w}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 4,
-                          background: draft.week === w ? 'var(--accent)' : 'var(--bg)',
-                          padding: '4px 8px',
-                          borderRadius: 4,
-                          cursor: 'pointer',
-                          fontSize: 12
-                        }}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={draft.week === w}
-                          onChange={() => selectSingle('week', w)}
-                          style={{ cursor: 'pointer' }}
-                        />
-                        {w}
-                      </label>
-                    ))}
+                  {options.weeks.map(w => (
                     <label
+                      key={w}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: 4,
-                        background: draft.week === null ? 'var(--accent)' : 'var(--bg)',
+                        background: draft.week === w ? 'var(--accent)' : 'var(--bg)',
                         padding: '4px 8px',
                         borderRadius: 4,
                         cursor: 'pointer',
@@ -164,20 +164,42 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
                       }}
                     >
                       <input
-                        type="checkbox"
-                        checked={draft.week === null}
-                        onChange={() => selectSingle('week', null)}
+                        type="radio"
+                        name="week"
+                        checked={draft.week === w}
+                        onChange={() => setDraft(d => ({ ...d, week: w }))}
                         style={{ cursor: 'pointer' }}
                       />
-                      ALL
+                      {w}
                     </label>
-                  </div>
+                  ))}
                 </div>
               </section>
 
               <section style={{ marginBottom: 10 }}>
-                <strong>Manager (one or ALL)</strong>
+                <strong>Manager</strong>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 6 }}>
+                  <label
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 4,
+                      background: draft.manager === null ? 'var(--accent)' : 'var(--bg)',
+                      padding: '4px 8px',
+                      borderRadius: 4,
+                      cursor: 'pointer',
+                      fontSize: 12
+                    }}
+                  >
+                    <input
+                      type="radio"
+                      name="manager"
+                      checked={draft.manager === null}
+                      onChange={() => setDraft(d => ({ ...d, manager: null }))}
+                      style={{ cursor: 'pointer' }}
+                    />
+                    ALL
+                  </label>
                   {options.managers.map(m => (
                     <label
                       key={m}
@@ -193,34 +215,45 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
                       }}
                     >
                       <input
-                        type="checkbox"
+                        type="radio"
+                        name="manager"
                         checked={draft.manager === m}
-                        onChange={() => selectSingle('manager', m)}
+                        onChange={() => setDraft(d => ({ ...d, manager: m }))}
                         style={{ cursor: 'pointer' }}
                       />
                       {m}
                     </label>
                   ))}
-                  <label
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 4,
-                      background: draft.manager === null ? 'var(--accent)' : 'var(--bg)',
-                      padding: '4px 8px',
-                      borderRadius: 4,
-                      cursor: 'pointer',
-                      fontSize: 12
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={draft.manager === null}
-                      onChange={() => selectSingle('manager', null)}
-                      style={{ cursor: 'pointer' }}
-                    />
-                    ALL
-                  </label>
+                </div>
+              </section>
+
+              <section style={{ marginBottom: 10 }}>
+                <strong>Position</strong>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 6 }}>
+                  {['ALL', 'QB', 'RB', 'WR', 'TE', 'DEF', 'K'].map(pos => (
+                    <label
+                      key={pos}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        background: draftPosition === pos ? 'var(--accent)' : 'var(--bg)',
+                        padding: '4px 8px',
+                        borderRadius: 4,
+                        cursor: 'pointer',
+                        fontSize: 12
+                      }}
+                    >
+                      <input
+                        type="radio"
+                        name="position"
+                        checked={draftPosition === pos}
+                        onChange={() => setDraftPosition(pos)}
+                        style={{ cursor: 'pointer' }}
+                      />
+                      {pos}
+                    </label>
+                  ))}
                 </div>
               </section>
 
@@ -261,9 +294,6 @@ export function FilterDropdown({ value, onChange, loadingExternal }) {
           )}
         </div>
       )}
-      <div style={{ marginTop: 6, fontSize: 12, color: 'var(--muted)' }}>
-        Path preview: {['year','week','manager'].map(k => value[k] ?? 'ALL').join(' / ')}
-      </div>
     </div>
   );
 }
