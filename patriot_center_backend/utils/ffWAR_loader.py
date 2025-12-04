@@ -116,15 +116,15 @@ def _get_max_weeks(season, current_season, current_week):
     """
     Max playable weeks per season:
         - Live season: current_week
-        - 2019/2020: 13
-        - Others: 14
+        - 2019/2020: 16
+        - Others: 17
     """
     if season == current_season:
         return current_week  # Use the current week for the current season
     elif season in [2019, 2020]:
-        return 13  # Cap at 13 weeks for 2019 and 2020
+        return 16  # Cap at 16 weeks for 2019 and 2020
     else:
-        return 14  # Cap at 14 weeks for other seasons
+        return 17  # Cap at 17 weeks for other seasons
 
 def _fetch_ffWAR(season, week):
     """
@@ -244,6 +244,10 @@ def _calculate_ffWAR_position(scores, season, week, position):
                 ffWAR_score = 0.0
             else:
                 ffWAR_score = round(num_wins / num_simulated_games, 3)
+
+                # Playoffs: scale down ffWAR by factor of 3 because 4 out of 12 teams play in a given week
+                if season <= 2020 and week >=14 or season >=2021 and week >=15:
+                    ffWAR_score = round (ffWAR_score / 3, 3)
 
             ffWAR_position[player] = {
                 'ffWAR': ffWAR_score,

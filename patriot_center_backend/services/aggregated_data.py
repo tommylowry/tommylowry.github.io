@@ -50,9 +50,9 @@ def fetch_aggregated_players(manager=None, season=None, week=None):
                     player_data['ffWAR'] = ffWAR_score
 
                     if player in players_dict_to_return:
-                        _update_player_data(players_dict_to_return, player, player_data)
+                        _update_player_data(players_dict_to_return, player, player_data, manager, year)
                     else:
-                        _initialize_player_data(players_dict_to_return, player, player_data)
+                        _initialize_player_data(players_dict_to_return, player, player_data, manager, year)
 
     return players_dict_to_return
 
@@ -81,9 +81,9 @@ def fetch_aggregated_managers(player, season=None, week=None):
                     raw_item['ffWAR'] = ffWAR_score
 
                     if manager in managers_dict_to_return:
-                        _update_manager_data(managers_dict_to_return, manager, raw_item)
+                        _update_manager_data(managers_dict_to_return, manager, raw_item, player, year)
                     else:
-                        _initialize_manager_data(managers_dict_to_return, manager, raw_item)
+                        _initialize_manager_data(managers_dict_to_return, manager, raw_item, player, year)
 
     return managers_dict_to_return
 
@@ -114,7 +114,7 @@ def fetch_ffWAR_for_player(player, season=None, week=None):
 
     return 0.0
 
-def _update_player_data(players_dict, player, player_data):
+def _update_player_data(players_dict, player, player_data, manager, year):
     """
     Increment aggregation totals for an existing player entry.
 
@@ -135,7 +135,13 @@ def _update_player_data(players_dict, player, player_data):
     )
     players_dict[player] = player_dict_item
 
-def _initialize_player_data(players_dict, player, player_data):
+    # Handle playoff placement if present
+    if "placement" in player_data:
+        players_dict = _handle_playoff_placement(players_dict, player, manager, year, player_data["placement"])
+    
+    return players_dict
+
+def _initialize_player_data(players_dict, player, player_data, manager, year):
     """
     Create initial aggregation record for a player.
     """
@@ -153,7 +159,13 @@ def _initialize_player_data(players_dict, player, player_data):
         "player_image_endpoint": player_image_endpoint
     }
 
-def _update_manager_data(managers_dict, manager, raw_item):
+    # Handle playoff placement if present
+    if "placement" in player_data:
+        players_dict = _handle_playoff_placement(players_dict, player, manager, year, player_data["placement"])
+    
+    return players_dict
+
+def _update_manager_data(managers_dict, manager, raw_item, player, year):
     """
     Increment aggregation totals for an existing manager entry.
 
@@ -174,7 +186,13 @@ def _update_manager_data(managers_dict, manager, raw_item):
     )
     managers_dict[manager] = manager_dict_item
 
-def _initialize_manager_data(managers_dict, manager, raw_item):
+    # Handle playoff placement if present
+    if "placement" in raw_item:
+        managers_dict = _handle_playoff_placement(managers_dict, manager, player, year, raw_item["placement"])
+    
+    return managers_dict
+
+def _initialize_manager_data(managers_dict, manager, raw_item, player, year):
     """
     Create initial aggregation record for a manager with a single player appearance.
     """
@@ -191,3 +209,26 @@ def _initialize_manager_data(managers_dict, manager, raw_item):
         "position": raw_item['position'],
         "player_image_endpoint": player_image_endpoint
     }
+
+    # Handle playoff placement if present
+    if "placement" in raw_item:
+        managers_dict = _handle_playoff_placement(managers_dict, manager, player, year, raw_item["placement"])
+    
+    return managers_dict
+
+def _handle_playoff_placement(aggregation_dict, primary_item, secondary_item, year, placement):
+    """
+    Update playoff placement info in aggregation dict.
+    """
+    if "playoff_placement" not in aggregation_dict[primary_item]:
+        aggregation_dict[primary_item]["playoff_placement"] = {
+            secondary_item: {
+                year: placement
+            }
+        }
+    elif secondary_item not in aggregation_dict[primary_item]["playoff_placement"]:
+        aggregation_dict[primary_item]["playoff_placement"][secondary_item] = {year: placement}
+    elif year not in aggregation_dict[primary_item]["playoff_placement"][secondary_item]:
+        aggregation_dict[primary_item]["playoff_placement"][secondary_item][year] = placement
+    
+    return aggregation_dict

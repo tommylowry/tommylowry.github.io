@@ -12,20 +12,20 @@ class TestGetMaxWeeks:
     def test_returns_current_week_for_current_season(self):
         """Test returns current_week for current season."""
         from patriot_center_backend.utils.ffWAR_loader import _get_max_weeks
-        assert _get_max_weeks(season=2024, current_season=2024, current_week=14) == 14
+        assert _get_max_weeks(season=2024, current_season=2024, current_week=17) == 17
         assert _get_max_weeks(season=2025, current_season=2025, current_week=8) == 8
 
-    def test_returns_14_for_past_seasons(self):
-        """Test returns 14 for completed past seasons."""
+    def test_returns_17_for_past_seasons(self):
+        """Test returns 17 for completed past seasons."""
         from patriot_center_backend.utils.ffWAR_loader import _get_max_weeks
-        assert _get_max_weeks(season=2023, current_season=2024, current_week=14) == 14
-        assert _get_max_weeks(season=2021, current_season=2024, current_week=14) == 14
+        assert _get_max_weeks(season=2023, current_season=2024, current_week=17) == 17
+        assert _get_max_weeks(season=2021, current_season=2024, current_week=17) == 17
 
-    def test_returns_13_for_2019_and_2020(self):
-        """Test returns 13 for 2019 and 2020 seasons (historical cap)."""
+    def test_returns_16_for_2019_and_2020(self):
+        """Test returns 16 for 2019 and 2020 seasons (historical cap)."""
         from patriot_center_backend.utils.ffWAR_loader import _get_max_weeks
-        assert _get_max_weeks(season=2019, current_season=2024, current_week=14) == 13
-        assert _get_max_weeks(season=2020, current_season=2024, current_week=14) == 13
+        assert _get_max_weeks(season=2019, current_season=2024, current_week=16) == 16
+        assert _get_max_weeks(season=2020, current_season=2024, current_week=16) == 16
 
 
 class TestCalculateFfwarPosition:
@@ -313,7 +313,7 @@ class TestLoadOrUpdateFfwarCache:
     @patch('patriot_center_backend.utils.ffWAR_loader.save_cache')
     @patch('patriot_center_backend.utils.ffWAR_loader._fetch_ffWAR')
     def test_complete_fill_when_cache_is_empty(self, mock_fetch, mock_save, mock_load, mock_current):
-        """Test that weeks are capped at 14."""
+        """Test that weeks are capped correctly per season."""
         from patriot_center_backend.utils.ffWAR_loader import load_or_update_ffWAR_cache
 
         mock_current.return_value = (2024, 12)
@@ -323,9 +323,9 @@ class TestLoadOrUpdateFfwarCache:
         load_or_update_ffWAR_cache()
 
         # Should process all weeks from 2019 to 2024 week 12
-        # Seasons: 2019 (13), 2020 (13), 2021 (14), 2022 (14), 2023 (14), 2024 (12)
-        # Total weeks = 13 + 13 + 14 + 14 + 14 + 12 = 80
-        assert mock_fetch.call_count <= 80
+        # Seasons: 2019 (16), 2020 (16), 2021 (17), 2022 (17), 2023 (17), 2024 (12)
+        # Total weeks = 16 + 16 + 17 + 17 + 17 + 12 = 95
+        assert mock_fetch.call_count == 95
 
     @patch('patriot_center_backend.utils.ffWAR_loader.get_current_season_and_week')
     @patch('patriot_center_backend.utils.ffWAR_loader.load_cache')
@@ -361,8 +361,189 @@ class TestLoadOrUpdateFfwarCache:
         load_or_update_ffWAR_cache()
 
         # Should process:
-        # - 2019: 13 weeks
-        # - 2020: 13 weeks
+        # - 2019: 16 weeks
+        # - 2020: 16 weeks
         # - 2021: 1 week
-        # Total: 13 + 13 + 1 = 27 calls
-        assert mock_fetch.call_count == 27
+        # Total: 16 + 16 + 1 = 33 calls
+        assert mock_fetch.call_count == 33
+
+
+class TestPlayoffScaling:
+    """Test playoff ffWAR scaling logic (division by 3 for 4-team playoffs)."""
+
+    def test_regular_season_no_scaling_2020(self):
+        """Test that regular season weeks (< week 14) are not scaled in 2020."""
+        from patriot_center_backend.utils.ffWAR_loader import _calculate_ffWAR_position
+
+        # Regular season week 13 in 2020 - should NOT be scaled
+        scores = {
+            "Tommy": {"total_points": 120.0, "players": {"Elite QB": 30.0}},
+            "Mike": {"total_points": 110.0, "players": {"Good QB": 25.0}},
+            "Cody": {"total_points": 100.0, "players": {"Bad QB": 10.0}},
+            "James": {"total_points": 105.0, "players": {"Average QB": 20.0}}
+        }
+
+        mock_replacement_data = {"2020": {"13": {"QB_3yr_avg": 20.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result = _calculate_ffWAR_position(scores, season=2020, week=13, position="QB")
+
+        # Elite QB should have positive ffWAR (no scaling)
+        assert result["Elite QB"]["ffWAR"] > 0
+        # Store for comparison
+        regular_season_ffwar = result["Elite QB"]["ffWAR"]
+
+        # Now test playoff week 14 in 2020 - should be scaled by /3
+        mock_replacement_data_playoff = {"2020": {"14": {"QB_3yr_avg": 20.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data_playoff):
+            playoff_result = _calculate_ffWAR_position(scores, season=2020, week=14, position="QB")
+
+        playoff_ffwar = playoff_result["Elite QB"]["ffWAR"]
+
+        # Playoff ffWAR should be approximately 1/3 of equivalent regular season
+        # (allowing for rounding differences)
+        assert abs(playoff_ffwar * 3 - regular_season_ffwar) < 0.01
+
+    def test_playoff_scaling_2020_week_14(self):
+        """Test playoffs start at week 14 for 2020 and earlier."""
+        from patriot_center_backend.utils.ffWAR_loader import _calculate_ffWAR_position
+
+        # 4 playoff teams
+        scores = {
+            "Seed1": {"total_points": 130.0, "players": {"Player1": 35.0}},
+            "Seed2": {"total_points": 125.0, "players": {"Player2": 30.0}},
+            "Seed3": {"total_points": 115.0, "players": {"Player3": 25.0}},
+            "Seed4": {"total_points": 110.0, "players": {"Player4": 20.0}}
+        }
+
+        mock_replacement_data = {"2020": {"14": {"QB_3yr_avg": 25.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result = _calculate_ffWAR_position(scores, season=2020, week=14, position="QB")
+
+        # Verify all players have results
+        assert len(result) == 4
+
+        # Player1 should have positive ffWAR (above replacement)
+        assert result["Player1"]["ffWAR"] > 0
+
+        # The ffWAR should be scaled (divided by 3)
+        # With 4 teams: 4 * 3 = 12 simulated games
+        # Raw ffWAR would be wins/12, scaled ffWAR is (wins/12)/3 = wins/36
+        # So the values should be relatively small due to scaling
+
+    def test_playoff_scaling_2021_week_15(self):
+        """Test playoffs start at week 15 for 2021 and later."""
+        from patriot_center_backend.utils.ffWAR_loader import _calculate_ffWAR_position
+
+        # Week 14 in 2021 should NOT be playoffs (regular season)
+        scores = {
+            "Manager1": {"total_points": 120.0, "players": {"Player1": 30.0}},
+            "Manager2": {"total_points": 115.0, "players": {"Player2": 25.0}},
+            "Manager3": {"total_points": 110.0, "players": {"Player3": 20.0}},
+            "Manager4": {"total_points": 105.0, "players": {"Player4": 15.0}}
+        }
+
+        mock_replacement_data = {"2021": {"14": {"QB_3yr_avg": 20.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            regular_result = _calculate_ffWAR_position(scores, season=2021, week=14, position="QB")
+
+        regular_ffwar = regular_result["Player1"]["ffWAR"]
+
+        # Week 15 in 2021 SHOULD be playoffs (scaled)
+        mock_replacement_data_playoff = {"2021": {"15": {"QB_3yr_avg": 20.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data_playoff):
+            playoff_result = _calculate_ffWAR_position(scores, season=2021, week=15, position="QB")
+
+        playoff_ffwar = playoff_result["Player1"]["ffWAR"]
+
+        # Playoff should be scaled to approximately 1/3 of regular
+        assert abs(playoff_ffwar * 3 - regular_ffwar) < 0.01
+
+    def test_playoff_scaling_maintains_rounding(self):
+        """Test that playoff scaling still rounds to 3 decimal places."""
+        from patriot_center_backend.utils.ffWAR_loader import _calculate_ffWAR_position
+
+        scores = {
+            "Team1": {"total_points": 125.0, "players": {"Player1": 28.5}},
+            "Team2": {"total_points": 120.0, "players": {"Player2": 26.3}},
+            "Team3": {"total_points": 115.0, "players": {"Player3": 23.7}},
+            "Team4": {"total_points": 110.0, "players": {"Player4": 21.1}}
+        }
+
+        mock_replacement_data = {"2024": {"15": {"QB_3yr_avg": 24.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result = _calculate_ffWAR_position(scores, season=2024, week=15, position="QB")
+
+        # Check all results are rounded to max 3 decimal places
+        for player in result:
+            ffwar = result[player]["ffWAR"]
+            ffwar_str = str(ffwar)
+            if '.' in ffwar_str:
+                decimals = len(ffwar_str.split('.')[1])
+                assert decimals <= 3, f"{player} has {decimals} decimal places: {ffwar}"
+
+    def test_playoff_negative_ffwar_also_scaled(self):
+        """Test that negative playoff ffWAR is also scaled down by 3."""
+        from patriot_center_backend.utils.ffWAR_loader import _calculate_ffWAR_position
+
+        # Create scenario where a player performs below replacement
+        scores = {
+            "Team1": {"total_points": 120.0, "players": {"Good Player": 30.0}},
+            "Team2": {"total_points": 115.0, "players": {"Average Player": 20.0}},
+            "Team3": {"total_points": 110.0, "players": {"Bad Player": 5.0}},
+            "Team4": {"total_points": 105.0, "players": {"Decent Player": 18.0}}
+        }
+
+        # Set replacement at 18.0 - Bad Player should have negative ffWAR
+        mock_replacement_data = {"2022": {"15": {"RB_3yr_avg": 18.0}}}
+
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result = _calculate_ffWAR_position(scores, season=2022, week=15, position="RB")
+
+        # Bad Player should have negative ffWAR (below replacement)
+        assert result["Bad Player"]["ffWAR"] < 0
+
+        # Good Player should have positive ffWAR
+        assert result["Good Player"]["ffWAR"] > 0
+
+        # Both should be scaled (relatively small absolute values)
+        assert abs(result["Bad Player"]["ffWAR"]) < 1.0
+        assert abs(result["Good Player"]["ffWAR"]) < 1.0
+
+    def test_playoff_boundary_conditions(self):
+        """Test exact week boundaries for playoff scaling."""
+        from patriot_center_backend.utils.ffWAR_loader import _calculate_ffWAR_position
+
+        scores = {
+            "A": {"total_points": 120.0, "players": {"P1": 25.0}},
+            "B": {"total_points": 115.0, "players": {"P2": 20.0}}
+        }
+
+        # 2019: week 13 regular, week 14 playoffs
+        mock_replacement_data = {"2019": {"13": {"QB_3yr_avg": 20.0}}}
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result_2019_w13 = _calculate_ffWAR_position(scores, season=2019, week=13, position="QB")
+
+        mock_replacement_data = {"2019": {"14": {"QB_3yr_avg": 20.0}}}
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result_2019_w14 = _calculate_ffWAR_position(scores, season=2019, week=14, position="QB")
+
+        # Week 14 should be approximately 1/3 of week 13 (accounting for rounding)
+        assert abs(result_2019_w14["P1"]["ffWAR"] * 3 - result_2019_w13["P1"]["ffWAR"]) < 0.01
+
+        # 2021: week 14 regular, week 15 playoffs
+        mock_replacement_data = {"2021": {"14": {"QB_3yr_avg": 20.0}}}
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result_2021_w14 = _calculate_ffWAR_position(scores, season=2021, week=14, position="QB")
+
+        mock_replacement_data = {"2021": {"15": {"QB_3yr_avg": 20.0}}}
+        with patch('patriot_center_backend.utils.ffWAR_loader.REPLACEMENT_SCORES', mock_replacement_data):
+            result_2021_w15 = _calculate_ffWAR_position(scores, season=2021, week=15, position="QB")
+
+        # Week 15 should be approximately 1/3 of week 14 (accounting for rounding)
+        assert abs(result_2021_w15["P1"]["ffWAR"] * 3 - result_2021_w14["P1"]["ffWAR"]) < 0.01

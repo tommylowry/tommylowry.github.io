@@ -7017,6 +7017,547 @@
                 "manager": "Cody",
                 "position": "DEF"
             }
+        },
+        "14": {
+            "Aaron Rodgers": {
+                "ffWAR": -0.028,
+                "manager": "Owen",
+                "position": "QB"
+            },
+            "Ryan Fitzpatrick": {
+                "ffWAR": -0.028,
+                "manager": "Jack",
+                "position": "QB"
+            },
+            "Dak Prescott": {
+                "ffWAR": -0.028,
+                "manager": "Christian",
+                "position": "QB"
+            },
+            "Patrick Mahomes": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "QB"
+            },
+            "Duke Johnson": {
+                "ffWAR": -0.028,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Tarik Cohen": {
+                "ffWAR": -0.028,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Dalvin Cook": {
+                "ffWAR": 0.028,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.028,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Ezekiel Elliott": {
+                "ffWAR": 0.028,
+                "manager": "Christian",
+                "position": "RB"
+            },
+            "Marlon Mack": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "RB"
+            },
+            "Mark Ingram": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "David Montgomery": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Sony Michel": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Robbie Chosen": {
+                "ffWAR": 0.028,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "DK Metcalf": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Odell Beckham": {
+                "ffWAR": -0.028,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Julian Edelman": {
+                "ffWAR": 0.028,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": -0.028,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Stefon Diggs": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Kenny Golladay": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "DeVante Parker": {
+                "ffWAR": -0.028,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "Allen Robinson": {
+                "ffWAR": 0.028,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Christian Kirk": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Jack Doyle": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "TE"
+            },
+            "Kyle Rudolph": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "TE"
+            },
+            "Ryan Griffin": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "TE"
+            },
+            "Travis Kelce": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "TE"
+            },
+            "Dan Bailey": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "K"
+            },
+            "Justin Tucker": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "K"
+            },
+            "Josh Lambo": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "K"
+            },
+            "Matt Gay": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "K"
+            },
+            "Green Bay Packers": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "DEF"
+            },
+            "Tennessee Titans": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "DEF"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.111,
+                "manager": "Christian",
+                "position": "DEF"
+            },
+            "Houston Texans": {
+                "ffWAR": -0.111,
+                "manager": "Cody",
+                "position": "DEF"
+            }
+        },
+        "15": {
+            "Russell Wilson": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Deshaun Watson": {
+                "ffWAR": -0.028,
+                "manager": "Jay",
+                "position": "QB"
+            },
+            "Ryan Tannehill": {
+                "ffWAR": 0.028,
+                "manager": "Jack",
+                "position": "QB"
+            },
+            "Dak Prescott": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "QB"
+            },
+            "Leonard Fournette": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Christian McCaffrey": {
+                "ffWAR": 0.111,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Todd Gurley": {
+                "ffWAR": 0.111,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.0,
+                "manager": "Jay",
+                "position": "RB"
+            },
+            "Josh Jacobs": {
+                "ffWAR": 0.0,
+                "manager": "Jay",
+                "position": "RB"
+            },
+            "Chris Carson": {
+                "ffWAR": 0.111,
+                "manager": "Jay",
+                "position": "RB"
+            },
+            "Dalvin Cook": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.111,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Raheem Mostert": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Ezekiel Elliott": {
+                "ffWAR": 0.111,
+                "manager": "Christian",
+                "position": "RB"
+            },
+            "Marlon Mack": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "RB"
+            },
+            "A.J. Brown": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Courtland Sutton": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Michael Thomas": {
+                "ffWAR": 0.056,
+                "manager": "Jay",
+                "position": "WR"
+            },
+            "DeAndre Hopkins": {
+                "ffWAR": 0.028,
+                "manager": "Jay",
+                "position": "WR"
+            },
+            "Julian Edelman": {
+                "ffWAR": -0.028,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.056,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Kenny Golladay": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "Allen Robinson": {
+                "ffWAR": 0.028,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "DeVante Parker": {
+                "ffWAR": 0.056,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "Ian Thomas": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.083,
+                "manager": "Jay",
+                "position": "TE"
+            },
+            "Jacob Hollister": {
+                "ffWAR": -0.028,
+                "manager": "Jack",
+                "position": "TE"
+            },
+            "Mike Gesicki": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "TE"
+            },
+            "Wil Lutz": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Ka'imi Fairbairn": {
+                "ffWAR": 0.0,
+                "manager": "Jay",
+                "position": "K"
+            },
+            "Justin Tucker": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "K"
+            },
+            "Josh Lambo": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "K"
+            },
+            "New England Patriots": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Jay",
+                "position": "DEF"
+            },
+            "Buffalo Bills": {
+                "ffWAR": 0.056,
+                "manager": "Jack",
+                "position": "DEF"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.028,
+                "manager": "Christian",
+                "position": "DEF"
+            }
+        },
+        "16": {
+            "Russell Wilson": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Deshaun Watson": {
+                "ffWAR": -0.028,
+                "manager": "Jay",
+                "position": "QB"
+            },
+            "Jameis Winston": {
+                "ffWAR": -0.028,
+                "manager": "Jack",
+                "position": "QB"
+            },
+            "Dak Prescott": {
+                "ffWAR": -0.028,
+                "manager": "Christian",
+                "position": "QB"
+            },
+            "Leonard Fournette": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Christian McCaffrey": {
+                "ffWAR": 0.111,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.111,
+                "manager": "Jay",
+                "position": "RB"
+            },
+            "Chris Carson": {
+                "ffWAR": 0.0,
+                "manager": "Jay",
+                "position": "RB"
+            },
+            "DeAndre Washington": {
+                "ffWAR": 0.056,
+                "manager": "Jay",
+                "position": "RB"
+            },
+            "Miles Sanders": {
+                "ffWAR": 0.111,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "RB"
+            },
+            "Ezekiel Elliott": {
+                "ffWAR": 0.056,
+                "manager": "Christian",
+                "position": "RB"
+            },
+            "Marlon Mack": {
+                "ffWAR": 0.056,
+                "manager": "Christian",
+                "position": "RB"
+            },
+            "Tyler Lockett": {
+                "ffWAR": -0.056,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "A.J. Brown": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Courtland Sutton": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Michael Thomas": {
+                "ffWAR": 0.056,
+                "manager": "Jay",
+                "position": "WR"
+            },
+            "DeAndre Hopkins": {
+                "ffWAR": -0.028,
+                "manager": "Jay",
+                "position": "WR"
+            },
+            "Stefon Diggs": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Cole Beasley": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "WR"
+            },
+            "Kenny Golladay": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "Allen Robinson": {
+                "ffWAR": -0.028,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "DeVante Parker": {
+                "ffWAR": 0.028,
+                "manager": "Christian",
+                "position": "WR"
+            },
+            "Dallas Goedert": {
+                "ffWAR": 0.139,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.111,
+                "manager": "Jay",
+                "position": "TE"
+            },
+            "Jacob Hollister": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "TE"
+            },
+            "Mike Gesicki": {
+                "ffWAR": 0.139,
+                "manager": "Christian",
+                "position": "TE"
+            },
+            "Wil Lutz": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Jason Myers": {
+                "ffWAR": 0.0,
+                "manager": "Jay",
+                "position": "K"
+            },
+            "Justin Tucker": {
+                "ffWAR": 0.0,
+                "manager": "Jack",
+                "position": "K"
+            },
+            "Josh Lambo": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "K"
+            },
+            "New England Patriots": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Buffalo Bills": {
+                "ffWAR": -0.111,
+                "manager": "Jack",
+                "position": "DEF"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.0,
+                "manager": "Christian",
+                "position": "DEF"
+            }
         }
     },
     "2020": {
@@ -14063,6 +14604,552 @@
             "San Francisco 49ers": {
                 "ffWAR": -0.129,
                 "manager": "Dheeraj",
+                "position": "DEF"
+            }
+        },
+        "14": {
+            "Kirk Cousins": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Russell Wilson": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "QB"
+            },
+            "Justin Herbert": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "QB"
+            },
+            "Deshaun Watson": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "QB"
+            },
+            "J.D. McKissic": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Josh Jacobs": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.056,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Ezekiel Elliott": {
+                "ffWAR": -0.028,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Mike Davis": {
+                "ffWAR": 0.056,
+                "manager": "Luke",
+                "position": "RB"
+            },
+            "Miles Sanders": {
+                "ffWAR": 0.083,
+                "manager": "Luke",
+                "position": "RB"
+            },
+            "Derrick Henry": {
+                "ffWAR": 0.139,
+                "manager": "Billiam",
+                "position": "RB"
+            },
+            "Todd Gurley": {
+                "ffWAR": -0.028,
+                "manager": "Billiam",
+                "position": "RB"
+            },
+            "Justin Jefferson": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Adam Thielen": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Diontae Johnson": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "DeAndre Hopkins": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Tee Higgins": {
+                "ffWAR": -0.028,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Keke Coutee": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Keenan Allen": {
+                "ffWAR": 0.028,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Cooper Kupp": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Robbie Chosen": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.028,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Jarvis Landry": {
+                "ffWAR": -0.028,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Marvin Jones": {
+                "ffWAR": -0.028,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Dallas Goedert": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Eric Ebron": {
+                "ffWAR": -0.028,
+                "manager": "Soup",
+                "position": "TE"
+            },
+            "Hayden Hurst": {
+                "ffWAR": -0.056,
+                "manager": "Luke",
+                "position": "TE"
+            },
+            "Rob Gronkowski": {
+                "ffWAR": -0.028,
+                "manager": "Billiam",
+                "position": "TE"
+            },
+            "Daniel Carlson": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Cody Parkey": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "K"
+            },
+            "Tyler Bass": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "K"
+            },
+            "Ryan Succop": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "K"
+            },
+            "Los Angeles Rams": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Carolina Panthers": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "DEF"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "DEF"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "DEF"
+            }
+        },
+        "15": {
+            "Lamar Jackson": {
+                "ffWAR": 0.056,
+                "manager": "Owen",
+                "position": "QB"
+            },
+            "Aaron Rodgers": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "QB"
+            },
+            "Justin Herbert": {
+                "ffWAR": 0.056,
+                "manager": "Luke",
+                "position": "QB"
+            },
+            "Deshaun Watson": {
+                "ffWAR": 0.028,
+                "manager": "Billiam",
+                "position": "QB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "D'Andre Swift": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "J.K. Dobbins": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Raheem Mostert": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Clyde Edwards-Helaire": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Mike Davis": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "RB"
+            },
+            "Miles Sanders": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "RB"
+            },
+            "Derrick Henry": {
+                "ffWAR": 0.028,
+                "manager": "Billiam",
+                "position": "RB"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Emmanuel Sanders": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Robert Woods": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Terry McLaurin": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Cooper Kupp": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Robbie Chosen": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Keenan Allen": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Lynn Bowden": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Jarvis Landry": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "T.Y. Hilton": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Travis Kelce": {
+                "ffWAR": 0.083,
+                "manager": "Owen",
+                "position": "TE"
+            },
+            "Irv Smith": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "TE"
+            },
+            "Cole Kmet": {
+                "ffWAR": -0.028,
+                "manager": "Luke",
+                "position": "TE"
+            },
+            "Rob Gronkowski": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "TE"
+            },
+            "Harrison Butker": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "K"
+            },
+            "Jason Sanders": {
+                "ffWAR": -0.028,
+                "manager": "Mitch",
+                "position": "K"
+            },
+            "Tyler Bass": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "K"
+            },
+            "Rodrigo Blankenship": {
+                "ffWAR": 0.028,
+                "manager": "Billiam",
+                "position": "K"
+            },
+            "Cleveland Browns": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "DEF"
+            },
+            "Buffalo Bills": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "DEF"
+            },
+            "Chicago Bears": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "DEF"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "DEF"
+            }
+        },
+        "16": {
+            "Lamar Jackson": {
+                "ffWAR": 0.028,
+                "manager": "Owen",
+                "position": "QB"
+            },
+            "Aaron Rodgers": {
+                "ffWAR": 0.056,
+                "manager": "Mitch",
+                "position": "QB"
+            },
+            "Justin Herbert": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "QB"
+            },
+            "Deshaun Watson": {
+                "ffWAR": 0.056,
+                "manager": "Billiam",
+                "position": "QB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.056,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.056,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "D'Andre Swift": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "J.K. Dobbins": {
+                "ffWAR": 0.056,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Le'Veon Bell": {
+                "ffWAR": -0.056,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Mike Davis": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "RB"
+            },
+            "Miles Sanders": {
+                "ffWAR": 0.083,
+                "manager": "Luke",
+                "position": "RB"
+            },
+            "Derrick Henry": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "RB"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Emmanuel Sanders": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Robert Woods": {
+                "ffWAR": -0.028,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "DeVante Parker": {
+                "ffWAR": -0.083,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "A.J. Green": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Cooper Kupp": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Robbie Chosen": {
+                "ffWAR": 0.028,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Jalen Reagor": {
+                "ffWAR": -0.056,
+                "manager": "Luke",
+                "position": "WR"
+            },
+            "Lynn Bowden": {
+                "ffWAR": -0.083,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.167,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "T.Y. Hilton": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Marvin Jones": {
+                "ffWAR": -0.056,
+                "manager": "Billiam",
+                "position": "WR"
+            },
+            "Travis Kelce": {
+                "ffWAR": 0.056,
+                "manager": "Owen",
+                "position": "TE"
+            },
+            "Mike Gesicki": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "TE"
+            },
+            "Rob Gronkowski": {
+                "ffWAR": 0.056,
+                "manager": "Billiam",
+                "position": "TE"
+            },
+            "Harrison Butker": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "K"
+            },
+            "Jason Sanders": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "K"
+            },
+            "Tyler Bass": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "K"
+            },
+            "Rodrigo Blankenship": {
+                "ffWAR": -0.028,
+                "manager": "Billiam",
+                "position": "K"
+            },
+            "Houston Texans": {
+                "ffWAR": -0.056,
+                "manager": "Owen",
+                "position": "DEF"
+            },
+            "Washington Commanders": {
+                "ffWAR": 0.056,
+                "manager": "Mitch",
+                "position": "DEF"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Luke",
+                "position": "DEF"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.0,
+                "manager": "Billiam",
                 "position": "DEF"
             }
         }
@@ -21650,6 +22737,547 @@
                 "manager": "Benz",
                 "position": "DEF"
             }
+        },
+        "15": {
+            "Kyler Murray": {
+                "ffWAR": -0.056,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Jimmy Garoppolo": {
+                "ffWAR": -0.056,
+                "manager": "Mitch",
+                "position": "QB"
+            },
+            "Justin Herbert": {
+                "ffWAR": 0.056,
+                "manager": "Cody",
+                "position": "QB"
+            },
+            "Jalen Hurts": {
+                "ffWAR": 0.056,
+                "manager": "Dheeraj",
+                "position": "QB"
+            },
+            "Saquon Barkley": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Dalvin Cook": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Antonio Gibson": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Darrell Henderson": {
+                "ffWAR": -0.056,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.056,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Leonard Fournette": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Cordarrelle Patterson": {
+                "ffWAR": -0.056,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Devonta Freeman": {
+                "ffWAR": -0.083,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Aaron Jones": {
+                "ffWAR": 0.028,
+                "manager": "Dheeraj",
+                "position": "RB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.056,
+                "manager": "Dheeraj",
+                "position": "RB"
+            },
+            "A.J. Dillon": {
+                "ffWAR": 0.0,
+                "manager": "Dheeraj",
+                "position": "RB"
+            },
+            "Diontae Johnson": {
+                "ffWAR": -0.056,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Marquise Brown": {
+                "ffWAR": -0.056,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Brandon Aiyuk": {
+                "ffWAR": -0.111,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Justin Jefferson": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Keenan Allen": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Hunter Renfrow": {
+                "ffWAR": -0.139,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Terry McLaurin": {
+                "ffWAR": -0.083,
+                "manager": "Dheeraj",
+                "position": "WR"
+            },
+            "Michael Pittman": {
+                "ffWAR": -0.139,
+                "manager": "Dheeraj",
+                "position": "WR"
+            },
+            "Kyle Pitts": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "Foster Moreau": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "TE"
+            },
+            "Mike Gesicki": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "TE"
+            },
+            "Tyler Conklin": {
+                "ffWAR": -0.111,
+                "manager": "Dheeraj",
+                "position": "TE"
+            },
+            "Jason Sanders": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Dustin Hopkins": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "K"
+            },
+            "Nick Folk": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "K"
+            },
+            "Matt Prater": {
+                "ffWAR": 0.0,
+                "manager": "Dheeraj",
+                "position": "K"
+            },
+            "Philadelphia Eagles": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Miami Dolphins": {
+                "ffWAR": 0.111,
+                "manager": "Mitch",
+                "position": "DEF"
+            },
+            "Arizona Cardinals": {
+                "ffWAR": -0.083,
+                "manager": "Cody",
+                "position": "DEF"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": -0.167,
+                "manager": "Dheeraj",
+                "position": "DEF"
+            }
+        },
+        "16": {
+            "Patrick Mahomes": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Kyler Murray": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Matt Ryan": {
+                "ffWAR": -0.056,
+                "manager": "Mitch",
+                "position": "QB"
+            },
+            "Zach Wilson": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "QB"
+            },
+            "Joe Mixon": {
+                "ffWAR": 0.139,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Ezekiel Elliott": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Tony Pollard": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Saquon Barkley": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Alexander Mattison": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Antonio Gibson": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Darrell Henderson": {
+                "ffWAR": -0.083,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Sony Michel": {
+                "ffWAR": 0.056,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": 0.028,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "David Montgomery": {
+                "ffWAR": 0.056,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "CeeDee Lamb": {
+                "ffWAR": -0.056,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Deebo Samuel": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Diontae Johnson": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Antonio Brown": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.139,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "A.J. Brown": {
+                "ffWAR": 0.139,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Justin Jefferson": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Ja'Marr Chase": {
+                "ffWAR": 0.028,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": -0.111,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Joshua Palmer": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Jared Cook": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Kyle Pitts": {
+                "ffWAR": 0.083,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "Foster Moreau": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "TE"
+            },
+            "Noah Fant": {
+                "ffWAR": -0.083,
+                "manager": "Davey",
+                "position": "TE"
+            },
+            "Greg Joseph": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Evan McPherson": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Jake Elliott": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "K"
+            },
+            "Matt Gay": {
+                "ffWAR": 0.028,
+                "manager": "Davey",
+                "position": "K"
+            },
+            "Los Angeles Chargers": {
+                "ffWAR": -0.111,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Philadelphia Eagles": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Cincinnati Bengals": {
+                "ffWAR": -0.111,
+                "manager": "Davey",
+                "position": "DEF"
+            }
+        },
+        "17": {
+            "Patrick Mahomes": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Kyler Murray": {
+                "ffWAR": 0.083,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Tyler Huntley": {
+                "ffWAR": -0.083,
+                "manager": "Mitch",
+                "position": "QB"
+            },
+            "Trey Lance": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "QB"
+            },
+            "Joe Mixon": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Ezekiel Elliott": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Jaret Patterson": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Saquon Barkley": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Dalvin Cook": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Sony Michel": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "David Montgomery": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "CeeDee Lamb": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Deebo Samuel": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.111,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Antonio Brown": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Diontae Johnson": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.056,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "A.J. Brown": {
+                "ffWAR": -0.028,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Justin Jefferson": {
+                "ffWAR": 0.0,
+                "manager": "Mitch",
+                "position": "WR"
+            },
+            "Ja'Marr Chase": {
+                "ffWAR": 0.111,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Mike Williams": {
+                "ffWAR": 0.028,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Travis Kelce": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Kyle Pitts": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "Foster Moreau": {
+                "ffWAR": -0.083,
+                "manager": "Mitch",
+                "position": "TE"
+            },
+            "Noah Fant": {
+                "ffWAR": 0.083,
+                "manager": "Davey",
+                "position": "TE"
+            },
+            "Greg Joseph": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Michael Badgley": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Jake Elliott": {
+                "ffWAR": 0.028,
+                "manager": "Mitch",
+                "position": "K"
+            },
+            "Matt Gay": {
+                "ffWAR": -0.028,
+                "manager": "Davey",
+                "position": "K"
+            },
+            "New England Patriots": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Indianapolis Colts": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Miami Dolphins": {
+                "ffWAR": -0.083,
+                "manager": "Mitch",
+                "position": "DEF"
+            },
+            "Tennessee Titans": {
+                "ffWAR": 0.056,
+                "manager": "Davey",
+                "position": "DEF"
+            }
         }
     },
     "2022": {
@@ -29227,6 +30855,552 @@
             },
             "Tampa Bay Buccaneers": {
                 "ffWAR": -0.189,
+                "manager": "Benz",
+                "position": "DEF"
+            }
+        },
+        "15": {
+            "Justin Herbert": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Joe Burrow": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Desmond Ridder": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "QB"
+            },
+            "Deshaun Watson": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "QB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Rhamondre Stevenson": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Isiah Pacheco": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Jamaal Williams": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "D'Andre Swift": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Travis Etienne": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "Joe Mixon": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Zay Jones": {
+                "ffWAR": 0.083,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "DJ Moore": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Christian Watson": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Garrett Wilson": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": -0.028,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Stefon Diggs": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Ja'Marr Chase": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "DK Metcalf": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Christian Kirk": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Mike Evans": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Mark Andrews": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Dalton Schultz": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.083,
+                "manager": "Owen",
+                "position": "TE"
+            },
+            "T.J. Hockenson": {
+                "ffWAR": -0.028,
+                "manager": "Davey",
+                "position": "TE"
+            },
+            "Daniel Carlson": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Brett Maher": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Cameron Dicker": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "K"
+            },
+            "Robbie Gould": {
+                "ffWAR": -0.028,
+                "manager": "Davey",
+                "position": "K"
+            },
+            "San Francisco 49ers": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Baltimore Ravens": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Green Bay Packers": {
+                "ffWAR": 0.139,
+                "manager": "Owen",
+                "position": "DEF"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "DEF"
+            }
+        },
+        "16": {
+            "Justin Herbert": {
+                "ffWAR": -0.056,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Joe Burrow": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Josh Allen": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "QB"
+            },
+            "Tom Brady": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "QB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.083,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Rhamondre Stevenson": {
+                "ffWAR": -0.056,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Jerick McKinnon": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "J.K. Dobbins": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Latavius Murray": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Derrick Henry": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Josh Jacobs": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Devin Singletary": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "DJ Moore": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Brandin Cooks": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Garrett Wilson": {
+                "ffWAR": -0.056,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Tee Higgins": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Christian Watson": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "CeeDee Lamb": {
+                "ffWAR": 0.056,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Chris Godwin": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "DeVonta Smith": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Mark Andrews": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Taysom Hill": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "Darren Waller": {
+                "ffWAR": -0.028,
+                "manager": "Soup",
+                "position": "TE"
+            },
+            "Dallas Goedert": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "TE"
+            },
+            "Daniel Carlson": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Brett Maher": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Evan McPherson": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "K"
+            },
+            "Michael Badgley": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "K"
+            },
+            "San Francisco 49ers": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Baltimore Ravens": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Cleveland Browns": {
+                "ffWAR": 0.0,
+                "manager": "Soup",
+                "position": "DEF"
+            },
+            "Tampa Bay Buccaneers": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "DEF"
+            }
+        },
+        "17": {
+            "Justin Herbert": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Joe Burrow": {
+                "ffWAR": -0.083,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Josh Allen": {
+                "ffWAR": -0.111,
+                "manager": "Soup",
+                "position": "QB"
+            },
+            "Gardner Minshew": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "QB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.25,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Rhamondre Stevenson": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Jerick McKinnon": {
+                "ffWAR": 0.194,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Isiah Pacheco": {
+                "ffWAR": 0.083,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "J.K. Dobbins": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Nick Chubb": {
+                "ffWAR": 0.083,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Latavius Murray": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "RB"
+            },
+            "Hassan Haskins": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Josh Jacobs": {
+                "ffWAR": 0.139,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Diontae Johnson": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Brandin Cooks": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Garrett Wilson": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Tee Higgins": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "CeeDee Lamb": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Chris Godwin": {
+                "ffWAR": 0.028,
+                "manager": "Soup",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "DeVonta Smith": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Jerry Jeudy": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Mark Andrews": {
+                "ffWAR": 0.111,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Dalton Schultz": {
+                "ffWAR": 0.222,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "Darren Waller": {
+                "ffWAR": 0.111,
+                "manager": "Soup",
+                "position": "TE"
+            },
+            "Dallas Goedert": {
+                "ffWAR": -0.056,
+                "manager": "Benz",
+                "position": "TE"
+            },
+            "Daniel Carlson": {
+                "ffWAR": 0.056,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Michael Badgley": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Evan McPherson": {
+                "ffWAR": -0.083,
+                "manager": "Soup",
+                "position": "K"
+            },
+            "Graham Gano": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "K"
+            },
+            "San Francisco 49ers": {
+                "ffWAR": -0.083,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "New York Giants": {
+                "ffWAR": 0.083,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Dallas Cowboys": {
+                "ffWAR": 0.083,
+                "manager": "Soup",
+                "position": "DEF"
+            },
+            "Tampa Bay Buccaneers": {
+                "ffWAR": -0.028,
                 "manager": "Benz",
                 "position": "DEF"
             }
@@ -36815,6 +38989,552 @@
                 "manager": "Sam",
                 "position": "DEF"
             }
+        },
+        "15": {
+            "Jalen Hurts": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Josh Allen": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "QB"
+            },
+            "Jake Browning": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "QB"
+            },
+            "Dak Prescott": {
+                "ffWAR": -0.056,
+                "manager": "Benz",
+                "position": "QB"
+            },
+            "Zamir White": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "James Conner": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "James Cook": {
+                "ffWAR": 0.111,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Keaton Mitchell": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "De'Von Achane": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "D'Andre Swift": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "Travis Etienne": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Raheem Mostert": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Rachaad White": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Saquon Barkley": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Jayden Reed": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "A.J. Brown": {
+                "ffWAR": -0.028,
+                "manager": "Ty",
+                "position": "WR"
+            },
+            "Brandon Aiyuk": {
+                "ffWAR": -0.028,
+                "manager": "Ty",
+                "position": "WR"
+            },
+            "Michael Pittman": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "DeAndre Hopkins": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Deebo Samuel": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "CeeDee Lamb": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "DeVonta Smith": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Courtland Sutton": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Travis Kelce": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "T.J. Hockenson": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "TE"
+            },
+            "Dalton Kincaid": {
+                "ffWAR": -0.083,
+                "manager": "Cody",
+                "position": "TE"
+            },
+            "Evan Engram": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "TE"
+            },
+            "Blake Grupe": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Jake Elliott": {
+                "ffWAR": -0.028,
+                "manager": "Ty",
+                "position": "K"
+            },
+            "Jason Sanders": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "K"
+            },
+            "Dustin Hopkins": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "K"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "Miami Dolphins": {
+                "ffWAR": 0.056,
+                "manager": "Ty",
+                "position": "DEF"
+            },
+            "Cincinnati Bengals": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "DEF"
+            },
+            "San Francisco 49ers": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "DEF"
+            }
+        },
+        "16": {
+            "Jalen Hurts": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Patrick Mahomes": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "QB"
+            },
+            "Josh Allen": {
+                "ffWAR": 0.083,
+                "manager": "Ty",
+                "position": "QB"
+            },
+            "Brock Purdy": {
+                "ffWAR": -0.083,
+                "manager": "Sam",
+                "position": "QB"
+            },
+            "James Cook": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "James Conner": {
+                "ffWAR": 0.056,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Tony Pollard": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.028,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Isiah Pacheco": {
+                "ffWAR": 0.028,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "D'Andre Swift": {
+                "ffWAR": 0.056,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "De'Von Achane": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "Gus Edwards": {
+                "ffWAR": 0.056,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "Christian McCaffrey": {
+                "ffWAR": 0.083,
+                "manager": "Sam",
+                "position": "RB"
+            },
+            "Joe Mixon": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "RB"
+            },
+            "Chris Olave": {
+                "ffWAR": 0.111,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.167,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Calvin Ridley": {
+                "ffWAR": 0.167,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Justin Jefferson": {
+                "ffWAR": 0.167,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "A.J. Brown": {
+                "ffWAR": 0.056,
+                "manager": "Ty",
+                "position": "WR"
+            },
+            "Brandon Aiyuk": {
+                "ffWAR": 0.056,
+                "manager": "Ty",
+                "position": "WR"
+            },
+            "Mike Evans": {
+                "ffWAR": 0.167,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Jordan Addison": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Joshua Palmer": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Travis Kelce": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.083,
+                "manager": "Owen",
+                "position": "TE"
+            },
+            "T.J. Hockenson": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "TE"
+            },
+            "Sam LaPorta": {
+                "ffWAR": -0.083,
+                "manager": "Sam",
+                "position": "TE"
+            },
+            "Ka'imi Fairbairn": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Justin Tucker": {
+                "ffWAR": 0.028,
+                "manager": "Owen",
+                "position": "K"
+            },
+            "Jake Elliott": {
+                "ffWAR": 0.028,
+                "manager": "Ty",
+                "position": "K"
+            },
+            "Jake Moody": {
+                "ffWAR": -0.028,
+                "manager": "Sam",
+                "position": "K"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "New York Jets": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "DEF"
+            },
+            "Philadelphia Eagles": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "DEF"
+            },
+            "Detroit Lions": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "DEF"
+            }
+        },
+        "17": {
+            "Jalen Hurts": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "QB"
+            },
+            "Patrick Mahomes": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "QB"
+            },
+            "Josh Allen": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "QB"
+            },
+            "Brock Purdy": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "QB"
+            },
+            "James Cook": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Zamir White": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "RB"
+            },
+            "Tony Pollard": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Austin Ekeler": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "Isiah Pacheco": {
+                "ffWAR": 0.083,
+                "manager": "Owen",
+                "position": "RB"
+            },
+            "D'Andre Swift": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "De'Von Achane": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "Khalil Herbert": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "RB"
+            },
+            "Christian McCaffrey": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "RB"
+            },
+            "Joe Mixon": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "RB"
+            },
+            "Amon-Ra St. Brown": {
+                "ffWAR": 0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Chris Olave": {
+                "ffWAR": -0.028,
+                "manager": "Tommy",
+                "position": "WR"
+            },
+            "Calvin Ridley": {
+                "ffWAR": -0.028,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "Justin Jefferson": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "WR"
+            },
+            "A.J. Brown": {
+                "ffWAR": -0.028,
+                "manager": "Ty",
+                "position": "WR"
+            },
+            "Brandon Aiyuk": {
+                "ffWAR": 0.028,
+                "manager": "Ty",
+                "position": "WR"
+            },
+            "Mike Evans": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Jakobi Meyers": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Rashid Shaheed": {
+                "ffWAR": -0.028,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Travis Kelce": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "TE"
+            },
+            "Tucker Kraft": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "TE"
+            },
+            "Sam LaPorta": {
+                "ffWAR": 0.028,
+                "manager": "Sam",
+                "position": "TE"
+            },
+            "Matt Gay": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "K"
+            },
+            "Justin Tucker": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "K"
+            },
+            "Jake Elliott": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "K"
+            },
+            "Jake Moody": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "K"
+            },
+            "Kansas City Chiefs": {
+                "ffWAR": 0.0,
+                "manager": "Tommy",
+                "position": "DEF"
+            },
+            "New York Jets": {
+                "ffWAR": 0.0,
+                "manager": "Owen",
+                "position": "DEF"
+            },
+            "Philadelphia Eagles": {
+                "ffWAR": 0.0,
+                "manager": "Ty",
+                "position": "DEF"
+            },
+            "Baltimore Ravens": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "DEF"
+            }
         }
     },
     "2024": {
@@ -44398,6 +47118,542 @@
             "Minnesota Vikings": {
                 "ffWAR": -0.053,
                 "manager": "Sam",
+                "position": "DEF"
+            }
+        },
+        "15": {
+            "Josh Allen": {
+                "ffWAR": 0.083,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Bo Nix": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "QB"
+            },
+            "Lamar Jackson": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "QB"
+            },
+            "Tua Tagovailoa": {
+                "ffWAR": -0.083,
+                "manager": "Sam",
+                "position": "QB"
+            },
+            "Rico Dowdle": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Breece Hall": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "David Montgomery": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Saquon Barkley": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "James Cook": {
+                "ffWAR": 0.083,
+                "manager": "Davey",
+                "position": "RB"
+            },
+            "Alvin Kamara": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Isaac Guerendo": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Rachaad White": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Tony Pollard": {
+                "ffWAR": 0.028,
+                "manager": "Sam",
+                "position": "RB"
+            },
+            "Zach Charbonnet": {
+                "ffWAR": 0.028,
+                "manager": "Sam",
+                "position": "RB"
+            },
+            "Malik Nabers": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Nico Collins": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Adam Thielen": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Jauan Jennings": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Garrett Wilson": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Jaxon Smith-Njigba": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Davante Adams": {
+                "ffWAR": 0.083,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "CeeDee Lamb": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Jakobi Meyers": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "WR"
+            },
+            "Dalton Kincaid": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Pat Freiermuth": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "TE"
+            },
+            "Jonnu Smith": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "TE"
+            },
+            "Brock Bowers": {
+                "ffWAR": -0.028,
+                "manager": "Sam",
+                "position": "TE"
+            },
+            "Ka'imi Fairbairn": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Jake Bates": {
+                "ffWAR": 0.0,
+                "manager": "Davey",
+                "position": "K"
+            },
+            "Cameron Dicker": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "K"
+            },
+            "Jason Sanders": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "K"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Carolina Panthers": {
+                "ffWAR": -0.056,
+                "manager": "Davey",
+                "position": "DEF"
+            },
+            "Denver Broncos": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "DEF"
+            },
+            "Minnesota Vikings": {
+                "ffWAR": 0.0,
+                "manager": "Sam",
+                "position": "DEF"
+            }
+        },
+        "16": {
+            "Josh Allen": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Joe Burrow": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "QB"
+            },
+            "Jalen Hurts": {
+                "ffWAR": -0.028,
+                "manager": "Sach",
+                "position": "QB"
+            },
+            "Lamar Jackson": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "QB"
+            },
+            "Rico Dowdle": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Breece Hall": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Kyren Williams": {
+                "ffWAR": 0.083,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "James Conner": {
+                "ffWAR": 0.111,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": 0.167,
+                "manager": "Sach",
+                "position": "RB"
+            },
+            "Aaron Jones": {
+                "ffWAR": 0.0,
+                "manager": "Sach",
+                "position": "RB"
+            },
+            "Chuba Hubbard": {
+                "ffWAR": 0.167,
+                "manager": "Sach",
+                "position": "RB"
+            },
+            "Jerome Ford": {
+                "ffWAR": 0.111,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Rachaad White": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Malik Nabers": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Nico Collins": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Josh Downs": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Ja'Marr Chase": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Drake London": {
+                "ffWAR": -0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Terry McLaurin": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Puka Nacua": {
+                "ffWAR": 0.0,
+                "manager": "Sach",
+                "position": "WR"
+            },
+            "Courtland Sutton": {
+                "ffWAR": -0.028,
+                "manager": "Sach",
+                "position": "WR"
+            },
+            "Calvin Ridley": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Jaxon Smith-Njigba": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Tyreek Hill": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "David Njoku": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Mark Andrews": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "TE"
+            },
+            "George Kittle": {
+                "ffWAR": 0.056,
+                "manager": "Sach",
+                "position": "TE"
+            },
+            "Jonnu Smith": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "TE"
+            },
+            "Ka'imi Fairbairn": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Chris Boswell": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "K"
+            },
+            "Jake Moody": {
+                "ffWAR": -0.028,
+                "manager": "Sach",
+                "position": "K"
+            },
+            "Cameron Dicker": {
+                "ffWAR": 0.028,
+                "manager": "Benz",
+                "position": "K"
+            },
+            "Pittsburgh Steelers": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Los Angeles Chargers": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "DEF"
+            },
+            "Detroit Lions": {
+                "ffWAR": 0.0,
+                "manager": "Sach",
+                "position": "DEF"
+            },
+            "Philadelphia Eagles": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "DEF"
+            }
+        },
+        "17": {
+            "Josh Allen": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "QB"
+            },
+            "Joe Burrow": {
+                "ffWAR": 0.111,
+                "manager": "Cody",
+                "position": "QB"
+            },
+            "Matthew Stafford": {
+                "ffWAR": -0.056,
+                "manager": "Sach",
+                "position": "QB"
+            },
+            "Lamar Jackson": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "QB"
+            },
+            "Rico Dowdle": {
+                "ffWAR": 0.028,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Breece Hall": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "RB"
+            },
+            "Kyren Williams": {
+                "ffWAR": 0.056,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "James Conner": {
+                "ffWAR": -0.056,
+                "manager": "Cody",
+                "position": "RB"
+            },
+            "Jonathan Taylor": {
+                "ffWAR": 0.111,
+                "manager": "Sach",
+                "position": "RB"
+            },
+            "Aaron Jones": {
+                "ffWAR": 0.028,
+                "manager": "Sach",
+                "position": "RB"
+            },
+            "Rachaad White": {
+                "ffWAR": -0.028,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Jerome Ford": {
+                "ffWAR": -0.056,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Isaac Guerendo": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
+                "position": "RB"
+            },
+            "Malik Nabers": {
+                "ffWAR": 0.111,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Nico Collins": {
+                "ffWAR": -0.056,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Josh Downs": {
+                "ffWAR": -0.056,
+                "manager": "Anthony",
+                "position": "WR"
+            },
+            "Ja'Marr Chase": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Terry McLaurin": {
+                "ffWAR": -0.056,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Drake London": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "WR"
+            },
+            "Puka Nacua": {
+                "ffWAR": 0.056,
+                "manager": "Sach",
+                "position": "WR"
+            },
+            "Courtland Sutton": {
+                "ffWAR": 0.028,
+                "manager": "Sach",
+                "position": "WR"
+            },
+            "Tee Higgins": {
+                "ffWAR": 0.111,
+                "manager": "Sach",
+                "position": "WR"
+            },
+            "Calvin Ridley": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Jaxon Smith-Njigba": {
+                "ffWAR": -0.056,
+                "manager": "Benz",
+                "position": "WR"
+            },
+            "Dalton Kincaid": {
+                "ffWAR": -0.028,
+                "manager": "Anthony",
+                "position": "TE"
+            },
+            "Mark Andrews": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "TE"
+            },
+            "Jonnu Smith": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "TE"
+            },
+            "Ka'imi Fairbairn": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "K"
+            },
+            "Chris Boswell": {
+                "ffWAR": 0.0,
+                "manager": "Cody",
+                "position": "K"
+            },
+            "Cameron Dicker": {
+                "ffWAR": 0.0,
+                "manager": "Benz",
+                "position": "K"
+            },
+            "New Orleans Saints": {
+                "ffWAR": 0.0,
+                "manager": "Anthony",
+                "position": "DEF"
+            },
+            "Los Angeles Chargers": {
+                "ffWAR": 0.028,
+                "manager": "Cody",
+                "position": "DEF"
+            },
+            "Miami Dolphins": {
+                "ffWAR": 0.028,
+                "manager": "Sach",
+                "position": "DEF"
+            },
+            "Philadelphia Eagles": {
+                "ffWAR": 0.056,
+                "manager": "Benz",
                 "position": "DEF"
             }
         }

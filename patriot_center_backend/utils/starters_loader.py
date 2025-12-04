@@ -106,8 +106,59 @@ def _get_max_weeks(season, current_season, current_week):
     if season == current_season:
         return current_week
     elif season in [2019, 2020]:
-        return 13
-    return 14
+        return 16
+    return 17
+
+def _get_relevant_playoff_roster_ids(season, week, league_id):
+    if int(season) <= 2020 and week <= 13:
+        return {}
+    if int(season) >= 2021 and week <= 14:
+        return {}
+    
+    sleeper_response_playoff_bracket = fetch_sleeper_data(f"league/{league_id}/winners_bracket")
+    if sleeper_response_playoff_bracket[1] == 200:
+        sleeper_response_playoff_bracket = sleeper_response_playoff_bracket[0]
+
+    if week == 14:
+        round = 1
+    elif week == 15:
+        round = 2
+    elif week == 16:
+        round = 3
+    else:
+        round = 4
+
+    if season >= 2021:
+        round -= 1
+    
+    if round == 4:
+        raise ValueError("Cannot get playoff roster IDs for week 17")
+    
+    relevant_roster_ids = {
+        "round_roster_ids": [],
+        "first_place_id": None,
+        "second_place_id": None,
+        "third_place_id": None
+    }
+    for matchup in sleeper_response_playoff_bracket:
+        if matchup['r'] == round:
+            if "p" in matchup and matchup['p'] == 5:
+                continue  # Skip consolation match
+            relevant_roster_ids['round_roster_ids'].append(matchup['w'])
+            relevant_roster_ids['round_roster_ids'].append(matchup['l'])
+        if "p" in matchup and matchup['p'] == 1:
+            relevant_roster_ids['first_place_id'] = matchup['w']
+            relevant_roster_ids['second_place_id'] = matchup['l']
+        if "p" in matchup and matchup['p'] == 3:
+            relevant_roster_ids['third_place_id'] = matchup['w']
+    
+    if len(relevant_roster_ids['round_roster_ids']) == 0:
+        raise ValueError("Cannot get playoff roster IDs for the given week")
+    if relevant_roster_ids['first_place_id'] is None or relevant_roster_ids['second_place_id'] is None or relevant_roster_ids['third_place_id'] is None:
+        raise ValueError("Cannot get first/second/third place roster IDs for the given week")
+    
+    return relevant_roster_ids
+        
 
 def fetch_starters_for_week(season, week):
     """
@@ -134,7 +185,9 @@ def fetch_starters_for_week(season, week):
     sleeper_response_matchups = fetch_sleeper_data(f"league/{league_id}/matchups/{week}")
     if sleeper_response_matchups[1] != 200:
         return {}
-
+    
+    playoff_roster_ids = _get_relevant_playoff_roster_ids(season, week, league_id)
+    
     managers = sleeper_response_users[0]
     week_data = {}
     for manager in managers:
@@ -153,7 +206,10 @@ def fetch_starters_for_week(season, week):
         if not roster_id:
             continue  # Skip unresolved roster
 
-        starters_data = get_starters_data(sleeper_response_matchups, roster_id)
+        if playoff_roster_ids != {} and roster_id not in playoff_roster_ids['round_roster_ids']:
+            continue  # Skip non-playoff rosters in playoff weeks
+
+        starters_data = get_starters_data(sleeper_response_matchups, roster_id, playoff_roster_ids)
         if starters_data:
             week_data[real_name] = starters_data
 
@@ -176,7 +232,7 @@ def get_roster_id(sleeper_response_rosters, user_id):
             return roster['roster_id']
     return None
 
-def get_starters_data(sleeper_response_matchups, roster_id):
+def get_starters_data(sleeper_response_matchups, roster_id, playoff_roster_ids):
     """
     Extract starters + total points for one roster/week.
 
@@ -211,6 +267,15 @@ def get_starters_data(sleeper_response_matchups, roster_id):
                     "position": player_position,
                     "player_id": player_id
                 }
+
+                if playoff_roster_ids != {}:
+                    if roster_id == playoff_roster_ids['first_place_id']:
+                        manager_data[player_name]["placement"] = 1
+                    elif roster_id == playoff_roster_ids['second_place_id']:
+                        manager_data[player_name]["placement"] = 2
+                    elif roster_id == playoff_roster_ids['third_place_id']:
+                        manager_data[player_name]["placement"] = 3
+
                 manager_data["Total_Points"] += player_score
 
             manager_data["Total_Points"] = float(
@@ -218,3 +283,5 @@ def get_starters_data(sleeper_response_matchups, roster_id):
             )
             return manager_data
     return None
+
+load_or_update_starters_cache()
