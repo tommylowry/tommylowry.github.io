@@ -9,11 +9,13 @@ Notes:
 - STARTERS_CACHE is loaded at import time to serve requests quickly.
 - Returns empty dicts on missing seasons/weeks/managers instead of raising.
 """
+from patriot_center_backend.utils.player_ids_loader import load_player_ids
 from patriot_center_backend.utils.starters_loader import load_or_update_starters_cache
 
+PLAYER_IDS = load_player_ids()
 STARTERS_CACHE = load_or_update_starters_cache()
 
-def fetch_starters(manager=None, season=None, week=None, lists_only=False):
+def fetch_starters(manager=None, season=None, week=None):
     """
     Public entry point for retrieving starters slices.
 
@@ -29,25 +31,14 @@ def fetch_starters(manager=None, season=None, week=None, lists_only=False):
     """
     if season is None and week is None and manager is None:
         # Full cache passthrough for unfiltered requests
-        if lists_only:
-            return _lists_only(STARTERS_CACHE)
-        else:
-            return _remove_lists(STARTERS_CACHE)
+        return STARTERS_CACHE
 
     if manager is None:
-        filtered_dict = _filter_by_season_and_week(season, week)
-        if lists_only:
-            return _lists_only(filtered_dict)
-        else:
-            return _remove_lists(filtered_dict)
-    
-    filtered_dict = _filter_by_manager(manager, season, week)
-    if lists_only:
-        return _lists_only(filtered_dict)
-    else:
-        return _remove_lists(filtered_dict)
+        return _filter_by_season_and_week(season, week)
 
-def _filter_by_season_and_week(season, week, lists_only=False):
+    return _filter_by_manager(manager, season, week)
+
+def _filter_by_season_and_week(season, week):
     """
     Slice cache down to season and optionally week.
 
@@ -74,7 +65,7 @@ def _filter_by_season_and_week(season, week, lists_only=False):
 
     return {season_str: STARTERS_CACHE[season_str]}
 
-def _filter_by_manager(manager, season, week, lists_only=False):
+def _filter_by_manager(manager, season, week):
     """
     Extract only data for one manager, optionally restricted by season/week.
 
@@ -106,71 +97,3 @@ def _filter_by_manager(manager, season, week, lists_only=False):
                 filtered_data[season_key][week_key][manager] = starters[manager]
 
     return filtered_data
-
-def _lists_only(data_dict):
-    """
-    Remove all non-list entries from nested dict.
-    """
-    keys_to_keep = ["managers", "players", "positions", "weeks"]
-    new_dict = {}
-    year_dict = {}
-    for year, yearly_items in data_dict.items():
-        for week, weekly_items in yearly_items.items():
-            if week in keys_to_keep:
-                year_dict[week] = weekly_items
-                continue
-
-            manager_dict = {}
-            for manager, manager_items in weekly_items.items():
-                if manager in keys_to_keep:
-                    manager_dict[manager] = manager_items
-                    continue
-
-                player_dict = {}
-                for player, player_data in manager_items.items():
-                    if player in keys_to_keep:
-                        player_dict[player] = player_data
-                    manager_dict[manager] = player_dict
-            year_dict[week] = manager_dict
-        new_dict[year] = year_dict
-            
-    return new_dict
-            
-
-def _remove_lists(data_dict):
-
-    keys_to_remove = ["managers", "players", "positions", "weeks"]
-    
-    new_dict = {}
-    for year, yearly_items in data_dict.items():
-        
-        if year in keys_to_remove:
-            continue
-        
-        year_dict = {}
-        for week, weekly_items in yearly_items.items():
-            
-            if week in keys_to_remove:
-                continue
-            
-            week_dict = {}
-            for manager, manager_items in weekly_items.items():
-                
-                if manager in keys_to_remove:
-                    continue
-                
-                manager_dict = {}
-                for player, player_data in manager_items.items():
-                    if player in keys_to_remove:
-                        continue
-                    manager_dict[player] = player_data
-                
-                week_dict[manager] = manager_dict
-            
-            year_dict[week] = week_dict
-        new_dict[year] = year_dict
-            
-    return new_dict
-
-fetch = fetch_starters(lists_only=True)
-print(fetch)
