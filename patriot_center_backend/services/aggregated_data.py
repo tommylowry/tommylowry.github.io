@@ -257,6 +257,3 @@ def _handle_playoff_placement(aggregation_dict, primary_item, secondary_item, ye
         aggregation_dict[primary_item]["playoff_placement"][secondary_item][year] = placement
     
     return aggregation_dict
-
-test_behavior = fetch_aggregated_managers(player="Trey McBride", season=2019, week=5)
-fetch_aggregated_player_and_manager("Trey McBride", "")

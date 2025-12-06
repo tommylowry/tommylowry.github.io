@@ -10,6 +10,7 @@ CORS(app, resources={
     r"/get_aggregated_managers*": {"origins": ["https://patriotcenter.netlify.app"]},
     r"/players/list": {"origins": ["https://patriotcenter.netlify.app"]},
     r"/meta/valid_options*": {"origins": ["https://patriotcenter.netlify.app"]},
+    r"/get_player_manager_aggregation*": {"origins": ["https://patriotcenter.netlify.app"]},
 })
 CORS(app)  # Enable CORS for all routes during development
 
