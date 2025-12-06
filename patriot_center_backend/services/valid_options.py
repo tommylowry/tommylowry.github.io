@@ -1,10 +1,9 @@
 import copy
 
 from patriot_center_backend.constants import LEAGUE_IDS, NAME_TO_MANAGER_USERNAME
-from patriot_center_backend.services.players import fetch_players, fetch_valid_options
-from patriot_center_backend.utils.cache_utils import load_cache
+from patriot_center_backend.services.players import fetch_players, fetch_valid_options_cache
 
-VALID_OPTIONS_CACHE = fetch_valid_options()
+VALID_OPTIONS_CACHE = fetch_valid_options_cache()
 
 def fetch_valid_options(arg1, arg2, arg3):
     
@@ -241,7 +240,3 @@ def _parse_args(arg1, arg2, arg3):
                 raise ValueError(f"Unrecognized argument: {arg}")
 
     return year, week, manager, player
-
-
-d = fetch_valid_options(None, "Rome Odunze", None)
-print(d)

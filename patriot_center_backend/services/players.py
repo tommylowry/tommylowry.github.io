@@ -10,7 +10,7 @@ def fetch_players():
     """
     return load_cache(PLAYERS_CACHE_FILE, players_cache=True)
 
-def fetch_valid_options():
+def fetch_valid_options_cache():
     """
     Retrieve valid options cache.
 
